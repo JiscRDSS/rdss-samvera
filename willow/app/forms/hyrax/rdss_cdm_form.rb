@@ -32,7 +32,7 @@ module Hyrax
     def self.build_permitted_params
         permitted = super
         # add in object_date attributes
-        permitted << { object_date:  permitted_object_date_params}        
+        permitted << { object_date_attributes:  permitted_object_date_params}        
         permitted
       end
   end
