@@ -1,6 +1,4 @@
 ---
-
-#
 # Usage:
 #
 #     $ ansible-playbook publish-images-playbook.yml --extra-vars="registry=aws_account_id.dkr.ecr.region.amazonaws.com/ version=master tag=latest"
