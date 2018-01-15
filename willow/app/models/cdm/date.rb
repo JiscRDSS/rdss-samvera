@@ -22,5 +22,5 @@ module Cdm
       end
       super
     end
-  end 
+  end
 end
