@@ -5,7 +5,7 @@ module Hyrax
     self.model_class = ::RdssCdm
 
     self.terms = [
-      :title, 
+      :title,
       :object_description,
       :object_keywords,
       :object_category,
@@ -17,7 +17,7 @@ module Hyrax
     ]
 
     # Permitted parameters for nested attributes
-    # These need to define the incoming parameters for any nested form attributes so that 
+    # These need to define the incoming parameters for any nested form attributes so that
     # strong_params permits them
     def self.permitted_object_date_params
       [:id,
@@ -25,15 +25,14 @@ module Hyrax
        {
          date_value: [],
          date_type: []
-       },
-      ]
+       }]
     end
 
     def self.build_permitted_params
-        permitted = super
-        # add in object_date attributes
-        permitted << { object_date_attributes:  permitted_object_date_params}        
-        permitted
-      end
+      permitted = super
+      # add in object_date attributes
+      permitted << { object_date_attributes: permitted_object_date_params }
+      permitted
+    end
   end
 end
