@@ -1,5 +1,6 @@
-# Date input for RdssCdm#object_date
+# Custom Date input for RdssCdm#object_date
 # Functionality copied from app/inputs/date_statement_input.rb
+# This outputs the HTML necessary for a nested object_date input with the date_value and date_type fields
 class ObjectDateInput < NestedAttributesInput
 
 protected
@@ -19,6 +20,7 @@ protected
     out << "<div class='row'>"
 
     # date_type
+    # This should be a dropdown with the values defined in RdssDateTypesService
     field = :date_type
     field_name = name_for(attribute_name, index, field)
     field_id = id_for(attribute_name, index, field)
@@ -30,7 +32,8 @@ protected
         label: '', class: 'select form-control', prompt: 'choose type', id: field_id)
     out << '  </div>'
 
-    # --- date
+    # date_value
+    # This is a text input with attributes to allow the javascript to turn it into a datepicker
     field = :date_value
     field_name = name_for(attribute_name, index, field)
     field_id = id_for(attribute_name, index, field)
@@ -42,7 +45,8 @@ protected
             data: { provide: 'datepicker' }, required: required))
     out << '  </div>'
 
-    # --- delete checkbox
+    # Destroy widget
+    # Add in the 'remove' button for each row.
     field_label = 'Date'
     out << "  <div class='col-md-3'>"
     out << destroy_widget(attribute_name, index, field_label)

@@ -16,9 +16,9 @@ module Hyrax
       :title
     ]
 
-    NESTED_ASSOCIATIONS = [:object_date]
     # Permitted parameters for nested attributes
-    
+    # These need to define the incoming parameters for any nested form attributes so that 
+    # strong_params permits them
     def self.permitted_object_date_params
       [:id,
        :_destroy,

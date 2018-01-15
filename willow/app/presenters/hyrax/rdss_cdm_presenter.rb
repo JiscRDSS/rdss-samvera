@@ -5,6 +5,9 @@ module Hyrax
     delegate :title, :object_description, :object_keywords, :object_category, to: :solr_document
     
     # translate the json string for object date into a displayable value
+    # This goes through the json values and for each one produces a string of the form
+    # "<date_type>: <date_value"
+    # E.G "Created: 20/10/2018"
     def object_date
       values = []
       date = solr_document.object_date.try(:first)
