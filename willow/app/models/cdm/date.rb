@@ -4,7 +4,8 @@ module Cdm
     # These methods appear to be necessary for the nested prperty to behave correctly
     include CommonMethods
 
-    configure type: ::RDF::Vocab::VCARD.Date
+    # NB: had to use DC11.date as using VCARD.date (used by date_statment.rb) breaks the existing date_statement code
+    configure type: ::RDF::Vocab::DC11.date
     property :date_value, predicate: ::RDF::Vocab::DC.date
     property :date_type, predicate: ::RDF::Vocab::DC.description
 
