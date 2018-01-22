@@ -14,6 +14,7 @@ class RdssCdm < ActiveFedora::Base
 
   self.human_readable_type = 'RDSS CDM'
 
+
   property :object_uuid, predicate: ::RDF::Vocab::DC11.identifier, multiple: false 
   # object_title present as `title` inherited from Hyrax::CoreMetadata
   #property :object_person_role
@@ -21,7 +22,10 @@ class RdssCdm < ActiveFedora::Base
     index.as :stored_searchable
   end
   #property :object_rights
-  #property :object_date
+  
+  # Object date nested property
+  property :object_date, predicate: ::RDF::Vocab::DC.date, class_name: "Cdm::Date"
+  
   property :object_keywords, predicate: ::RDF::Vocab::DC11.relation do |index|
     index.as :stored_searchable, :facetable
   end
@@ -38,6 +42,10 @@ class RdssCdm < ActiveFedora::Base
   #property :object_organisation_role
   #property :object_preservation_event
   #property :object_file
+
+
+  # Accepts nested attributes declarations need to go after the property declarations, as they close off the model
+  accepts_nested_attributes_for :object_date, reject_if: :object_date_blank?, allow_destroy: true
   
   def self.multiple?(field)
     # Overriding to return false for `title` (as we can't set multiple: false) 
@@ -71,5 +79,15 @@ class RdssCdm < ActiveFedora::Base
   #class_attribute :controlled_properties
   #self.controlled_properties = [:based_near]
   #accepts_nested_attributes_for :based_near, reject_if: id_blank, allow_destroy: true
+
+  # methods for validation of nested properties
+  # These need to go on the resource_class: RdssCdm::GeneratedResourceSchema
+  
+  # object_date_blank
+  # Reject a nested object_date if the value for date_value is not set
+  resource_class.send(:define_method, :object_date_blank?) do |attributes|
+    Array(attributes[:date_value]).all?(&:blank?)
+  end
+    
 
 end

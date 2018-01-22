@@ -1,0 +1,14 @@
+<div class="multi-nested">
+  <%= f.input :object_date,
+    as: :object_date, # tells simple form to use app/inputs/object_date_input.rb
+    input_html: {
+      class: '',
+      data: {name: :date_value}
+    },
+    required: f.object.required?(:object_date)
+  %>
+  <button type="button" class="btn btn-link add">
+    <span class="glyphicon glyphicon-plus"></span>
+    <span class="controls-add-text">Add another Date</span>
+  </button>
+</div>

@@ -90,6 +90,68 @@ RSpec.describe RdssCdm do
     end
   end
 
+  # object_date tests
+
+  describe 'nested attributes for object_date' do
+    it 'accepts object_date attributes' do
+      @obj = build(:rdss_cdm, object_date_attributes: [{ date_value: '2017-01-01', date_type: 'copyrighted' }])
+      expect(@obj.object_date.first).to be_kind_of ActiveTriples::Resource
+      expect(@obj.object_date.first.date_value).to eq ['2017-01-01']
+      expect(@obj.object_date.first.date_type).to eq ['copyrighted']
+    end
+
+    it 'has the correct uri' do
+      @obj = build(:rdss_cdm, object_date_attributes: [{ date_value: '2017-01-01', date_type: 'copyrighted' }])
+      expect(@obj.object_date.first.id).to include('#object_date')
+    end
+
+    it 'rejects date attributes if date is blank' do
+      @obj = build(:rdss_cdm, object_date_attributes: [
+                                                  {
+                                                    date_value: '2017-01-01',
+                                                    date_type: 'copyrighted'
+                                                  },
+                                                  {
+                                                    date_type: 'copyrighted'
+                                                  },
+                                                  {
+                                                    date_value: '2018-01-01'
+                                                  },
+                                                  {
+                                                    date_value: ''
+                                                  }
+                                                ])
+      expect(@obj.object_date.size).to eq(2)
+    end
+
+    it 'destroys date' do
+      @obj = build(:rdss_cdm, object_date_attributes: [{ date_value: '2017-01-01', date_type: 'copyrighted' }])
+      expect(@obj.object_date.size).to eq(1)
+      @obj.attributes = {
+        object_date_attributes: [{
+          id: @obj.object_date.first.id,
+          date_value: '2017-01-01',
+          date_type: 'copyrighted',
+          _destroy: '1'
+        }]
+      }
+      expect(@obj.object_date.size).to eq(0)
+    end
+
+    it 'indexes the date' do
+      @obj = build(:rdss_cdm, object_date_attributes: [{
+                                                    date_value: '2017-01-01',
+                                                    date_type: 'copyrighted',
+                                                }, {
+                                                    date_value: '2018-01-01'
+                                                }])
+      @doc = @obj.to_solr
+      expect(@doc).to include('object_date_ssm')
+      expect(@doc['object_date_copyrighted_ssi']).to match_array(['2017-01-01'])
+    end
+  end
+
+
   # describe 'person role' do
   #   it 'has person role' do
   #     build_and_check_field(field_name: :object_person_role, content: %w(author))
