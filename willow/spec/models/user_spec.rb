@@ -20,6 +20,13 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:uid) }
   end
 
+  describe '#user_key' do
+    it 'matches the devise auth key' do
+      user = User.from_omniauth(auth)
+      expect(user.user_key).to eq(auth.uid)
+    end
+  end
+
   describe '.from_omniauth' do
     context 'new user' do
       it 'creates a new record' do

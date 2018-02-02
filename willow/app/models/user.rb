@@ -29,6 +29,10 @@ class User < ApplicationRecord
     email
   end
 
+  def user_key
+    uid || super
+  end
+
   # @param auth [OmniAuth::AuthHash] authenticated user information.
   # @return [User] the authenticated user, possibly a newly created record.
   def self.from_omniauth(auth)
