@@ -14,8 +14,6 @@ class User < ApplicationRecord
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
 
-  validates :uid, presence: true, uniqueness: true
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :remote_user_authenticatable, :database_authenticatable, :registerable,

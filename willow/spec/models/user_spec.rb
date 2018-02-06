@@ -15,11 +15,6 @@ RSpec.describe User, type: :model do
     JSON.parse(json_data, object_class: OpenStruct)
   end
 
-  describe '#uid' do
-    it { is_expected.to validate_presence_of(:uid) }
-    it { is_expected.to validate_uniqueness_of(:uid) }
-  end
-
   describe '#user_key' do
     it 'matches the devise auth key' do
       user = User.from_omniauth(auth)

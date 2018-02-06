@@ -255,7 +255,7 @@ Devise.setup do |config|
   # Shibboleth
 
   config.omniauth :shibboleth,
-                  uid_field: 'eppn',
+                  uid_field: 'mail',
                   info_fields: {
                     email: 'mail'
                   }
