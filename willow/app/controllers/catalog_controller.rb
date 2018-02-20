@@ -14,6 +14,10 @@ class CatalogController < ApplicationController
     def modified_field
       solr_name(:system_modified, :stored_sortable, type: :date)
     end
+
+    def published_field
+      solr_name(:object_dates_published, :stored_sortable, type: :date)
+    end
   end
 
   configure_blacklight do |config|
@@ -103,8 +107,10 @@ class CatalogController < ApplicationController
                     {object_keywords: {options: {itemprop: :object_keywords}}},
                     {object_category: {options: {itemprop: :object_category}}},
                     {object_dates: {options: {itemprop: :object_dates}}},
-                    # {object_person: {options: {itemprop: :object_person}}},
+                    {object_people: {options: {itemprop: :object_people}}},
                     {object_person_roles: {options: {itemprop: :object_person_roles}}},
+                    {object_organisation_roles: {options: {itemprop: :object_organisation_roles}}},
+                    # {organisation: {options: {itemprop: :organisation}}},
                     {description: {options: {helper_method: :iconify_auto_link}}},
                     :keyword,
                     :subject,
@@ -117,8 +123,9 @@ class CatalogController < ApplicationController
                     :publisher,
                     :based_near_label,
                     :language,
-                    {date_uploaded: {type: :date, options: {itemprop: :date_published, helper_method: :human_readable_date}}},
-                    {date_modified: {type: :date, options: {itemprop: :date_modified, helper_method: :human_readable_date}}},
+                    {object_dates_published: {type: :date, as: :stored_sortable, options: {itemprop: :object_dates_published, helper_method: :human_readable_date}}},
+                    {date_uploaded: {type: :date, as: :stored_sortable, options: {itemprop: :date_published, helper_method: :human_readable_date}}},
+                    {date_modified: {type: :date, as: :stored_sortable, options: {itemprop: :date_modified, helper_method: :human_readable_date}}},
                     #TODO: Check the date_created. The original didn't have type: date as an option to the solr_name
                     {date_created: {type: :date, options: {itemprop: :date_created}}},
     # dataset date fields for search
@@ -196,8 +203,9 @@ class CatalogController < ApplicationController
                    {preservation_nested: {as: :displayable}},
                    #RDSS CDM Additions
                    {object_dates: {as: :displayable}},
-                   # {object_person: {as: :displayable}},
+                   {object_people: {as: :displayable}},
                    {object_person_roles: {as: :displayable}}
+                   # {organisation: {as: :displayable}}
                    #End of RDSS CDM Additions
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -266,6 +274,8 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     # label is key, solr field is value
     config.add_sort_field "score desc, #{uploaded_field} desc", label: "relevance"
+    config.add_sort_field "#{published_field} desc", label: "date published \u25BC"
+    config.add_sort_field "#{published_field} asc", label: "date published \u25B2"
     config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
     config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
     config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"

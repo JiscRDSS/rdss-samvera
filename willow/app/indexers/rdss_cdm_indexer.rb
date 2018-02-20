@@ -17,24 +17,28 @@ class RdssCdmIndexer < Hyrax::WorkIndexer
       # eg object_date_approved
       # As above, we are using the object_dates filtered to remove marked_for_destruction?
       object_dates.each do |d|
-        label = RdssDateTypesService.label(d.date_type) rescue nil
-        if label
-          solr_doc[Solrizer.solr_name("object_dates_#{label.downcase}", :stored_sortable)] = d.date_value
+        
+        if d.date_value
+          date = begin
+            ::Date.parse(d.date_value.to_s)
+          rescue ArgumentException
+            nil
+          end
+          if date
+            solr_doc[Solrizer.solr_name("object_dates_#{d.date_type}", :stored_sortable, type: :date)] = date.strftime('%FT%TZ')
+          end
         end
       end
 
-      object_person_roles = object.object_person_roles.reject(&:marked_for_destruction?)
-      solr_doc[Solrizer.solr_name('object_person_roles', :displayable)] = object_person_roles.to_json
-      object_person_roles.each do |r|
-        solr_doc[Solrizer.solr_name("object_person_roles_#{r.role_type}", :stored_sortable)] = true
-      end
+      object_people = object.object_people.reject(&:marked_for_destruction?)
+      solr_doc[Solrizer.solr_name("object_people", :displayable)] = object_people.to_json(include: :object_person_roles)
 
       # object rights
-      # At the moment we have a has_one relationship between Object and Object rights. As such it makes more sense to 
+      # At the moment we have a has_one relationship between Object and Object rights. As such it makes more sense to
       # index the object_rights fields as direct fields on the solr document
       rights = object.object_rights.first
       if rights
-        solr_doc[Solrizer.solr_name('object_rights_license', :stored_searchable)] = rights.license
+        solr_doc[Solrizer.solr_name('object_rights_licence', :stored_searchable)] = rights.licence
         solr_doc[Solrizer.solr_name('object_rights_rights_statement', :stored_searchable)] = rights.rights_statement
         solr_doc[Solrizer.solr_name('object_rights_rights_holder', :stored_searchable)] = rights.rights_holder
         # nested accesses
@@ -46,6 +50,23 @@ class RdssCdmIndexer < Hyrax::WorkIndexer
         solr_doc[Solrizer.solr_name('object_rights_accesses', :displayable)] = accesses.to_json
       end
 
+      object_organisation_roles = object.object_organisation_roles.reject(&:marked_for_destruction?)
+      solr_doc[::Solrizer.solr_name(:object_organisation_roles, :displayable)] = object_organisation_roles.to_json
+      object_organisation_roles.each do |object_organisation_role|
+        solr_doc[::Solrizer.solr_name("object_organisation_role_#{object_organisation_role.role}", :stored_sortable)] = true
+      end
+
+      # Index a displayable version of the identifier
+      object_identifiers = object.object_identifiers.reject(&:marked_for_destruction?)
+      solr_doc[Solrizer.solr_name('object_identifiers', :displayable)] = object_identifiers.to_json
+      # Incase we need it, solarize each identifier type
+      object_identifiers.each do |i|
+        solr_doc[Solrizer.solr_name("object_identifier_#{i.identifier_type}", :stored_sortable)] = i.identifier_value
+      end
+
+      # Index a displayable version of the related identifier
+      object_related_identifiers = object.object_related_identifiers.reject(&:marked_for_destruction?)
+      solr_doc[Solrizer.solr_name('object_related_identifiers', :displayable)] = object_related_identifiers.to_json(include: :identifier)
     end
   end
 end
