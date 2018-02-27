@@ -49,6 +49,16 @@ services:
     #ports:
     #  - "4567:4567"
 
+# Local shibboleth configs
+
+  sp:
+      build: ./sp/
+      networks:
+       - back
+       - front
+      secrets:
+       - source: sp_key
+
     secrets:
       idp_backchannel:
         file: ./secrets/idp/idp-backchannel.p12
@@ -64,3 +74,9 @@ services:
         file: ./secrets/simplesamlphp/server.pem
       sp_key:
         file: ./secrets/sp/sp-key.pem
+
+    networks:
+      front:
+        driver: bridge
+      back:
+        driver: bridge
