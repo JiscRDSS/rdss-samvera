@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 
 # These are the PRODUCTION defaults for docker-compose.yml
 # It is intended to be run in production mode via Docker stack, not docker-compose.
@@ -10,6 +10,8 @@ version: '3'
 
 services:
   db:
+    networks:
+      - back
     image: cottagelabs/willow-db
     build: db/
     env_file:
@@ -23,6 +25,8 @@ services:
           memory: 250M
 
   solr:
+    networks:
+      - back
     image: cottagelabs/willow-solr
     build: solr/
     volumes:
@@ -32,8 +36,10 @@ services:
       resources:
         reservations:
           memory: 250M
-  
+
   redis:
+    networks:
+      - back
     image: cottagelabs/willow-redis
     build: redis/
     volumes:
@@ -45,6 +51,8 @@ services:
           memory: 250M
 
   fedora:
+    networks:
+      - back
     image: cottagelabs/willow-fedora
     build: fedora_commons/
     env_file: .env
@@ -60,8 +68,10 @@ services:
       resources:
         reservations:
           memory: 500M
-  
+
   willow:
+    networks:
+      - back
     image: cottagelabs/willow
     build:
       context: willow/
@@ -77,6 +87,7 @@ services:
       - solr
       - db
       - fedora
+      - kinesalite
     depends_on:
       - fedora
       - db
@@ -114,6 +125,8 @@ services:
 #
 
   kinesalite:
+    networks:
+      - back
     image: instructure/kinesalite
     restart: on-failure
 
@@ -124,3 +137,9 @@ volumes:
   postgres_data: {}
   solr_home: {}
   derivatives: {}
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge

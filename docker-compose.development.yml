@@ -19,6 +19,8 @@ services:
     restart: "no"
 
   willow:
+    networks:
+      - back
     build:
       args:
         - RAILS_ENV=development
@@ -89,24 +91,18 @@ services:
     networks:
       - back
 
-    secrets:
-      idp_backchannel:
-        file: ./secrets/idp/idp-backchannel.p12
-      idp_browser:
-        file: ./secrets/idp/idp-browser.p12
-      idp_encryption:
-        file: ./secrets/idp/idp-encryption.key
-      idp_signing:
-        file: ./secrets/idp/idp-signing.key
-      idp_sealer:
-        file: ./secrets/idp/sealer.jks
-      ssp_key:
-        file: ./secrets/simplesamlphp/server.pem
-      sp_key:
-        file: ./secrets/sp/sp-key.pem
-
-    networks:
-      front:
-        driver: bridge
-      back:
-        driver: bridge
+secrets:
+  idp_backchannel:
+    file: ./secrets/idp/idp-backchannel.p12
+  idp_browser:
+    file: ./secrets/idp/idp-browser.p12
+  idp_encryption:
+    file: ./secrets/idp/idp-encryption.key
+  idp_signing:
+    file: ./secrets/idp/idp-signing.key
+  idp_sealer:
+    file: ./secrets/idp/sealer.jks
+  ssp_key:
+    file: ./secrets/simplesamlphp/server.pem
+  sp_key:
+    file: ./secrets/sp/sp-key.pem
