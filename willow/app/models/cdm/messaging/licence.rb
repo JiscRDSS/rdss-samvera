@@ -6,13 +6,9 @@
 module Cdm
   module Messaging
     class Licence < MessageMapper
-      def normalize(object)
-        object.tr('^a-zA-Z0-9','_')
-      end
-
       def hash_value(_, object)
         {
-          licenceName: object.present? && I18n.t("rdss.licences.#{normalize(object)}") || '',
+          licenceName: object.present? && Hyrax::LicenseService.new.label(object) || '',
           licenceIdentifier: object
         }
       end
