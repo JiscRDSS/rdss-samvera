@@ -78,7 +78,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
               "personGivenName": "Paul",
               "personCn": "Mr. Paul Mak",
               "personSn": "Mak",
-              :personTelephoneNumber=>"1",
+              :personTelephoneNumber=>"not yet implemented",
               :personMail=>"paul@example.com",
               :personOrganisationUnit=>{
                 :organisation=>{
