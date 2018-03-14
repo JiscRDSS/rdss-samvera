@@ -45,10 +45,11 @@ if [ "$WILLOW_SEED" = "true" ] ; then
 fi
 
 rm -f /tmp/willow.pid
-if [[ -v START_RDEBUGIDE ]] ; then
+if [[ -v START_RAILS_WITH_RDEBUG ]] ; then
     echo "--------- Starting Willow in $RAILS_ENV DEBUG mode ---------"
     bundle exec rdebug-ide --host 0.0.0.0 --port 1234 -- ./bin/rails s -b 0.0.0.0 --pid /tmp/willow.pid
 else
     echo "--------- Starting Willow in $RAILS_ENV mode ---------"
     bundle exec rails server -p 3000 -b '0.0.0.0' --pid /tmp/willow.pid
 fi
+
