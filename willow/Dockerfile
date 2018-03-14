@@ -82,4 +82,3 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
 WORKDIR $APP_WORKDIR
 
 CMD ["/bin/docker-entrypoint.sh"]
-
