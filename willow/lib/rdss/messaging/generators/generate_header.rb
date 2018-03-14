@@ -44,6 +44,11 @@ module Rdss
           {
             messageId: ::SecureRandom.uuid,
             messageClass: 'Event',
+            messageHistory: [{
+              machineId: ENV['SAMVERA_INTERNAL_HOST'],
+              machineAddress: IPSocket.getaddress(Socket.gethostname),
+              timestamp: DateTime.now.rfc3339,
+            }],
             messageType: "Metadata#{event.to_s.camelize}",
             messageTimings: {
               publishedTimestamp: DateTime.now.rfc3339,
@@ -53,7 +58,8 @@ module Rdss
                                position: 1,
                                total: 1
             },
-            version: version_map[version.intern]||default_version
+            version: version_map[version.intern]||default_version,
+            generator: 'Samvera'
           }
         end
         
