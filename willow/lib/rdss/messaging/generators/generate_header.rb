@@ -46,7 +46,7 @@ module Rdss
             messageClass: 'Event',
             messageHistory: [{
               machineId: ENV['SAMVERA_INTERNAL_HOST'],
-              machineAddress: IPSocket.getaddress(Socket.gethostname),
+              machineAddress: ENV['SAMVERA_INTERNAL_HOST'],
               timestamp: DateTime.now.rfc3339,
             }],
             messageType: "Metadata#{event.to_s.camelize}",
