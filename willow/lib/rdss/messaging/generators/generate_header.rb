@@ -53,7 +53,6 @@ module Rdss
                                position: 1,
                                total: 1
             },
-            expirationDate: {},
             version: version_map[version.intern]||default_version
           }
         end
