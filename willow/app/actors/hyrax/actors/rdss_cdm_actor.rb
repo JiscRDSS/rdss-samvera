@@ -7,6 +7,8 @@ module Hyrax
       def default_values
         {
           object_value:   'normal',
+          object_version: '1',
+          object_uuid:    SecureRandom.uuid
         }
       end
 
