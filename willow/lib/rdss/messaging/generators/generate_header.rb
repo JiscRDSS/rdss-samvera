@@ -19,13 +19,13 @@ module Rdss
         end
 
         def default_version
-          version_map['current']
+          version_map[:current]
         end
 
         def version_map
           {
-            'current': '2.0.0-SNAPSHOT',
-            '2.0.0': '2.0.0-SNAPSHOT'
+            'current': '2.1.0',
+            '2.1.0': '2.1.0'
           }
         end
 
@@ -45,12 +45,15 @@ module Rdss
             messageId: ::SecureRandom.uuid,
             messageClass: 'Event',
             messageType: "Metadata#{event.to_s.camelize}",
-            messageTimings: { publishedTimestamp: DateTime.now.rfc3339 },
+            messageTimings: {
+              publishedTimestamp: DateTime.now.rfc3339,
+              expirationTimestamp: (DateTime.now+1.week).rfc3339
+            },
             messageSequence: { sequence:SecureRandom.uuid,
                                position: 1,
                                total: 1
             },
-            version: version_map[version.to_s]||default_version
+            version: version_map[version.intern]||default_version
           }
         end
         
