@@ -10,7 +10,7 @@ module Cdm
             organisationType: 1,
             organisationAddress: 'not yet implemented'
           },
-          organisationUnitUuid: "470956e0-56de-4cdc-b182-c0334851a170",
+          organisationUnitUuid: '00000000-0000-1000-a000-000000000000',
           organisationUnitName: 'not yet implemented'
         }
       end
