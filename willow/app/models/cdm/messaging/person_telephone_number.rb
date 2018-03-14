@@ -3,7 +3,7 @@ module Cdm
   module Messaging
     class PersonTelephoneNumber < EmptyMapper
       def value(object, *)
-        '1'
+        'not yet implemented'
       end
     end
   end
