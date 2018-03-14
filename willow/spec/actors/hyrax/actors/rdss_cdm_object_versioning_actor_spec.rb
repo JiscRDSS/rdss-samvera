@@ -30,20 +30,6 @@ RSpec.describe Hyrax::Actors::RdssCdmObjectVersioningActor do
     stack.build(terminator)
   end
 
-  describe "create" do
-    let(:attributes) { {:title => ["test title"]} }
-    let(:rdss_cdm) { create(:rdss_cdm) }
-    let(:env) { Hyrax::Actors::Environment.new(rdss_cdm, ability, attributes) }
-
-    it 'set object version to 1' do
-      expect { middleware.create(env) }.to change { env.attributes[:object_version] }.to "1"
-    end
-
-    it 'adds an object_uuid' do 
-      expect { middleware.create(env) }.to change { env.attributes[:object_uuid] }.to match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/)      
-    end
-  end
-
   describe "update with no changes" do
     let(:attributes) { {:title => ["test title"]} }    
     let(:env) { Hyrax::Actors::Environment.new(approved_rdss_cdm, ability, attributes) }
