@@ -41,11 +41,7 @@ class CatalogController < ApplicationController
       qf: to_searchable_names_field_list(:title,
                                          :object_description,
                                          :object_keywords,
-                                         :object_category,
-                                         #preserving for legacy functionality
-                                         :description,
-                                         :creator,
-                                         :keyword)
+                                         :object_category)
     }
 
     # solr field configuration for document/show views
@@ -57,25 +53,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     add_facet_field config,
-                    :human_readable_type,
-                    :resource_type,
-                    :creator,
-                    :creator_nested,
-                    :contributor,
-                    :keyword,
-                    :subject,
-                    :subject_nested,
-                    :language,
-                    :based_near_label,
-                    :publisher,
-                    :funder,
-                    :tagged_version,
-                    :file_format,
-                    :member_of_collections,
-                    :rating,
-                    :category,
-                    :rights_holder,
-                    :organisation_nested
+                    :human_readable_type
 
 
     # The generic_type isn't displayed on the facet list
@@ -110,19 +88,8 @@ class CatalogController < ApplicationController
                     {object_people: {options: {itemprop: :object_people}}},
                     {object_person_roles: {options: {itemprop: :object_person_roles}}},
                     {object_organisation_roles: {options: {itemprop: :object_organisation_roles}}},
-                    # {organisation: {options: {itemprop: :organisation}}},
-                    {description: {options: {helper_method: :iconify_auto_link}}},
-                    :keyword,
-                    :subject,
-                    :subject_nested,
-                    :creator,
-                    :creator_nested,
-                    :contributor,
                     {proxy_depositor: {options: {helper_method: :link_to_profile}}},
                     {depositor: {options: {helper_method: :link_to_profile}}},
-                    :publisher,
-                    :based_near_label,
-                    :language,
                     {object_dates_published: {type: :date, as: :stored_sortable, options: {itemprop: :object_dates_published, helper_method: :human_readable_date}}},
                     {date_uploaded: {type: :date, as: :stored_sortable, options: {itemprop: :date_published, helper_method: :human_readable_date}}},
                     {date_modified: {type: :date, as: :stored_sortable, options: {itemprop: :date_modified, helper_method: :human_readable_date}}},
@@ -136,77 +103,20 @@ class CatalogController < ApplicationController
                     {date_issued: {type: :date, options: {itemprop: :date_issued}}},
                     {date_published: {type: :date, options: {itemprop: :date_published}}},
                     {date_submitted: {type: :date, options: {itemprop: :date_submitted}}},
-                    {date_updated: {type: :date, options: {itemprop: :date_updated}}},
-                    {rights: {options: {helper_method: :license_links}}},
-                    {license_nested: {options: {helper_method: :license_links}}},
-                    :resource_type,
-                    :file_format,
-                    {identifier: {options: {helper_method: :index_fieldlink, firle_name: :identifier}}},
-                    {embargo_release_date: {options: {helper_method: :human_readable_date}}},
-                    {lease_expiration_date: {options: {helper_method: :human_readable_date}}},
-    # dataset fields for search - force empty options.
-                    {doi: {options: {}}},
-                    {other_title: {options: {}}},
-                    {funder: {options: {}}},
-                    {identifier_nested: {as: :symbol, options: {}}},
-                    {category: {options: {}}},
-                    {rating: {options: {}}},
-                    {rights_holder: {options: {}}},
-                    :organisation_nested,
-                    {preservation_nested: {options: {item_prop: :preservation}}}
+                    {date_updated: {type: :date, options: {itemprop: :date_updated}}}
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     # RDSS CDM additions:
     #
     add_show_field config,
-                   # RDSS CDM additions:
                    :title,
                    :object_description,
                    :object_keywords,
                    :object_category,
-                   # end of RDSS CDM additions
-                   :description,
-                   :keyword,
-                   :subject,
-                   {subject_nested: {as: :displayable}},
-                   :creator,
-                   :creator_nested,
-                   :contributor,
-                   :publisher,
-                   :based_near_label,
-                   :language,
-                   :date_uploaded,
-                   :date_modified,
-                   :date_created,
-                   :rights,
-                   {license_nested: {as: :displayable}},
-                   :resource_type,
-                   :format,
-                   {identifier: {as: :symbol}},
-                   # Dataset show fields
-                   :doi,
-                   {other_title: {as: :displayable}},
-                   {date: {as: :displayable}},
-                   {relation: {as: :displayable}},
-                   {admin_metadata: {as: :displayable}},
-                   # Article show fields
-                   :coverage,
-                   :apc,
-                   :tagged_version,
-                   {project_nested: {as: :displayable}},
-                   {identifier_nested: {as: :displayable}},
-                   :category,
-                   :rating,
-                   :rights_holder,
-                   {organisation_nested: {as: :displayable}},
-                   {preservation_nested: {as: :displayable}},
-                   #RDSS CDM Additions
                    {object_dates: {as: :displayable}},
                    {object_people: {as: :displayable}},
                    {object_person_roles: {as: :displayable}}
-                   # {organisation: {as: :displayable}}
-                   #End of RDSS CDM Additions
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
