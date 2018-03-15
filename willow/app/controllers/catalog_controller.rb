@@ -156,26 +156,7 @@ class CatalogController < ApplicationController
                      :creator_nested,
                      {identifier_nested: {as: :symbol}},
                      :title,
-                     :description,
-                     :publisher,
-                     :date_created,
-                     :subject,
-                     :subject_nested,
-                     :language,
-                     :resource_type,
-                     :format,
-                     {identifier: {name: :id}},
-                     {based_near: {name: :based_near_label}},
-                     :keyword,
-                     {depositor: {as: :symbol}},
-                     :rights,
-                     :license_nested,
-                     :other_title,
-                     {doi: {as: :facetable}},
-                     :category,
-                     :rating,
-                     :rights_holder,
-                     :organisation_nested
+                     :date_created
 
 
     # "sort results by" select (pulldown)
