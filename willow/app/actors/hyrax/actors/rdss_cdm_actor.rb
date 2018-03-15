@@ -3,7 +3,6 @@
 module Hyrax
   module Actors
     class RdssCdmActor < Hyrax::Actors::BaseActor
-#TODO #PMAK Should we set initial value for :object_version here too?
       def default_values
         {
           object_value:   'normal',
