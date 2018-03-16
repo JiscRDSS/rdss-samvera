@@ -1,26 +1,4 @@
 Hyrax.config do |config|
-  # Allow environment variables to enable registration of concern types
-  # NB: RdssDataset is always enabled
-  if ENV['ENABLE_IMAGE_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Image`
-    config.register_curation_concern :image
-  end
-  if ENV['ENABLE_BOOK_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Book`
-    config.register_curation_concern :book
-  end
-  if ENV['ENABLE_DATASET_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Dataset`
-    config.register_curation_concern :dataset
-  end
-  if ENV['ENABLE_ARTICLE_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Article`
-    config.register_curation_concern :article
-  end
-  if ENV['ENABLE_RDSS_DATASET_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work RdssDataset`
-    config.register_curation_concern :rdss_dataset
-  end
   # Injected via `rails g hyrax:work RdssCdm`
   config.register_curation_concern :rdss_cdm
 
