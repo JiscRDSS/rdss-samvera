@@ -19,11 +19,25 @@ module Cdm
           end.flatten
         end
 
+        # As some components of the RDSS are using this field to determine the institution sending the message to inform their processing of the message, 
+        # the following default oor populated with information about the HEI cluster is prepended to the list to support this, until such time as it is
+        # no longer required. 
+        def default_messaging_oor
+          {
+            organisation: {
+              organisationJiscId: Willow::Config.institution_jisc_id,
+              organisationName: Willow::Config.institution_name,
+              organisationType: ::Cdm::Enumerations::OrganisationType.higher_education,
+              organisationAddress: Willow::Config.institution_name
+            }, 
+            role: ::Cdm::Enumerations::OrganisationRole.hosting_institution
+          }
+        end
+
         def call(name, mapping, object)
-          { name.intern=>map_organisation_role(mapping, object) }
+          { name.intern=>[default_messaging_oor] + map_organisation_role(mapping, object) }
         end
       end
-
     end
   end
 end
