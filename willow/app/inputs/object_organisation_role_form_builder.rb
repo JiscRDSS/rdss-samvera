@@ -1,7 +1,7 @@
 class ObjectOrganisationRoleFormBuilder < RdssFields
   def role(required: false)
     input :role,
-          collection: ::Cdm::ObjectOrganisationRolesService.select_all_options,
+          collection: ::Cdm::Selections::OrganisationRole.call,
           prompt: :translate,
           required: required
   end

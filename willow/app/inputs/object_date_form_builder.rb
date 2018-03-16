@@ -1,6 +1,6 @@
 class ObjectDateFormBuilder < RdssFields
   def date_type(required: false)
-    input :date_type, collection: ::RdssDateTypesService.select_all_options, prompt: :translate, label: false, required: required
+    input :date_type, collection: ::Cdm::Selections::DateType.call, prompt: :translate, label: false, required: required
   end
 
   def date_value(required: false)
