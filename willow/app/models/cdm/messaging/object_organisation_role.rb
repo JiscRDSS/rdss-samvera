@@ -15,7 +15,7 @@ module Cdm
       class << self
         def map_organisation_role(mapping, object)
           object.send(attribute_name_in_model).map do |oor|
-            ::Cdm::Messaging::Organisation.(:organisation, mapping.first['organisation'], oor.organisation).merge({ role: ::Cdm::Messaging::Enumerations::OrganisationRole.send(oor.role) })
+            ::Cdm::Messaging::Organisation.(:organisation, mapping.first['organisation'], oor.organisation).merge({ role: ::Cdm::Enumerations::OrganisationRole.send(oor.role) })
           end.flatten.unshift(default_messaging_oor)
         end
 
@@ -27,10 +27,10 @@ module Cdm
             organisation: {
               organisationJiscId: Willow::Config.institution_jisc_id,
               organisationName: Willow::Config.institution_name,
-              organisationType: ::Cdm::Messaging::Enumerations::OrganisationType.higher_education,
+              organisationType: ::Cdm::Enumerations::OrganisationType.higher_education,
               organisationAddress: Willow::Config.institution_name
             }, 
-            role: ::Cdm::Messaging::Enumerations::OrganisationRole.hosting_institution
+            role: ::Cdm::Enumerations::OrganisationRole.hosting_institution
           }
         end
 

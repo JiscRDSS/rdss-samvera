@@ -13,7 +13,7 @@ class ObjectOrganisationFormBuilder < RdssFields
 
   def organisation_type(required: true)
     input :organisation_type,
-          collection: ::Cdm::ObjectOrganisationTypesService.select_all_options,
+          collection: ::Cdm::Selections::OrganisationType.call,
           prompt: :translate,
           required: required
   end

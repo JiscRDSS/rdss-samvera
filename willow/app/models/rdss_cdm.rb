@@ -3,10 +3,6 @@
 class RdssCdm < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
-  # include methods to check for enabled and disabled content types
-  include EnableContentTypesBehaviour
-
-
   self.indexer = RdssCdmIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
@@ -19,8 +15,6 @@ class RdssCdm < ActiveFedora::Base
   # validates :object_person_roles, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.object_person_role').downcase)}
   # validates :object_organisation_roles, presence: true
   # validates :object_people, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.object_person').downcase)}
-
-  self.human_readable_type = 'Dataset'
 
   property :object_uuid, predicate: ::RDF::Vocab::DC11.identifier, multiple: false
   # object_title present as `title` inherited from Hyrax::CoreMetadata
@@ -75,7 +69,6 @@ class RdssCdm < ActiveFedora::Base
   accepts_nested_attributes_for :object_rights
   accepts_nested_attributes_for :object_identifiers, allow_destroy: true, reject_if: :object_identifiers_blank?
   accepts_nested_attributes_for :object_related_identifiers, allow_destroy: true, reject_if: :object_related_identifiers_blank?
-
 
   # The following properties are also inherited from Hyrax::CoreMetadata
   # along with :title and are required by Hyrax:

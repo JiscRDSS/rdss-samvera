@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.organisation_roles.'
+        'rdss.organisation_role.'
       end
     end
   end

@@ -1,9 +1,0 @@
-en:
-  rdss:
-    access_types:
-      open: Open
-      safeguarded: Safeguarded
-      restricted: Restricted
-      controlled: Controlled
-      closed: Closed
-      retired: Retired

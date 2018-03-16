@@ -1,26 +1,4 @@
 Hyrax.config do |config|
-  # Allow environment variables to enable registration of concern types
-  # NB: RdssDataset is always enabled
-  if ENV['ENABLE_IMAGE_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Image`
-    config.register_curation_concern :image
-  end
-  if ENV['ENABLE_BOOK_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Book`
-    config.register_curation_concern :book
-  end
-  if ENV['ENABLE_DATASET_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Dataset`
-    config.register_curation_concern :dataset
-  end
-  if ENV['ENABLE_ARTICLE_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work Article`
-    config.register_curation_concern :article
-  end
-  if ENV['ENABLE_RDSS_DATASET_CONTENT_TYPE'] == 'true'
-    # Injected via `rails g hyrax:work RdssDataset`
-    config.register_curation_concern :rdss_dataset
-  end
   # Injected via `rails g hyrax:work RdssCdm`
   config.register_curation_concern :rdss_cdm
 
@@ -36,6 +14,16 @@ Hyrax.config do |config|
   # The :default_active_workflow_name is the name of the workflow we will activate.
   # @see Hyrax::Configuration for additional details and defaults.
   # config.default_active_workflow_name = 'default'
+
+  # Which RDF term should be used to relate objects to an admin set?
+  # If this is a new repository, you may want to set a custom predicate term here to
+  # avoid clashes if you plan to use the default (dct:isPartOf) for other relations.
+  # config.admin_set_predicate = ::RDF::DC.isPartOf
+
+  # Which RDF term should be used to relate objects to a rendering?
+  # If this is a new repository, you may want to set a custom predicate term here to
+  # avoid clashes if you plan to use the default (dct:hasFormat) for other relations.
+  # config.rendering_predicate = ::RDF::DC.hasFormat
 
   # Email recipient of messages sent via the contact form
   config.contact_email = ENV['CONTACT_FORM_RECIPIENT_EMAIL'] || "repo-admin@example.org"
@@ -276,12 +264,27 @@ Hyrax.config do |config|
     config.browse_everything = nil
   end
 
-  Rdss::Messaging::Actors::MessagePublisherActor.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
-  Rdss::Messaging::Workflow::WorkApprovalPublisher.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
-
-  Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithFilesActor, Rdss::Messaging::Actors::MessagePublisherActor
-  Hyrax::CurationConcern.actor_factory.insert_before Rdss::Messaging::Actors::MessagePublisherActor, Hyrax::Actors::RdssCdmObjectVersioningActor
+  ## Whitelist all directories which can be used to ingest from the local file
+  # system.
+  #
+  # Any file, and only those, that is anywhere under one of the specified
+  # directories can be used by CreateWithRemoteFilesActor to add local files
+  # to works. Files uploaded by the user are handled separately and the
+  # temporary directory for those need not be included here.
+  #
+  # Default value includes BrowseEverything.config['file_system'][:home] if it
+  # is set, otherwise default is an empty list. You should only need to change
+  # this if you have custom ingestions using CreateWithRemoteFilesActor to
+  # ingest files from the file system that are not part of the BrowseEverything
+  # mount point.
+  #
+  # config.whitelisted_ingest_dirs = []
 end
+
+Rdss::Messaging::Actors::MessagePublisherActor.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
+Rdss::Messaging::Workflow::WorkApprovalPublisher.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
+Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithFilesActor, Rdss::Messaging::Actors::MessagePublisherActor
+Hyrax::CurationConcern.actor_factory.insert_before Rdss::Messaging::Actors::MessagePublisherActor, Hyrax::Actors::RdssCdmObjectVersioningActor
 
 DEFAULT_DATE_FORMAT = ENV['DEFAULT_DATE_FORMAT'] || '%d/%m/%Y'
 Date::DATE_FORMATS[:standard] = DEFAULT_DATE_FORMAT
