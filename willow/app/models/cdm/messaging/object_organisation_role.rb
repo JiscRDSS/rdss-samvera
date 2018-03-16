@@ -16,7 +16,7 @@ module Cdm
         def map_organisation_role(mapping, object)
           object.send(attribute_name_in_model).map do |oor|
             ::Cdm::Messaging::Organisation.(:organisation, mapping.first['organisation'], oor.organisation).merge({ role: ::Cdm::Enumerations::OrganisationRole.send(oor.role) })
-          end.flatten.unshift(default_messaging_oor)
+          end.flatten
         end
 
         # As some components of the RDSS are using this field to determine the institution sending the message to inform their processing of the message, 
@@ -35,7 +35,7 @@ module Cdm
         end
 
         def call(name, mapping, object)
-          { name.intern=>map_organisation_role(mapping, object) }
+          { name.intern=>[default_messaging_oor] + map_organisation_role(mapping, object) }
         end
       end
     end
