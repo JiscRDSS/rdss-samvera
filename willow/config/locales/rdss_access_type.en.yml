@@ -1,6 +1,6 @@
 en:
   rdss:
-    access_types:
+    access_type:
       open: Open
       safeguarded: Safeguarded
       restricted: Restricted

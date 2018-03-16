@@ -1,6 +1,6 @@
 en:
   rdss:
-    identifier_types:
+    identifier_type:
       doi: DOI
       ark: ARK
       ar_xiv: arXiv

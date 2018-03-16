@@ -1,0 +1,30 @@
+en:
+  rdss:
+    resource_type:
+      art_design_item: Art design item
+      article: Article
+      audio: Audio
+      book: Book
+      book_section: Book section
+      conference_workshop_item: Conference workshop item
+      dataset: Dataset
+      exam_paper: Exam paper
+      image: Image
+      journal: Journal
+      learning_object: Learning object
+      moving_image: Moving image
+      music_composition: Music composition
+      other: Other
+      patent: Patent
+      performance: Performance
+      preprint: Preprint
+      report: Report
+      review: Review
+      show_exhibition: Show exhibition
+      software: Software
+      text: Text
+      thesis_dissertation: Thesis dissertation
+      unknown: Unknown
+      website: Website
+      workflow: Workflow
+      equipment: Equipment

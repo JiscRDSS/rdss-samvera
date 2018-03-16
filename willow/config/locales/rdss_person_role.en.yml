@@ -1,6 +1,6 @@
 en:
   rdss:
-    person_roles:
+    person_role:
       administrator: Administrator
       author: Author
       contact_person: Contact person
