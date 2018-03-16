@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.licences.'
+        'rdss.licence.'
       end
     end
   end

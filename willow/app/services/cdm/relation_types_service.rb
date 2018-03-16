@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.relation_types.'
+        'rdss.relation_type.'
       end
     end
   end

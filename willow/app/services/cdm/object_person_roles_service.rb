@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.person_roles.'
+        'rdss.person_role.'
       end
 
       def solr_prefix

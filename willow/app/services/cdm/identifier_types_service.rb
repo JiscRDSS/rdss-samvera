@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.identifier_types.'
+        'rdss.identifier_type.'
       end
     end
   end
