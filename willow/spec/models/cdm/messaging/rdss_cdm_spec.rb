@@ -126,6 +126,15 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         "objectOrganisationRole": [
           {
             "organisation": {
+              "organisationJiscId": 0,
+              "organisationName": "RDSS Samvera",
+              "organisationType": 8,
+              "organisationAddress": "RDSS Samvera"
+            },
+            "role": 2
+          },
+          {
+            "organisation": {
               "organisationJiscId": 1,
               "organisationName": "string",
               "organisationType": 4,
