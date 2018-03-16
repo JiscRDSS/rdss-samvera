@@ -66,7 +66,7 @@ RUN mkdir -p /derivatives
 
 # copy the application
 COPY . $APP_PRODUCTION
-COPY docker-entrypoint.sh /bin/
+COPY docker-entrypoint-debug.sh /bin/
 
 # use the just built Gemfile.lock, not the one copied into the container and verify the gems are correctly installed
 RUN cd $APP_PRODUCTION \
@@ -81,4 +81,4 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
 
 WORKDIR $APP_WORKDIR
 
-CMD ["/bin/docker-entrypoint.sh"]
+CMD ["/bin/docker-entrypoint-debug.sh"]
