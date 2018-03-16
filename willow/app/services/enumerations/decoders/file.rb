@@ -5,8 +5,8 @@ module Enumerations
       include Singleton
       class << self
         public
-        def call(section, endpoint)
-          instance(endpoint).call(section)
+        def call(section)
+          instance.call(section)
         end
 
         def sections
@@ -14,8 +14,8 @@ module Enumerations
         end
 
         private
-        def instance(endpoint)
-          @__instance__ ||= new(endpoint)
+        def instance
+          @__instance__ ||= new
         end
       end
 

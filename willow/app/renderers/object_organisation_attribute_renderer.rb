@@ -30,6 +30,6 @@ class ObjectOrganisationAttributeRenderer
   private
 
   def type(organisation_type)
-    I18n.t("rdss.organisation_types.#{organisation_type.downcase}")
+    I18n.t("rdss.organisation_type.#{organisation_type.downcase}")
   end
 end

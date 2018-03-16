@@ -5,8 +5,6 @@ class Person < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.human_readable_type = 'Person'
-
   property :first_name, predicate: ::RDF::Vocab::FOAF.givenName do |index|
     index.as :stored_searchable
   end

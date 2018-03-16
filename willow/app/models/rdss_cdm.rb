@@ -20,8 +20,6 @@ class RdssCdm < ActiveFedora::Base
   # validates :object_organisation_roles, presence: true
   # validates :object_people, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.object_person').downcase)}
 
-  self.human_readable_type = 'Dataset'
-
   property :object_uuid, predicate: ::RDF::Vocab::DC11.identifier, multiple: false
   # object_title present as `title` inherited from Hyrax::CoreMetadata
   has_many :object_person_roles, class_name: 'Cdm::ObjectPersonRole'
@@ -75,7 +73,6 @@ class RdssCdm < ActiveFedora::Base
   accepts_nested_attributes_for :object_rights
   accepts_nested_attributes_for :object_identifiers, allow_destroy: true, reject_if: :object_identifiers_blank?
   accepts_nested_attributes_for :object_related_identifiers, allow_destroy: true, reject_if: :object_related_identifiers_blank?
-
 
   # The following properties are also inherited from Hyrax::CoreMetadata
   # along with :title and are required by Hyrax:

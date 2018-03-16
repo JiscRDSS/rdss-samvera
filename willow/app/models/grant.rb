@@ -5,8 +5,6 @@ class Grant < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.human_readable_type = 'Grant'
-
   property :title, predicate: ::RDF::Vocab::DC.title do |index|
     index.as :stored_searchable
   end

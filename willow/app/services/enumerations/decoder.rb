@@ -52,23 +52,23 @@ module Enumerations
         }
       end
 
-      def define_class_for(section, decoder, endpoint)
+      def define_class_for(section, decoder)
         Class.new do
           define_singleton_method(:call) do
-            decoder.(section, endpoint)
+            decoder.(section)
           end
 
           # TODO This will need to change before v3.0.0 of the CDM is released, since it's going to have to pick up
           # values from the Taxonomy endpoint rather than from here.
-          decoder.(section, endpoint).each_with_index do | object, index |
+          decoder.(section).each_with_index do | object, index |
             define_singleton_method(object.underscore.downcase.intern) { (index+1) }
           end
         end
       end
 
       public
-      def call(section, type=:file, endpoint="#{Rails.root.to_s}/config/schema/current/enumeration.json")
-        define_class_for(section, types[type], endpoint)
+      def call(section, type=:file)
+        define_class_for(section, types[type])
       end
     end
   end

@@ -5,8 +5,6 @@ class Organisation < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.human_readable_type = 'Organisation'
-
   property :org_name, predicate: ::RDF::Vocab::VCARD.hasName do |index|
     index.as :stored_searchable, :facetable
   end

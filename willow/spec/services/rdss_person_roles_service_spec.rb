@@ -10,13 +10,13 @@ describe RdssPersonRolesService do
   describe "#select_all_options" do
     it "returns all terms" do
       expect(described_class.select_all_options).to include(
-        ["Project leader", 'projectLeader'])
+        ["Project leader", :project_leader])
     end
   end
 
   describe "#label" do
     it "resolves for ids of all terms" do
-      expect(described_class.label('sponsor')).to eq("Sponsor")
+      expect(described_class.label(:sponsor)).to eq("Sponsor")
     end
   end
 end

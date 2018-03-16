@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe ::Cdm::Messaging::Enumerations::Decoder do
+RSpec.describe ::Enumerations::Decoder do
   describe 'decodes messaging sections' do
     let(:access_type) { 'accessType' }
     let(:decoded_class) { described_class.(access_type) }

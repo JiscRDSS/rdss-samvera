@@ -8,14 +8,15 @@ module Cdm
       private
       attr_reader :options
 
-      def defaults
+      def default_options
         {
           factory: ::EnumerationFactory
         }
       end
 
-      def initialize(options={})
-        @options=default.merge(options)
+      def initialize(name, options={})
+        super(name)
+        @options=default_options.merge(options)
       end
 
       def factory

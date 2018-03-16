@@ -5,8 +5,6 @@ class Project < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.human_readable_type = 'Project'
-
   # TODO: Relate project to collection
   #       Have not related project to hyrax collection as it is not a Hyrax Work
 
