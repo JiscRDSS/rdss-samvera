@@ -1,7 +1,6 @@
 namespace :willow do
   desc 'Seeds test data, will read from specified file usage: willow:seed_test_data["seed_file.json"]'
   task :"seed_test_data", [:seedfile] => :environment do |task, args|
-    Work = Book
     seedfile = args.seedfile
     unless args.seedfile.present?
       seedfile = Rails.root.join("seed","demo.json")
@@ -110,7 +109,7 @@ namespace :willow do
 
 
     ##############################################
-    # Configure workflow_responsabilities
+    # Configure workflow_responsibilities
     ######
 
     if seed.has_key?("workflow_responsibilities")
@@ -131,115 +130,7 @@ namespace :willow do
       end
     end
 
-    # finished workflow_responsabilities
+    # finished workflow_responsibilities
     ##############################################
-
-
-    ##############################################
-    # Create some collections
-    ######
-
-    cols = {}
-    if seed.has_key?("collections")
-      seed["collections"].each do |collection|
-        arguments = {}
-        collection["metadata"].each do |key, val|
-          arguments[key.to_sym] = val
-        end
-        col = Collection.where(id: collection["id"]).first || Collection.create!(
-            id: collection["id"],
-            edit_users: [depositor],
-            depositor: depositor.email,
-            **arguments
-        )
-        cols[collection["id"]] = col
-      end
-    end
-
-    # finished creating collections
-    ##############################################
-
-    ##############################################
-    # Create some works
-    ######
-
-    if seed.has_key?("works")
-      seed["works"].each do |work|
-        arguments = {}
-        work["metadata"].each do |key, val|
-          arguments[key.to_sym] = val
-        end
-
-        # first create the work
-        newWork = Work.where(id: work["id"]).first || Work.create!(
-          id: work["id"],
-          edit_users: [depositor],
-          depositor: depositor.email,
-          **arguments
-        )
-
-        # then add any files
-        if work.has_key?("files")
-          work["files"].each do |file|
-            fargs = {}
-            file["metadata"].each do |key, val|
-              fargs[key.to_sym] = val
-            end
-
-            fileset_id = "#{newWork.id}-#{file['id']}"
-            label = File.basename(file["path"])
-            fileset = FileSet.where(id: fileset_id).first || FileSet.create!(
-                id: fileset_id,
-                label: label,
-                title: ["Fileset #{fileset_id} - #{label}"],
-                edit_users: [depositor],
-                depositor: depositor.email,
-                **fargs
-            )
-
-            unless newWork.members.include?(fileset)
-              # NB ordered_members is important here; members will not appear in blacklight!
-              newWork.ordered_members << fileset
-              fileset.save!
-            end
-
-            unless fileset.files.any?
-              Hydra::Works::UploadFileToFileSet.call(fileset, open(File.join(root_dir, file["path"])))
-              CharacterizeJob.perform_now(fileset, fileset.files.first.id)
-            end
-
-            unless newWork.representative_id.present?
-              newWork.representative_id = fileset.id
-              newWork.thumbnail_id = fileset.thumbnail_id
-              newWork.save!
-            end
-          end
-        end
-
-        # then add to any collections
-        if work.has_key?("collections")
-          work["collections"].each do |collection_id|
-            collection = cols[collection_id]
-            unless collection.members.include?(newWork)
-              collection.ordered_members << newWork
-              collection.save!
-            end
-          end
-        end
-
-        # feature the work if requested
-        if work.has_key?("featured") && work["featured"] == true
-          FeaturedWork.where(work_id: work["id"]).first_or_create!
-        end
-
-        newWork.save!
-
-        # break # this line is handy for running seeds quickly, as it creates just one work
-      end
-    end
-
-    # finished creating works
-    ##############################################
-
   end
 end
