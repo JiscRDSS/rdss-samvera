@@ -3,12 +3,12 @@ class ObjectOrganisationFormBuilder < RdssFields
     input :jisc_id
   end
 
-  def name
-    input :name
+  def name(required: true)
+    input :name, required: required
   end
 
-  def address
-    input :address, as: :text
+  def address(required: true)
+    input :address, as: :text, required: required
   end
 
   def organisation_type(required: true)
