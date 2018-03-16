@@ -1,4 +1,7 @@
 en:
+  activefedora:
+    models:
+      rdss_cdm: Dataset
   hyrax:
     icons:
       rdss_cdm:     fa fa-file-text-o

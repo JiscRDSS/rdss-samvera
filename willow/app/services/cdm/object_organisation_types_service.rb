@@ -6,7 +6,7 @@ module Cdm
       end
 
       def internationalisation_root
-        'rdss.organisation_types.'
+        'rdss.organisation_type.'
       end
     end
   end

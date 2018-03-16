@@ -13,7 +13,7 @@ module Cdm
         def switch_person_and_role(mapping, object)
           object.object_people.map do |person|
             person.object_person_roles.map do |role|
-              ::Cdm::Messaging::Person.(:person, mapping.first['person'], person).merge({ role: ::Cdm::Messaging::Enumerations::PersonRole.send(role.role_type) })
+              ::Cdm::Messaging::Person.(:person, mapping.first['person'], person).merge({ role: ::Cdm::Enumerations::PersonRole.send(role.role_type) })
             end
           end.flatten
         end

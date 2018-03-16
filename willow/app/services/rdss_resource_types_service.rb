@@ -1,14 +1,11 @@
 module RdssResourceTypesService
-  mattr_accessor :authority
-  self.authority = Qa::Authorities::Local.subauthority_for('rdss_resource_types')
-
-  def self.select_all_options
-    authority.all.map do |element|
-      [element[:label], element[:id]]
+  class << self
+    def select_all_options
+      ::Cdm::Selections::ResourceType.call
     end
-  end
 
-  def self.label(id)
-    authority.find(id).fetch('term')
+    def label(id)
+      I18n.t("rdss.resource_type.#{id}")
+    end
   end
 end

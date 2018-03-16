@@ -10,7 +10,7 @@
 # or by subclassing the EnumDecoder.call('sectionName') (This returns a class, so it is entirely appropriate to subclass)
 #
 # i.e.
-# ::Cdm::Messaging::Enumerations::SectionName = ::Cdm::Messaging::Enumerations::Decoder.call('sectionName')
+# ::Cdm::Messaging::Enumerations::SectionName = ::Enumerations::Decoder.call('sectionName')
 #
 # which in this case would be the equivalent of creating the following class
 #
@@ -41,32 +41,34 @@
 # which may be more efficient than calling underscore.downcase.intern, but I'd prefer to be more explicit until properly
 # testing the Json parser version.
 #
-module Cdm
-  module Messaging
-    module Enumerations
-      module Decoder
-        class << self
-          private
-          def types
-            {
-              :file=>::Cdm::Messaging::Enumerations::Decoders::File,
-              :api=>::Cdm::Messaging::Enumerations::Decoders::Api
-            }
+module Enumerations
+  module Decoder
+    class << self
+      private
+      def types
+        {
+          :file=>::Enumerations::Decoders::File,
+          :api=>::Enumerations::Decoders::Api
+        }
+      end
+
+      def define_class_for(section, decoder)
+        Class.new do
+          define_singleton_method(:call) do
+            decoder.(section)
           end
 
-          def define_class_for(section, decoder)
-            Class.new do
-              decoder.(section).each_with_index do | object, index |
-                define_singleton_method(object.underscore.downcase.intern) { (index+1) }
-              end
-            end
-          end
-
-          public
-          def call(section, type=:file)
-            define_class_for(section, types[type])
+          # TODO This will need to change before v3.0.0 of the CDM is released, since it's going to have to pick up
+          # values from the Taxonomy endpoint rather than from here.
+          decoder.(section).each_with_index do | object, index |
+            define_singleton_method(object.underscore.downcase.intern) { (index+1) }
           end
         end
+      end
+
+      public
+      def call(section, type=:file)
+        define_class_for(section, types[type])
       end
     end
   end

@@ -4,7 +4,7 @@ require 'rails_helper'
 # by the line that effectively translates to:
 # Cdm::Messaging::Enumerations.const_set('personRole'.classify, Decoder.('personRole'))
 
-RSpec.describe ::Cdm::Messaging::Enumerations::PersonRole do
+RSpec.describe ::Cdm::Enumerations::PersonRole do
   describe 'enumerated values should be class methods returning integers as strings' do
     it 'should return 1 for #administrator' do
       expect(described_class.administrator).to eq 1

@@ -11,8 +11,6 @@ class RdssDataset < ActiveFedora::Base
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your dataset must have a title.' }
 
-  self.human_readable_type = 'RDSS Dataset'
-
   # value
   property :rating, predicate: ::RDF::Vocab::VMD.rating do |index|
     index.as :stored_searchable, :facetable

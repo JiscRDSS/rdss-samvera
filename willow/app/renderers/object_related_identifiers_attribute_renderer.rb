@@ -16,8 +16,8 @@ class ObjectRelatedIdentifiersAttributeRenderer < Hyrax::Renderers::AttributeRen
       tbody {
         related_identifiers(value).map do |ri|
           row {
-            cell { I18n.t("rdss.relation_types.#{ri.relation_type}", default: ri.relation_type) if ri.relation_type} + 
-            cell { I18n.t("rdss.identifier_types.#{ri.identifier_type}", default: ri.identifier_type) if ri.identifier_type} + 
+            cell { I18n.t("rdss.relation_type.#{ri.relation_type}", default: ri.relation_type) if ri.relation_type} +
+            cell { I18n.t("rdss.identifier_type.#{ri.identifier_type}", default: ri.identifier_type) if ri.identifier_type} +
             cell { ri.identifier_value }
           }
         end.join

@@ -15,7 +15,7 @@ module Cdm
       class << self
         def map_organisation_role(mapping, object)
           object.send(attribute_name_in_model).map do |oor|
-            ::Cdm::Messaging::Organisation.(:organisation, mapping.first['organisation'], oor.organisation).merge({ role: ::Cdm::Messaging::Enumerations::OrganisationRole.send(oor.role) })
+            ::Cdm::Messaging::Organisation.(:organisation, mapping.first['organisation'], oor.organisation).merge({ role: ::Cdm::Enumerations::OrganisationRole.send(oor.role) })
           end.flatten
         end
 

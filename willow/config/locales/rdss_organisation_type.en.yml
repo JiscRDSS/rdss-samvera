@@ -1,6 +1,6 @@
 en:
   rdss:
-    organisation_types:
+    organisation_type:
       charity: Charity
       commercial: Commercial
       funder: Funder

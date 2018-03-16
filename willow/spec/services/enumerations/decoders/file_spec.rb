@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ::Cdm::Messaging::Enumerations::Decoders::File do
+RSpec.describe ::Enumerations::Decoders::File do
   describe 'caches messaging file sections' do
     let(:access_type) { 'accessType' }
     let(:built_section) { described_class.call(access_type)}

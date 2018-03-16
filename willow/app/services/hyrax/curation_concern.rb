@@ -17,20 +17,30 @@ module Hyrax
     # is used.  Once it is used, it becomes immutable.
     # @return [ActionDispatch::MiddlewareStack]
     def self.actor_factory
-      @actor_factory ||= Hyrax::DefaultMiddlewareStack.build_stack
+      @actor_factory ||= begin
+                           Rails.logger.debug("!!!Actor factory is initializing!!!")
+                           Hyrax::DefaultMiddlewareStack.build_stack
+      end
+
     end
 
     # A consumer of this method can inject a different factory
     # into this class in order to change the behavior of this method.
     # @return [#create, #update] an actor that can create and update the work
     def self.actor
-      @work_middleware_stack ||= actor_factory.build(Actors::Terminator.new)
+      @work_middleware_stack ||= begin
+        Rails.logger.debug("!!!Work middleware stack is initializing!!!")
+        actor_factory.build(Actors::Terminator.new)
+      end
+
+
     end
 
     # NOTE: I don't know why this middleware doesn't use the BaseActor - Justin
     # @return [#create] an actor for creating the FileSet
     def self.file_set_create_actor
       @file_set_create_actor ||= begin
+        Rails.logger.debug("!!!File set create actor is initializing!!!")
         stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
           middleware.use Actors::InterpretVisibilityActor
         end
@@ -41,6 +51,7 @@ module Hyrax
     # @return [#update] an actor for updating the FileSet
     def self.file_set_update_actor
       @file_set_update_actor ||= begin
+        Rails.logger.debug("!!!File set update actor is initializing!!!")
         stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
           middleware.use Actors::InterpretVisibilityActor
           middleware.use Actors::BaseActor
