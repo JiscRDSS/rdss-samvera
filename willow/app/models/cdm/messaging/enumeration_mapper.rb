@@ -6,8 +6,24 @@ module Cdm
   module Messaging
     class EnumerationMapper < MessageMapper
       private
+      attr_reader :options
+
+      def defaults
+        {
+          factory: ::EnumerationFactory
+        }
+      end
+
+      def initialize(options={})
+        @options=default.merge(options)
+      end
+
+      def factory
+        options[:factory]
+      end
+
       def mapper
-        Enumerations::const_get(self.class.name.demodulize)
+        factory.(self.class.name.demodulize)
       end
 
       def mapped_attribute_value(value)
