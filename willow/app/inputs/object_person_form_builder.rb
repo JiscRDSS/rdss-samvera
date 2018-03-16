@@ -5,12 +5,12 @@ class ObjectPersonFormBuilder < RdssFields
     input :honorific_prefix, required: object.required?(:honorific_prefix)
   end
 
-  def given_name
-    input :given_name, required: object.required?(:given_name)
+  def given_name(required: true)
+    input :given_name, required: required
   end
 
-  def family_name
-    input :family_name, required: object.required?(:family_name)
+  def family_name(required: true)
+    input :family_name, required: required
   end
 
   def destroy
