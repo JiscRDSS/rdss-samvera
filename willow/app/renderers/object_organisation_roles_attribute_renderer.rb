@@ -4,7 +4,7 @@ class ObjectOrganisationRolesAttributeRenderer < Hyrax::Renderers::AttributeRend
   include Concerns::CssTableRenderer
 
   def i18n_prefix
-    'rdss.organisation_roles.'
+    'rdss.organisation_role.'
   end
 
   def organisation(value, converter = ::Cdm::Json::ObjectOrganisationRoles)
