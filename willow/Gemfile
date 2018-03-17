@@ -40,6 +40,10 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :development, :test do
+  gem 'fudge'
+end
+
 group :test do
   gem 'capybara', '~> 2.13'
   gem 'cane'

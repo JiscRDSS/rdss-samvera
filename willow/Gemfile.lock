@@ -254,6 +254,9 @@ GEM
       jquery-rails
     font-awesome-rails (4.7.0.3)
       railties (>= 3.2, < 5.2)
+    fudge (0.6.3)
+      json
+      thor
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     google-api-client (0.19.8)
@@ -852,6 +855,7 @@ DEPENDENCIES
   fcrepo_wrapper
   flay
   flog
+  fudge
   hydra-role-management
   hyrax (= 2.1.0.beta1)
   jbuilder (~> 2.5)
