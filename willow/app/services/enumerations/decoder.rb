@@ -70,6 +70,10 @@ module Enumerations
       def call(section, type=:file)
         define_class_for(section, types[type])
       end
+
+      def sections(type=:file)
+        types[type].sections
+      end
     end
   end
 end
