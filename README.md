@@ -190,13 +190,6 @@ $ docker-compose down --volumes && docker-compose up --build
     - Mac: http://192.168.99.100:3000 (or possibly port 80 depending on your `env` files)
     - Linux: http://localhost:3000
 
-  ![Willow screenshot](docs/images/willow.png "Willow screenshot")
-  
-  - Geoblacklight:
-    - Mac: http://192.168.99.100:3010
-    - Linux: http://localhost:3010
-    
-    
 10. To get a bash prompt within the Willow container (e.g. to run rake tasks), you can run:
 ```bash
 $ docker-compose run --rm willow bash
