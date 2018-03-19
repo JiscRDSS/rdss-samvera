@@ -8,7 +8,7 @@ module Cdm
       end
 
       def name
-        I18n.t('rdss.person_roles.' + role_type.to_s)
+        I18n.t("rdss.person_role.#{role_type}")
       end
     end
   end
