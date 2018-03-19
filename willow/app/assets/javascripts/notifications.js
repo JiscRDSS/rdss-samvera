@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
   $('#notifications_table').DataTable( {
-    "order": [[ 1, 'desc']]
+    "order": [[ 0, 'desc']]
   })
   }
 );
