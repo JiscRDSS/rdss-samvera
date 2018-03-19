@@ -25,7 +25,7 @@ module Cdm
         def default_messaging_oor
           {
             organisation: {
-              organisationJiscId: Willow::Config.institution_jisc_id,
+              organisationJiscId: Willow::Config.institution_jisc_id.to_i,
               organisationName: Willow::Config.institution_name,
               organisationType: ::Cdm::Enumerations::OrganisationType.higher_education,
               organisationAddress: Willow::Config.institution_name
