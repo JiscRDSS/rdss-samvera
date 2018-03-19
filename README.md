@@ -205,15 +205,3 @@ $ docker-compose run --rm willow rails console
 $ docker-compose run --rm -e RAILS_ENV=test willow rake spec
 ```
 
-13. JISC RDSS message schemas tests
-  
-  There are some tests defined which require 3rd party Json schemas defined in a private repository: https://github.com/JiscRDSS/rdss-message-api-docs/
-  If you have access to this private repository, do the following steps: 
-
-  - Ensure the path "/willow/spec/fixtures/files/schemas/jisc_rdss/*" is in your `.gitignore` file.
-
-  - Then, copy the following files and folders to the given locations:
-    -  https://github.com/JiscRDSS/rdss-message-api-docs/tree/master/messages  => willow/willow/spec/fixtures/files/schemas/jisc_rdss/messages
-    -  https://github.com/JiscRDSS/rdss-message-api-docs/tree/master/schemas   => willow/willow/spec/fixtures/files/schemas/jisc_rdss/schemas
-
-  - Be sure that the files above are not committed to git!
