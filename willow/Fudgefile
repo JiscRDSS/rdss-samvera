@@ -1,0 +1,20 @@
+exclude = '^\.\/(spec|db)/'
+
+task_group :rspec do
+  rspec coverage: 100
+end
+
+task_group :analysis do
+  # cane
+  task :flay, exclude: exclude
+  task :flog, exclude: exclude, methods: true
+end
+
+build :all do
+  task_group :rspec
+  task_group :analysis
+end
+
+build :default do
+  task_group :rspec
+end
