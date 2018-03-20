@@ -29,7 +29,7 @@ RSpec.describe ObjectOrganisationFormBuilder do
   context 'organisation_type' do
     it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).organisation_type, 'Organisation type', required: true
     it_behaves_like 'required', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).organisation_type
-    it_behaves_like 'selected', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).organisation_type, :further_education, 'Further education'
+    it_behaves_like 'select',   FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).organisation_type, :further_education, 'Further education'
     it_behaves_like 'named',    FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).organisation_type, :organisation_type
   end
 end

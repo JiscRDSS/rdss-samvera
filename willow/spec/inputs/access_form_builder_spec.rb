@@ -8,7 +8,7 @@ RSpec.describe AccessFormBuilder do
   context 'access_type' do
     it_behaves_like 'labelled', FacetsProxy.(described_class, AccessFormBuilderDummy).access_type, 'Access type', required: true
     it_behaves_like 'required', FacetsProxy.(described_class, AccessFormBuilderDummy).access_type
-    it_behaves_like 'selected', FacetsProxy.(described_class, AccessFormBuilderDummy).access_type, 'open', 'Open'
+    it_behaves_like 'select',   FacetsProxy.(described_class, AccessFormBuilderDummy).access_type, 'open', 'Open'
     it_behaves_like 'named',    FacetsProxy.(described_class, AccessFormBuilderDummy).access_type, :access_type
   end
 
