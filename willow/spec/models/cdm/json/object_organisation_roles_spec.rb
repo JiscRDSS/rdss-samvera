@@ -12,11 +12,13 @@ RSpec.describe ::Cdm::Json::ObjectOrganisationRoles do
 
   subject { described_class.new(values) }
 
-  it 'has the correct type returned as a string' do
-    expect(subject.map(&:type).first).to eq("Accepted")
+  it 'has the correct type returned as a symbol' do
+    expect(subject.map(&:role).first).to eq(:some_role)
   end
 
-  it 'has a date returned as value' do
-    expect(subject[0].value).to eq("01/01/1970")
+  describe 'organisation' do
+    it 'is an instance of ObjectOrganisation' do
+      expect(subject[0].organisation).to be_a(::Cdm::Json::Organisation)
+    end
   end
 end
