@@ -21,7 +21,6 @@ RUN mkdir -p $SOLR_HOME && chown -R solr:solr $SOLR_HOME
 
 USER solr
 ADD config/willow $SOLR_CONFIG_DIR/willow_config
-ADD config/geoblacklight $SOLR_CONFIG_DIR/geoblacklight_config
 
 COPY docker-entrypoint.sh /
 
