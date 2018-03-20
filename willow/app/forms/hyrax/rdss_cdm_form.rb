@@ -10,7 +10,7 @@ module Hyrax
       :object_description,
       :object_keywords,
       :object_category,
-      :object_version,
+      #:object_version,
       :object_resource_type,
       :object_value,
       :object_people,
@@ -27,6 +27,7 @@ module Hyrax
       :object_resource_type,
       :object_value,
       :object_people,
+      :object_dates,
       :object_rights,
       :object_organisation_roles,
       :object_identifiers,
@@ -35,7 +36,9 @@ module Hyrax
     mapped_arrays :object_dates,
                   :object_organisation_roles,
                   :object_identifiers,
-                  :object_related_identifiers
+                  :object_related_identifiers,
+                  :object_people,
+                  :object_licence
 
 
     def object_people
@@ -55,7 +58,7 @@ module Hyrax
              :object_rights_attributes=,
              :object_organisation_roles_attributes=,
              :object_identifiers_attributes=,
-             :object_related_identifiers_attributes=,             
+             :object_related_identifiers_attributes=,
              to: :model
 
     # for object_rights, we present the has_many relationship as a has_one
@@ -93,6 +96,7 @@ module Hyrax
         :honorific_prefix,
         :given_name,
         :family_name,
+        :mail,
         :_destroy,
         object_person_roles_attributes: permitted_object_person_roles_params
       ]
@@ -135,15 +139,14 @@ module Hyrax
       ]
     end
 
-
     def self.permitted_object_organisation_roles_params
       [
         :id,
         :role,
-        :_destroy
+        :_destroy,
+        organisation_attributes: %i[jisc_id name address organisation_type]
       ]
     end
-
 
     def self.permitted_object_identifier_params
       [
@@ -163,16 +166,30 @@ module Hyrax
       ]
     end
 
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     def self.build_permitted_params
       permitted = super
       # add in object_date attributes
-      permitted << { object_dates_attributes: permitted_object_date_params }
+      permitted << {
+        object_dates_attributes: permitted_object_date_params
+      }
       permitted << { object_people_attributes: permitted_object_person_nested }
       permitted << { object_rights_attributes: permitted_object_rights_params }
-      permitted << { object_organisation_roles_attributes: permitted_object_organisation_roles_params }
+      permitted << {
+        object_organisation_roles_attributes: permitted_object_organisation_roles_params
+      }
       permitted << { object_identifiers_attributes: permitted_object_identifier_params }
-      permitted << { object_related_identifiers_attributes: permitted_object_related_identifier_params }
-      permitted
+      permitted << {
+        object_related_identifiers_attributes: permitted_object_related_identifier_params
+      }
+      permitted << :admin_set_id
+      permitted << :embargo_release_date
+      permitted << :visibility
+      permitted << :visibility_after_embargo
+      permitted << :visibility_during_embargo
+      permitted << :visibility_after_lease
+      permitted << :visibility_during_lease
     end
   end
 end

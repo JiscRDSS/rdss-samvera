@@ -1,9 +1,13 @@
 en:
+  activefedora:
+    models:
+      rdss_cdm: Dataset
+      rdss_dataset: RDSS Dataset
   blacklight:
     search:
       fields:
         facet:
-          based_near_sim: Location
+          based_near_label_sim: Location
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -23,8 +27,9 @@ en:
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language
+          license_tesim: Licence
           publisher_tesim: Publisher
-          rights_tesim: Rights
+          rights_tesim: Rights statement
           subject_tesim: Subject
         show:
           title: Title
@@ -47,8 +52,9 @@ en:
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language
+          license_tesim: Licence
           publisher_tesim: Publisher
-          rights_tesim: Rights
+          rights_statement_tesim: Rights statement
           subject_tesim: Subject
           title_tesim: Title
           object_identifiers: Identifiers
@@ -66,3 +72,6 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    collections:
+      new:
+        header: New Collection

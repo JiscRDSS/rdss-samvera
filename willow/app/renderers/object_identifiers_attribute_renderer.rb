@@ -15,7 +15,7 @@ class ObjectIdentifiersAttributeRenderer < Hyrax::Renderers::AttributeRenderer
       tbody {
         identifiers(value).map do |identifier|
           row {
-            cell { I18n.t("rdss.identifier_types.#{identifier.type}", default: identifier.type)} + 
+            cell { I18n.t("rdss.identifier_type.#{identifier.type}", default: identifier.type)} +
             cell { identifier.value }
           }
         end.join

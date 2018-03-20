@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe ObjectRelatedIdentifiersAttributeRenderer do
 
   describe 'Object Identifiers Attribute Renderer' do
-    
+
     def render_identifier value
       Nokogiri::HTML(described_class.new(:object_identifiers, value).render)
     end
@@ -51,7 +51,7 @@ RSpec.describe ObjectRelatedIdentifiersAttributeRenderer do
       end
 
       it 'it displays the relatio type as directly entered' do
-        expect(render_identifier(value).css('.td')[0].text).to eq('Is Part Of')
+        expect(render_identifier(value).css('.td')[0].text).to eq('Is part of')
       end
 
       it 'looks up and displays the identifier type label' do

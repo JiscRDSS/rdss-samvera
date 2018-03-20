@@ -12,12 +12,12 @@ class RdssCdmIndexer < Hyrax::WorkIndexer
       # Otherwise we will be showing dates that have been deleted
       object_dates = object.object_dates.reject(&:marked_for_destruction?)
       solr_doc[Solrizer.solr_name('object_dates', :displayable)] = object_dates.to_json
-      
+
       # for each object date, index a value for the specific date type to allow sorting by the date type
       # eg object_date_approved
       # As above, we are using the object_dates filtered to remove marked_for_destruction?
       object_dates.each do |d|
-        
+
         if d.date_value
           date = begin
             ::Date.parse(d.date_value.to_s)
@@ -31,7 +31,18 @@ class RdssCdmIndexer < Hyrax::WorkIndexer
       end
 
       object_people = object.object_people.reject(&:marked_for_destruction?)
-      solr_doc[Solrizer.solr_name("object_people", :displayable)] = object_people.to_json(include: :object_person_roles)
+      solr_doc[
+        Solrizer.solr_name(:object_people, :displayable)
+      ] = object_people.to_json(include: :object_person_roles)
+
+      object_people.each do |object_person|
+        solr_doc[
+          ::Solrizer.solr_name(
+            :object_person_name,
+            :stored_searchable
+          )
+        ] = object_person.display_name
+      end
 
       # object rights
       # At the moment we have a has_one relationship between Object and Object rights. As such it makes more sense to
@@ -51,9 +62,17 @@ class RdssCdmIndexer < Hyrax::WorkIndexer
       end
 
       object_organisation_roles = object.object_organisation_roles.reject(&:marked_for_destruction?)
-      solr_doc[::Solrizer.solr_name(:object_organisation_roles, :displayable)] = object_organisation_roles.to_json
+      solr_doc[
+        ::Solrizer.solr_name(:object_organisation_roles, :displayable)
+      ] = object_organisation_roles.to_json(include: :organisation)
+
       object_organisation_roles.each do |object_organisation_role|
-        solr_doc[::Solrizer.solr_name("object_organisation_role_#{object_organisation_role.role}", :stored_sortable)] = true
+        solr_doc[
+          ::Solrizer.solr_name(
+            "object_organisation_role_#{object_organisation_role.role}",
+            :stored_searchable
+          )
+        ] = object_organisation_role.organisation.name
       end
 
       # Index a displayable version of the identifier

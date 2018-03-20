@@ -16,46 +16,62 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'hyrax', github: 'cottagelabs/hyrax'
-
+gem 'hyrax', '2.1.0.beta1'
+gem 'blacklight', '~> 6.14'
 gem 'blacklight_advanced_search', '~> 6.0'
+gem 'blackrat_yaml_config'
+gem 'json-schema', '~> 2.8.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  # helps enforce good coding standards
-  gem 'rubocop', '~> 0.49.1', require: false
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'ruby-debug-ide'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'debase'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'ruby-debug-ide'
+  gem 'web-console', '>= 3.3.0'
+end
+
+group :development, :test do
+  gem 'fudge'
 end
 
 group :test do
-  gem 'solr_wrapper', '>= 0.3'
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-  gem 'webmock', '~> 3.0.1'
-  gem 'vcr', '~> 3.0.3'
-  gem 'factory_girl_rails', '~> 4.8.0'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'json-schema', '~> 2.8.0'
-  gem 'rails-controller-testing', '~> 1.0.2'
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'cane'
+  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'fcrepo_wrapper'
+  gem 'flay'
+  gem 'flog'
+  gem 'pry-byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rails-controller-testing', '~> 1.0.2'
+  gem 'rspec-rails'
+  gem 'simplecov', require: false
+  gem 'solr_wrapper', '>= 0.3'
+  gem 'vcr', '~> 3.0.3'
+  gem 'webmock', '~> 3.0.1'
   gem 'selenium-webdriver'
+  gem 'wisper-rspec'
+end
+
+# This is horrible and a nasty hacky workaround to make hyrax work in a dockerised production environment for asset
+# precompilation. Since it tries to hit the database to populate at initialisation time and we are running in
+# containers without access when the rails assets:precompile is run, we spin up a temporary local db to prevent it
+# failing. A question has been raised on the hyrax forum and hopefully this will be fixed soon. For now:
+group :production do
+  gem 'sqlite3'
 end
 
 gem 'rsolr', '>= 1.0'
+gem 'jquery-rails'
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
 gem 'hydra-role-management'
@@ -63,3 +79,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'aws-sdk', '>= 2.9.15'
 gem 'tinymce-rails-imageupload', '4.0.17.beta.2' # we need this specific version to fix an asset compilation problem
 # gem 'willow_sword', git: "https://github.com/cottagelabs/willow_sword.git", branch: "master"
+gem 'wisper', '2.0.0'
+
+gem 'riiif', '~> 1.1'
+gem 'noid-rails'

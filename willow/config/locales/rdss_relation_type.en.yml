@@ -1,0 +1,40 @@
+en:
+  rdss:
+    relation_type:
+      cites: Cites
+      is_cited_by: Is cited by
+      is_supplement_to: Is supplement to
+      is_supplemented_by: Is supplemented by
+      continues: Continues
+      is_continued_by: Is continued by
+      has_metadata: Has metadata
+      is_metadata_for: Is metadata for
+      is_new_version_of: Is new version of
+      is_previous_version_of: Is previous version of
+      is_part_of: Is part of
+      has_part: Has part
+      is_referenced_by: Is referenced by
+      references: References
+      is_documented_by: Is documented by
+      documents: Documents
+      is_compiled_by: Is compiled by
+      compiles: Compiles
+      is_variant_form_of: Is variant form of
+      is_original_form_of: Is original form of
+      is_identical_to: Is identical to
+      is_reviewed_by: Is reviewed by
+      reviews: Reviews
+      is_derived_from: Is derived from
+      is_source_of: Is source of
+      is_comment_on: Is comment on
+      has_comment: Has comment
+      is_reply_to: Is reply to
+      has_reply: Has reply
+      based_on_data: Based on data
+      has_related_material: Has related material
+      is_based_on: Is based on
+      is_basis_for: Is basis for
+      requires: Requires
+      is_required_by: Is required by
+      has_parent: Has parent
+      is_parent_of: Is parent of
