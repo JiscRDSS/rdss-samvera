@@ -1,6 +1,6 @@
 module Hyrax
   module Actors
-    class RdssCdmObjectVersioningActor < AbstractActor
+    class VersioningActor < AbstractActor
       public
       def update(env)
         ::Rdss::Actors::PerformCdmVersioning.(env) if CurationConcernApproved.(env) unless ObjectVersionChanged.(env)

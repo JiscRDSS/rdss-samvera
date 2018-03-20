@@ -1,7 +1,7 @@
 require 'spec_helper'
 class DummyAccesses
   attr_reader :access_statement, :access_type
-  def initialize(access_type: access_type, access_statement: access_statement)
+  def initialize(access_type: type, access_statement: statement)
     @access_type=access_type
     @access_statement=access_statement
   end
