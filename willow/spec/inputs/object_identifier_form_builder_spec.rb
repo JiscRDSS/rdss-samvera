@@ -8,6 +8,7 @@ RSpec.describe ObjectIdentifierFormBuilder do
   context 'identifier_type' do
     it_behaves_like 'unlabelled', FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_type
     it_behaves_like 'optional',   FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_type
+    it_behaves_like 'required',   FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_type(required: true)
     it_behaves_like 'select',     FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_type, 'isbn', 'ISBN'
     it_behaves_like 'named',      FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_type, :identifier_type
   end
@@ -15,6 +16,7 @@ RSpec.describe ObjectIdentifierFormBuilder do
   context 'identifier_value' do
     it_behaves_like 'unlabelled', FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_value
     it_behaves_like 'optional',   FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_value
+    it_behaves_like 'required',   FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_value(required: true)
     it_behaves_like 'input',      FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_value
     it_behaves_like 'named',      FacetsProxy.(described_class,ObjectIdentifierFormBuilderDummy).identifier_value, :identifier_value
   end

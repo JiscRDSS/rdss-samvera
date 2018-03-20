@@ -1,5 +1,8 @@
 require 'spec_helper'
 require 'form_builder_helper'
+require_relative 'facets/destroy'
+require_relative 'facets/email'
+require_relative 'facets/hidden'
 require_relative 'facets/input'
 require_relative 'facets/labelled'
 require_relative 'facets/named'
