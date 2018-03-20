@@ -6,7 +6,7 @@ require_relative 'facets/named'
 require_relative 'facets/numeric'
 require_relative 'facets/optional'
 require_relative 'facets/required'
-require_relative 'facets/selected'
+require_relative 'facets/select'
 require_relative 'facets/text_area'
 require_relative 'facets/unlabelled'
 

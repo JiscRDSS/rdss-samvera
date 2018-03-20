@@ -1,4 +1,4 @@
-RSpec.shared_examples 'selected' do |object, key, value|
+RSpec.shared_examples 'select' do |object, key, value|
   let(:select_tag) { 'select' }
   let(:option_tag) { %Q(<option value="#{key}">#{value}</option>) }
 
