@@ -9,7 +9,7 @@ RSpec.describe ::Cdm::Messaging::FileStorageLocation do
   }
 
   let(:expected_value) {
-    { fileStorageLocation: "http://repository.your-institution.ac.uk/downloads/%23%3CFileStorageLocationDummy" }
+    { fileStorageLocation: Hyrax::Engine.routes.url_helpers.download_url(FileStorageLocationDummy.new, host: (ENV['SAMVERA_INTERNAL_HOST'] || Rails.application.routes.default_url_options[:host])).rpartition(':').first }
   }
 
   describe 'decodes messaging sections' do
