@@ -24,4 +24,3 @@
 //= require_tree .
 //= require hyrax
 //= require collections-csrf-bugfix
-//= require notifications
