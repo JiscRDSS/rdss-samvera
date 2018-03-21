@@ -11,6 +11,7 @@ class ObjectPersonRolesAttributeRenderer < Hyrax::Renderers::AttributeRenderer
   end
 
   def attribute_value_to_html(value)
+    raise
     table {
       thead {
         role_types(value).map do |v|
