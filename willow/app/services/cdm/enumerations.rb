@@ -7,7 +7,7 @@
 module Cdm
   module Enumerations
     ::Cdm::EnumerationsList.().each do |enum_section|
-      ::Cdm::Enumerations::const_set(enum_section.classify, ::Enumerations::Decoder.(enum_section))
+      ::Cdm::Enumerations::const_set(enum_section.classify, ::Enumerations::DecoderFactory.(enum_section))
     end
   end
 end

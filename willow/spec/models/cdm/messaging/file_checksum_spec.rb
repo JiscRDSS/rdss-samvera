@@ -10,7 +10,7 @@ class FileChecksumDummy
 end
 
 RSpec.describe ::Cdm::Messaging::FileChecksum do
-  let(:file_checksum_map) {
+  let(:input_map) {
     [
       {
         checksumUuid: nil,
@@ -32,7 +32,7 @@ RSpec.describe ::Cdm::Messaging::FileChecksum do
 
   describe 'decodes messaging sections' do
     it 'should have methods for the elements in the passed section' do
-      expect(described_class.('test', file_checksum_map, FileChecksumDummy.new)[:test]).to eql(expected_value)
+      expect(described_class.('test', input_map, FileChecksumDummy.new)[:test]).to eql(expected_value)
     end
   end
 end

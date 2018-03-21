@@ -2,7 +2,7 @@ module Cdm
   class EnumerationsList
     class << self
       def call
-        ::Enumerations::Decoder.sections
+        ::Enumerations::DecoderFactory.sections
       end
     end
   end

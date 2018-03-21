@@ -42,10 +42,10 @@
 # testing the Json parser version.
 #
 module Enumerations
-  module Decoder
+  module DecoderFactory
     class << self
       private
-      def types
+      def default_options
         {
           :file=>::Enumerations::Decoders::File,
           :api=>::Enumerations::Decoders::Api
@@ -67,12 +67,12 @@ module Enumerations
       end
 
       public
-      def call(section, type=:file)
-        define_class_for(section, types[type])
+      def call(section, decoder=:file, options=default_options)
+        define_class_for(section, options[decoder])
       end
 
-      def sections(type=:file)
-        types[type].sections
+      def sections(decoder=:file, options=default_options)
+        options[decoder].sections
       end
     end
   end
