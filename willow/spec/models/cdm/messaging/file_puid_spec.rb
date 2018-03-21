@@ -7,7 +7,7 @@ end
 
 RSpec.describe ::Cdm::Messaging::FilePuid do
   let(:input_map) {
-    { filePuid: nil }
+    { filePuid: [ nil ] }
   }
 
   let(:expected_value) {
