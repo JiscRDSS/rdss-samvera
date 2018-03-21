@@ -14,10 +14,6 @@ module Cdm
           hash_value(_, object)
         ]
       end
-
-      def value(object, _)
-        array_value(_, object)
-      end
     end
   end
 end

@@ -28,7 +28,7 @@ module Cdm
       end
 
       def mapped_attribute_value(value)
-        mapper.send(value.underscore.downcase) unless value.blank?
+        mapper.send(value.to_s.underscore.downcase) unless value.blank?
       end
 
       public
