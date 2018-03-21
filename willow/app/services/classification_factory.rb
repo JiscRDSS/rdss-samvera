@@ -1,10 +1,10 @@
-class ClassifyFactory
+class ClassificationFactory
   attr_reader :options
   class << self
     public
     def default_options
       {
-        root: Enumerations
+        namespace: Enumerations
       }
     end
 
@@ -18,12 +18,12 @@ class ClassifyFactory
     @options=self.class.default_options.merge(options)
   end
 
-  def root
-    options[:root]
+  def namespace
+    options[:namespace]
   end
 
   public
   def call(name)
-    root::const_get(name.classify)
+    namespace::const_get(name.classify)
   end
 end
