@@ -1,7 +1,6 @@
 module Cdm
   module Messaging
     class FileStoragePlatform < MessageMapper
-      include AttributeMapper
       def hash_value(message_map, object)
         {
           storagePlatformUuid: '00000000-0000-1000-a000-000000000000',

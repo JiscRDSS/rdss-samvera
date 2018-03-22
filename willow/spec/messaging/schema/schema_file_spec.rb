@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Rdss::Messaging::Schema::SchemaFile do
   let(:default_root) { "#{Rails.root}/config/schema" }

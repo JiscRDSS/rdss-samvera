@@ -2,7 +2,6 @@ en:
   activefedora:
     models:
       rdss_cdm: Dataset
-      rdss_dataset: RDSS Dataset
   blacklight:
     search:
       fields:

@@ -7,10 +7,6 @@ if [ "$RAILS_ENV" = "production" ]; then
     # Verify all the production gems are installed
     bundle check
 else
-    # use local willow sword
-    echo "Switching to local /willow_sword.development"
-    bundle config local.willow_sword /willow_sword
-
     # install any missing development gems (as we can tweak the development container without rebuilding it)
     bundle check || bundle install --without production
 fi
