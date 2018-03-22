@@ -5,6 +5,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
     let(:attributes) {
       {
         object_uuid: nil,
+        object_version: nil,
         title: ['title'],
         object_category: ['category'],
         object_dates_attributes: [{ date_value: "2002-10-02T10:00:00-05:00", date_type: 'accepted' }],
@@ -57,6 +58,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
     let(:final_body) {
       {
         "objectUuid": nil,
+        "objectVersion": nil,
         "objectTitle": "title",
         "objectCategory": ["category"],
         "objectDate": [{ "dateValue": "2002-10-02T10:00:00-05:00", "dateType": 1 }],
