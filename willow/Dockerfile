@@ -44,7 +44,6 @@ RUN mkdir -p /fits/ \
     && chmod a+x /fits/fits-1.0.2/fits.sh \
     && rm /fits/fits-1.0.2.zip
 
-
 # copy gemfiles to production folder
 COPY Gemfile Gemfile.lock $APP_PRODUCTION
 
