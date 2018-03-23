@@ -64,7 +64,8 @@ services:
   willow:
     image: cottagelabs/willow
     build:
-      context: willow/
+      context: .
+      dockerfile: willow/Dockerfile
       args:
         - RAILS_ENV=production
     env_file:
