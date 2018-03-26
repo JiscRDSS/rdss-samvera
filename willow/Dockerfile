@@ -79,7 +79,9 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
 ARG CACHEBUST=1
 COPY ./.git $APP_PRODUCTION/.git
 COPY $SAMVERA_DIR/rdss-samvera-version.sh $APP_PRODUCTION
-RUN cd $APP_PRODUCTION && ./rdss-samvera-version.sh && rm -r .git && cat ./config/rdss-samvera-version.txt
+RUN cd $APP_PRODUCTION && \
+    ./rdss-samvera-version.sh && \ 
+    rm -r .git
 
 WORKDIR $APP_WORKDIR
 
