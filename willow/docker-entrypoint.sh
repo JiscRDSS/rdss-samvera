@@ -3,6 +3,9 @@
 echo "Creating log folder"
 mkdir -p $APP_WORKDIR/log
 
+# Copy in the version file created during the image build. 
+cp /version_info/version.rb $APP_WORKDIR/config/initializers/
+
 if [ "$RAILS_ENV" = "production" ]; then
     # Verify all the production gems are installed
     bundle check
