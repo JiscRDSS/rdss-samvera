@@ -59,7 +59,7 @@ ENV WILLOW_FEDORA_STATIC_DIR=/willow_fedora_static \
 RUN mkdir -p $WILLOW_FEDORA_STATIC_DIR $WILLOW_FEDORA_STATIC_DIR/bin $WILLOW_FEDORA_STATIC_DIR/webapps /tmp
 
 # Tip: downloading large files with "curl -L <URL> -o <file>" (rather than with DOCKER ADD) allows for the files to be fully cached
-RUN curl -L https://github.com/fcrepo4/fcrepo4/releases/download/fcrepo-4.7.4/fcrepo-webapp-4.7.4.war -o $WILLOW_FEDORA_STATIC_DIR/webapps/ROOT.war
+RUN curl -L https://github.com/fcrepo4/fcrepo4/releases/download/fcrepo-4.7.2/fcrepo-webapp-4.7.2.war -o $WILLOW_FEDORA_STATIC_DIR/webapps/ROOT.war
 
 COPY conf $WILLOW_FEDORA_STATIC_DIR/conf
 COPY setenv.sh $WILLOW_FEDORA_STATIC_DIR/bin/setenv.sh
