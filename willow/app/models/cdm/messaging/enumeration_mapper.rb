@@ -10,7 +10,8 @@ module Cdm
 
       def default_options
         {
-          factory: ::EnumerationFactory
+          factory: ::ClassificationFactory,
+          namespace: ::Cdm::Enumerations
         }
       end
 
@@ -24,11 +25,11 @@ module Cdm
       end
 
       def mapper
-        factory.(self.class.name.demodulize)
+        factory.(self.class.name.demodulize, options.slice(:namespace))
       end
 
       def mapped_attribute_value(value)
-        mapper.send(value.underscore.downcase) unless value.blank?
+        mapper.send(value.to_s.underscore.downcase) unless value.blank?
       end
 
       public

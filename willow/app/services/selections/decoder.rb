@@ -40,19 +40,26 @@ module Selections
   module Decoder
     class << self
       private
-      def define_class_for(section)
+      def default_options
+        {
+          namespace: ::Enumerations,
+          comparator: ::Selections::CompareWithOther
+        }
+      end
+
+      def define_class_for(section, options=default_options)
         Class.new do
           define_singleton_method(:call) do
-            EnumerationFactory.(section).call.map do |object|
+            ClassificationFactory.(section, options.slice(:namespace)).call.map do |object|
               [I18n.t("rdss.#{section.underscore.downcase.intern}.#{object.underscore.downcase.intern}"), object.underscore.downcase.intern]
-            end.sort{ |a, b| ::Selections::CompareWithOther.(a,b) }
+            end.sort{ |a, b| options[:comparator].(a,b) }
           end
         end
       end
 
       public
-      def call(section)
-        define_class_for(section)
+      def call(section, options={})
+        define_class_for(section, default_options.merge(options))
       end
     end
   end

@@ -1,26 +1,26 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Hyrax::Actors::RdssCdmObjectVersioningActor do
+RSpec.describe Hyrax::Actors::VersioningActor do
   let(:ability) { ::Ability.new(depositor) }
   let(:terminator) { Hyrax::Actors::Terminator.new }
   let(:depositor) { create(:user) }
   let(:active_state) {Vocab::FedoraResourceStatus.active}
   let(:inactive_state) {Vocab::FedoraResourceStatus.inactive}
   let(:original_object_uuid) { SecureRandom.uuid }
-  let(:approved_rdss_cdm) { 
-    create(:rdss_cdm, 
-      title: ["test title"], 
-      object_version: "1", 
-      object_uuid: original_object_uuid, 
-      state: active_state) 
+  let(:approved_rdss_cdm) {
+    create(:rdss_cdm,
+      title: ["test title"],
+      object_version: "1",
+      object_uuid: original_object_uuid,
+      state: active_state)
     }
 
-  let(:unapproved_rdss_cdm) { 
-      create(:rdss_cdm, 
-        title: ["test title"], 
-        object_version: "1", 
-        object_uuid: original_object_uuid, 
-        state: inactive_state) 
+  let(:unapproved_rdss_cdm) {
+      create(:rdss_cdm,
+        title: ["test title"],
+        object_version: "1",
+        object_uuid: original_object_uuid,
+        state: inactive_state)
       }
 
   subject(:middleware) do
@@ -29,11 +29,10 @@ RSpec.describe Hyrax::Actors::RdssCdmObjectVersioningActor do
     end
     stack.build(terminator)
   end
-
   describe "update with no changes" do
-    let(:attributes) { {:title => ["test title"]} }    
+    let(:attributes) { {:title => ["test title"]} }
     let(:env) { Hyrax::Actors::Environment.new(approved_rdss_cdm, ability, attributes) }
-    
+
     it 'object version increments to 2' do
       expect { middleware.update(env) }.to change { env.attributes[:object_version] }.to "2"
     end
@@ -85,12 +84,9 @@ RSpec.describe Hyrax::Actors::RdssCdmObjectVersioningActor do
   def object_uuid_recorded_in_related_identifiers_as_is_new_version_of_after_update? env
     middleware.update(env)
 
-    unless env.attributes[:object_related_identifiers_attributes].nil?
-      last_recorded_related_identifier_value = last_recorded_related_identifier_value(env)
-      expect(last_recorded_related_identifier_value).to eq(original_object_uuid)
-  
-      last_recorded_related_identifier_relation_type = last_recorded_related_identifier_relation_type(env)
-      expect(last_recorded_related_identifier_relation_type).to eq('is_new_version_of')
+    if env.attributes[:object_related_identifiers_attributes].present?
+      expect(last_recorded_related_identifier_value(env)).to eq(original_object_uuid)
+      expect(last_recorded_related_identifier_relation_type(env)).to eq('is_new_version_of')
     else
       false
     end
@@ -101,10 +97,10 @@ RSpec.describe Hyrax::Actors::RdssCdmObjectVersioningActor do
   end
 
   def last_recorded_related_identifier_value env
-    env.attributes[:object_related_identifiers_attributes][last_recorded_related_identifier_index(env)]['identifier_attributes']['identifier_value'] 
+    env.attributes[:object_related_identifiers_attributes][last_recorded_related_identifier_index(env)]['identifier_attributes']['identifier_value']
   end
 
-  def last_recorded_related_identifier_index env            
-    (env.attributes[:object_related_identifiers_attributes].values.count-1).to_s 
+  def last_recorded_related_identifier_index env
+    (env.attributes[:object_related_identifiers_attributes].values.count-1).to_s
   end
 end

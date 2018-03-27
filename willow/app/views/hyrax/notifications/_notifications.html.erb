@@ -4,7 +4,7 @@
 <!--data-sort attribute below-->
 <% if messages.present? %>
   <div class="table-responsive">
-    <table class="table table-striped datatable" id="notifications_table">
+    <table class="table table-striped datatable" data-order="[[ 0, &quot;desc&quot; ]]" >
       <thead>
         <tr>
           <th><%= t('hyrax.mailbox.date') %></th>

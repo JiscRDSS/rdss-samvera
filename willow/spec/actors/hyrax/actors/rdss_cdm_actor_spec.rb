@@ -1,6 +1,6 @@
 # Generated via
 #  `rails generate hyrax:work RdssCdm`
-require 'rails_helper'
+require 'spec_helper'
 require 'vcr'
 
 RSpec.describe Hyrax::Actors::RdssCdmActor do

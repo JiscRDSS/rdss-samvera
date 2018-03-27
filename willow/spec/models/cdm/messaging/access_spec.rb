@@ -1,7 +1,7 @@
 require 'spec_helper'
 class DummyAccesses
   attr_reader :access_statement, :access_type
-  def initialize(access_type: access_type, access_statement: access_statement)
+  def initialize(access_type: type, access_statement: statement)
     @access_type=access_type
     @access_statement=access_statement
   end
@@ -18,22 +18,35 @@ end
 
 RSpec.describe ::Cdm::Messaging::Access do
   describe 'decodes messaging sections' do
-    let(:access_map) { { access: [{ accessType: nil, accessStatement: nil}] } }
-    let(:test_object) { AccessDummy.new }
-    let(:decoded_class) { described_class.('test', access_map, test_object) }
-    let(:access_result) { { access: [
+    let(:input_map) {
       {
-        accessType: 1,
-        accessStatement: 'Open'
-      },
-      {
-        accessType: 3,
-        accessStatement: 'wibble'
+        access: [
+          {
+            accessType: nil,
+            accessStatement: nil
+          }
+        ]
       }
-    ]}}
+    }
+    let(:expected_value) {
+      {
+        access: [
+          {
+            accessType: 1,
+            accessStatement: 'Open'
+          },
+          {
+            accessType: 3,
+            accessStatement: 'wibble'
+          }
+        ]
+      }
+    }
+    let(:test_object) { AccessDummy.new }
+    let(:decoded_class) { described_class.('test', input_map, test_object)[:test] }
 
     it 'should have methods for the elements in the passed section' do
-      expect(decoded_class[:test]).to eql(access_result)
+      expect(decoded_class).to eql(expected_value)
     end
   end
 end

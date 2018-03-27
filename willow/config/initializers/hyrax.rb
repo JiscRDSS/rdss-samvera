@@ -287,7 +287,7 @@ Rdss::SAMVERA_VERSION = File.file?(version_file) ? IO.read(version_file) : "Vers
 Rdss::Messaging::Actors::MessagePublisherActor.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
 Rdss::Messaging::Workflow::WorkApprovalPublisher.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
 Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithFilesActor, Rdss::Messaging::Actors::MessagePublisherActor
-Hyrax::CurationConcern.actor_factory.insert_before Rdss::Messaging::Actors::MessagePublisherActor, Hyrax::Actors::RdssCdmObjectVersioningActor
+Hyrax::CurationConcern.actor_factory.insert_before Rdss::Messaging::Actors::MessagePublisherActor, Hyrax::Actors::VersioningActor
 
 DEFAULT_DATE_FORMAT = ENV['DEFAULT_DATE_FORMAT'] || '%d/%m/%Y'
 Date::DATE_FORMATS[:standard] = DEFAULT_DATE_FORMAT
