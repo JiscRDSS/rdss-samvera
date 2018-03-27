@@ -8,15 +8,14 @@ module Rdss
             sleep(5)
             object.reload
           end
-          threads=object.file_sets.map do |ofs|
+          object.file_sets.map do |ofs|
             Thread.new(ofs) {
               while (!ofs.original_checksum.present?) do
                 sleep(5)
                 ofs.reload
               end
             }
-          end
-          threads.join
+          end.each(&:join)
           yield(object)
         }
       end
