@@ -76,6 +76,7 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
         && SECRET_KEY_BASE_PRODUCTION=0 ASSET_PRECOMPILATION_ADAPTER=sqlite3 bundle exec rake -v --trace=stdout assets:clean assets:precompile; \
     fi
 
+# Generate the version file without caching
 ARG CACHEBUST=1
 COPY ./.git $APP_PRODUCTION/.git
 COPY $SAMVERA_DIR/rdss-samvera-version.sh $APP_PRODUCTION

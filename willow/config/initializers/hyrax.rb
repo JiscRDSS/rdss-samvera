@@ -281,7 +281,8 @@ Hyrax.config do |config|
   # config.whitelisted_ingest_dirs = []
 end
 
-Rdss::SAMVERA_VERSION = IO.read("#{Rails.root}/config/rdss-samvera-version.txt")
+version_file = "#{Rails.root}/config/rdss-samvera-version.txt"
+Rdss::SAMVERA_VERSION = File.file?(version_file) ? IO.read(version_file) : "Version not set"
 
 Rdss::Messaging::Actors::MessagePublisherActor.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
 Rdss::Messaging::Workflow::WorkApprovalPublisher.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
