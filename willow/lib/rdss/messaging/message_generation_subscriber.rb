@@ -5,13 +5,13 @@ module Rdss
       def after_object_upload_complete(object, &block)
         Thread.new(object, object.uploaded_files_count) { |object, count|
           while (object.file_sets.count < count) do
-            sleep(5)
+            sleep(60)
             object.reload
           end
           object.file_sets.map do |ofs|
             Thread.new(ofs) {
               while (!ofs.original_checksum.present?) do
-                sleep(5)
+                sleep(60)
                 ofs.reload
               end
             }
