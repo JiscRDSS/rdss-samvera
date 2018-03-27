@@ -1,14 +1,15 @@
 #!/bin/bash
 
+OUT_FILE=$1
 COMMIT=$(git rev-parse HEAD)
 TAG=$(git describe --abbrev=0 --tags --always)
 
 if [[ $TAG == $COMMIT ]]; then
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
     SHORT_COMMIT=$(git rev-parse --short HEAD)
-    OUTPUT="$BRANCH @ $SHORT_COMMIT"
+    OUTPUT="RDSS_SAMVERA_VERSION=\"$BRANCH @ $SHORT_COMMIT\""
 else
-    OUTPUT="$TAG"
+    OUTPUT="RDSS_SAMVERA_VERSION=\"$TAG\""
 fi
 
-echo $OUTPUT
+echo $OUTPUT > $OUT_FILE

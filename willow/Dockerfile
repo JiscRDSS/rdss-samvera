@@ -82,7 +82,7 @@ COPY ./.git $APP_PRODUCTION/.git
 COPY $SAMVERA_DIR/rdss-samvera-version.sh $APP_PRODUCTION
 RUN cd $APP_PRODUCTION && \
     mkdir -p /version_info && \
-    ./rdss-samvera-version.sh > "/version_info/rdss-samvera-version.txt" && \ 
+    ./rdss-samvera-version.sh "/version_info/version.rb" && \ 
     rm -r .git
 
 WORKDIR $APP_WORKDIR
