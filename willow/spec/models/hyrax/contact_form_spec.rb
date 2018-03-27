@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Hyrax::ContactForm do
   let(:happy_attributes) { {email: 'paul.mak@example.com', category: 'browsing message', name: 'Paul Mak', subject: 'Testing', message: 'This is a happy test'} }
-  let(:constructed_happy) { { subject: "RDSS Samvera Contact form: Testing", to: 'repo-admin@your-institution.ac.uk', from: 'repo-admin@your-institution.ac.uk' } }
+  let(:constructed_happy) { { subject: "RDSS Samvera Contact form: Testing", to: ::Hyrax.config.contact_email, from: ::Hyrax.config.contact_email } }
   subject { described_class.new(happy_attributes) }
 
   let(:spam_attribute) { happy_attributes.merge({contact_method: 'sneaky hidden robot field'}) }
