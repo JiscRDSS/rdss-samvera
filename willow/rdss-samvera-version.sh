@@ -11,4 +11,4 @@ else
     OUTPUT="$TAG"
 fi
 
-echo $OUTPUT > ./config/rdss-samvera-version.txt
+echo $OUTPUT

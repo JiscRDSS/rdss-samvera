@@ -81,7 +81,8 @@ ARG CACHEBUST=1
 COPY ./.git $APP_PRODUCTION/.git
 COPY $SAMVERA_DIR/rdss-samvera-version.sh $APP_PRODUCTION
 RUN cd $APP_PRODUCTION && \
-    ./rdss-samvera-version.sh && \ 
+    mkdir -p /version_info && \
+    ./rdss-samvera-version.sh > "/version_info/rdss-samvera-version.txt" && \ 
     rm -r .git
 
 WORKDIR $APP_WORKDIR
