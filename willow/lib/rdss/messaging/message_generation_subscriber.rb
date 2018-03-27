@@ -38,7 +38,7 @@ module Rdss
       end
 
       def work_destroy(rdss_cdm)
-        ActiveSupport::Notifications.instrument(::Hyrax::Notifications::Events::METADATA_DELETE, message_builder(object, event: :delete))
+        ActiveSupport::Notifications.instrument(::Hyrax::Notifications::Events::METADATA_DELETE, message_builder(rdss_cdm, event: :delete))
       end
     end
   end
