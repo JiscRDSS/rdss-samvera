@@ -29,7 +29,7 @@ Hyrax.config do |config|
   config.contact_email = ENV['CONTACT_FORM_RECIPIENT_EMAIL'] || "repo-admin@example.org"
 
   # Text prefacing the subject entered in the contact form
-  config.subject_prefix = ENV['CONTACT_FORM_SUBJECT_PREFIX'] || "Jisc Samvera Contact form:"
+  config.subject_prefix = ENV['CONTACT_FORM_SUBJECT_PREFIX'] || "RDSS Samvera Contact form:"
 
   # How many notifications should be displayed on the dashboard
   # config.max_notifications_for_dashboard = 5
@@ -283,6 +283,7 @@ end
 
 Rdss::Messaging::Actors::MessagePublisherActor.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
 Rdss::Messaging::Workflow::WorkApprovalPublisher.subscribe(Rdss::Messaging::MessageGenerationSubscriber.new)
+Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithRemoteFilesActor, Hyrax::Actors::AddUploadedFilesCountActor
 Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithFilesActor, Rdss::Messaging::Actors::MessagePublisherActor
 Hyrax::CurationConcern.actor_factory.insert_before Rdss::Messaging::Actors::MessagePublisherActor, Hyrax::Actors::VersioningActor
 

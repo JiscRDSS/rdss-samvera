@@ -190,6 +190,7 @@ module Hyrax
       permitted << :visibility_during_embargo
       permitted << :visibility_after_lease
       permitted << :visibility_during_lease
+      permitted << :lease_expiration_date
     end
   end
 end

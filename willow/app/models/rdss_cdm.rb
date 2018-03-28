@@ -70,6 +70,8 @@ class RdssCdm < ActiveFedora::Base
   accepts_nested_attributes_for :object_identifiers, allow_destroy: true, reject_if: :object_identifiers_blank?
   accepts_nested_attributes_for :object_related_identifiers, allow_destroy: true, reject_if: :object_related_identifiers_blank?
 
+  property :uploaded_files_count, predicate: ::RDF::Countable, multiple: false
+
   # The following properties are also inherited from Hyrax::CoreMetadata
   # along with :title and are required by Hyrax:
   # :depositor

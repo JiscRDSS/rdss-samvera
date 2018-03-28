@@ -4,6 +4,6 @@ class ObjectRelatedIdentifierFormBuilder < RdssFields
   end
 
   def identifier
-    object.build_identifier if object.identifier.blank?
+    AssociationBuilder.(object, :identifier)
   end
 end

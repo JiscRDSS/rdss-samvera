@@ -7,7 +7,6 @@ class ObjectOrganisationRoleFormBuilder < RdssFields
   end
 
   def organisation
-    object.build_organisation if object.organisation.blank?
-    object.organisation
+    AssociationBuilder.(object, :organisation)
   end
 end
