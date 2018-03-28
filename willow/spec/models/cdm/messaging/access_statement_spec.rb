@@ -10,11 +10,16 @@ end
 
 RSpec.describe ::Cdm::Messaging::AccessStatement do
   describe 'decodes messaging sections' do
-    let(:access_statement_map) { { accessStatement: nil} }
+    let(:input_map) {
+      { accessStatement: nil }
+    }
 
     it 'should have methods for the elements in the passed section' do
-      expect(described_class.('test', access_statement_map, AccessStatementDummy.new(access_statement: 'passed in statement'))[:test]).to eql(accessStatement: 'passed in statement')
-      expect(described_class.('test', access_statement_map, AccessStatementDummy.new)[:test]).to eql(accessStatement: 'Open')
+      expect(described_class.('test', input_map, AccessStatementDummy.new(access_statement: 'passed in statement'))[:test]).to eql(accessStatement: 'passed in statement')
+    end
+
+    it 'should default to the string representation of access_type if access_statement is missing' do
+      expect(described_class.('test', input_map, AccessStatementDummy.new)[:test]).to eql(accessStatement: 'Open')
     end
   end
 end

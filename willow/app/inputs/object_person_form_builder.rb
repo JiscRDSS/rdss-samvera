@@ -1,8 +1,8 @@
 class ObjectPersonFormBuilder < RdssFields
   include Concerns::RelationArrayMapper
 
-  def honorific_prefix
-    input :honorific_prefix, required: object.required?(:honorific_prefix)
+  def honorific_prefix(required: false)
+    input :honorific_prefix, required: required
   end
 
   def given_name(required: true)
@@ -13,12 +13,8 @@ class ObjectPersonFormBuilder < RdssFields
     input :family_name, required: required
   end
 
-  def destroy
-    input :_destroy, as: :hidden, input_html:{ data: { destroy: true }, class: 'form-control remove-hidden', value: false}
-  end
-
-  def mail
-    input :mail, as: :email, required: object.required?(:mail)
+  def mail(required: true)
+    input :mail, as: :email, required: required
   end
 
   def object_person_roles

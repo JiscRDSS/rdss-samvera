@@ -5,5 +5,4 @@ env.sh
 tmp/
 /willow/fits.log
 /docker-compose.override.yml
-
 /willow/spec/fixtures/files/schemas/jisc_rdss/*

@@ -1,6 +1,6 @@
 class ObjectOrganisationFormBuilder < RdssFields
-  def jisc_id
-    input :jisc_id, as: :integer
+  def jisc_id(required: false)
+    input :jisc_id, as: :integer, required: required
   end
 
   def name(required: true)

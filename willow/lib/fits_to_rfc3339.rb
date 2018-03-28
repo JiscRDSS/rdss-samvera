@@ -1,38 +1,35 @@
 class FitsToRfc3339
-  attr_reader :date_value
-
   class << self
-    def call(date_value)
-      new(date_value).call
+    private
+    def candidate_regexen
+      [
+        '%Y:%m:%d %H:%M:%S%Z',
+        '%Y:%m:%d %H:%M:%S',
+        '%Y:%m:%d',
+        '%Y:%m',
+        '%Y'
+      ]
+    end
+
+    public
+    def call(date_value, formats=candidate_regexen)
+      new(date_value).call(formats)
     end
   end
 
   private
-  def candidate_regexen
-    [
-      '%Y:%m:%d %H:%M:%S%Z',
-      '%Y:%m:%d %H:%M:%S',
-      '%Y:%m:%d',
-      '%Y:%m',
-      '%Y'
-    ]
-  end
+  attr_reader :date_value
 
   def initialize(date_value)
     @date_value=date_value
   end
 
+  def first_valid_formatted_date(formats)
+    ::Array.wrap(formats).lazy.map { |format| ::DateFromFormat.(date_value, format) }.find(&:itself)
+  end
+
   public
-  def call(formats=candidate_regexen)
-    ::Array.wrap(formats).each do |format|
-      begin
-        return ::DateTime.strptime(date_value, format).rfc3339
-      rescue ArgumentError
-        next
-      rescue TypeError
-        break
-      end
-    end
-    ::Time.at(0).rfc3339
+  def call(formats=self.class.candidate_regexen)
+    ( first_valid_formatted_date(formats) || ::Time.at(0) ).rfc3339
   end
 end

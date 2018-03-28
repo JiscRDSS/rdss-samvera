@@ -5,7 +5,7 @@ task_group :rspec do
 end
 
 task_group :analysis do
-  # cane
+  cane
   task :flay, exclude: exclude
   task :flog, exclude: exclude, methods: true
 end

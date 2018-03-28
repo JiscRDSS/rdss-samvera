@@ -26,3 +26,6 @@
 
 # Simple cov
 /coverage
+
+# ignore version.rb when created locally. 
+/config/initializers/version.rb
