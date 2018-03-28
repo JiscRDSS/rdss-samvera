@@ -14,7 +14,8 @@ ENV RAILS_ENV="$RAILS_ENV" \
     PATH=/fits/fits-1.0.2/:$PATH \
     BUNDLE_JOBS=2 \
     APP_PRODUCTION=/willow.production/ \
-    APP_WORKDIR="/willow.$RAILS_ENV"
+    APP_WORKDIR="/willow.$RAILS_ENV" \
+    SAMVERA_DIR="./willow/"
 
 # Add backports to apt-get sources
 # Install libraries, dependencies, java and fits
@@ -22,7 +23,7 @@ ENV RAILS_ENV="$RAILS_ENV" \
 RUN echo 'deb http://deb.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/jessie-backports.list \
     && apt-get update -qq \
     && apt-get install -y --no-install-recommends \
-    libpq-dev \
+    libpq-dev libmediainfo-dev \
     libxml2-dev libxslt1-dev \
     libqt4-webkit libqt4-dev xvfb \
     nodejs \
@@ -44,9 +45,9 @@ RUN mkdir -p /fits/ \
     && chmod a+x /fits/fits-1.0.2/fits.sh \
     && rm /fits/fits-1.0.2.zip
 
-
-# copy gemfiles to production folder
-COPY Gemfile Gemfile.lock $APP_PRODUCTION
+# copy the application
+COPY $SAMVERA_DIR $APP_PRODUCTION
+COPY $SAMVERA_DIR/docker-entrypoint.sh /bin/
 
 # install gems to system - use flags dependent on RAILS_ENV
 RUN cd $APP_PRODUCTION && \
@@ -59,14 +60,10 @@ RUN cd $APP_PRODUCTION && \
     && mv Gemfile.lock Gemfile.lock.built_by_docker
 
 # copy the seeds
-COPY ./seed /seed
+COPY $SAMVERA_DIR/seed /seed
 
 # create a folder to store derivatives
 RUN mkdir -p /derivatives
-
-# copy the application
-COPY . $APP_PRODUCTION
-COPY docker-entrypoint.sh /bin/
 
 # use the just built Gemfile.lock, not the one copied into the container and verify the gems are correctly installed
 RUN cd $APP_PRODUCTION \
@@ -76,8 +73,17 @@ RUN cd $APP_PRODUCTION \
 # generate production assets if production environment
 RUN if [ "$RAILS_ENV" = "production" ]; then \
         cd $APP_PRODUCTION \
-        && SECRET_KEY_BASE_PRODUCTION=0 bundle exec rake assets:clean assets:precompile; \
+        && SECRET_KEY_BASE_PRODUCTION=0 ASSET_PRECOMPILATION_ADAPTER=sqlite3 bundle exec rake -v --trace=stdout assets:clean assets:precompile; \
     fi
+
+# Generate the version file without caching
+ARG CACHEBUST=1
+COPY ./.git $APP_PRODUCTION/.git
+COPY $SAMVERA_DIR/rdss-samvera-version.sh $APP_PRODUCTION
+RUN cd $APP_PRODUCTION && \
+    mkdir -p /version_info && \
+    ./rdss-samvera-version.sh "/version_info/version.rb" && \ 
+    rm -r .git
 
 WORKDIR $APP_WORKDIR
 

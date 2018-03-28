@@ -1,9 +1,12 @@
 en:
+  activefedora:
+    models:
+      rdss_cdm: Dataset
   blacklight:
     search:
       fields:
         facet:
-          based_near_sim: Location
+          based_near_label_sim: Location
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -15,33 +18,46 @@ en:
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
-          date_created_tesim: Date Created
-          date_modified_dtsi: Date Modified
-          date_uploaded_dtsi: Date Uploaded
+          date_created_tesim: Date created
+          date_modified_dtsi: Date modified
+          date_uploaded_dtsi: Date uploaded
           description_tesim: Description
-          file_format_tesim: File Format
+          file_format_tesim: File format
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language
+          license_tesim: Licence
           publisher_tesim: Publisher
-          rights_tesim: Rights
+          rights_tesim: Rights statement
           subject_tesim: Subject
         show:
+          title: Title
+          object_description: Description
+          object_keywords: Keywords
+          object_category: Category
+          object_resource_type: Resource type
+          object_rights_licence: Licence
+          object_rights_rights_statement: Rights statement
+          object_rights_rights_holder: Rights holder
+          object_rights_accesses: Access
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
-          date_created_tesim: Date Created
-          date_modified_dtsi: Date Modified
-          date_uploaded_dtsi: Date Uploaded
+          date_created_tesim: Date created
+          date_modified_dtsi: Date modified
+          date_uploaded_dtsi: Date uploaded
           description_tesim: Description
-          file_format_tesim: File Format
+          file_format_tesim: File format
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language
+          license_tesim: Licence
           publisher_tesim: Publisher
-          rights_tesim: Rights
+          rights_statement_tesim: Rights statement
           subject_tesim: Subject
           title_tesim: Title
+          object_identifiers: Identifiers
+          object_related_identifiers: Related identifiers
   hyrax:
     contact_form:
       header: "Contact Us"
@@ -55,3 +71,8 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    collections:
+      new:
+        header: New Collection
+    no_title:
+      No title

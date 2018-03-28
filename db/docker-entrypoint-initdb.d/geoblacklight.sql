@@ -1,3 +1,0 @@
-CREATE DATABASE geoblacklight_development;
-CREATE DATABASE geoblacklight_test;
-CREATE DATABASE geoblacklight_production;

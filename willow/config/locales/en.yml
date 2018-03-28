@@ -1,6 +1,16 @@
 en:
   willow:
     fields:
+      # RDSS CDM additions:
+      title: Title
+      object_description: Description
+      object_keywords: Keywords
+      object_category: Category
+      object_version: Version
+      previous: Previous
+      remove: 'Remove %{type}'
+      add_another: 'Add another %{type}'
+      # End of RDSS CDM additions
       admin_metadata: 'Information for administrative purposes'
       apc: 'Article processing charge'
       based_near: 'Location'
@@ -10,7 +20,7 @@ en:
       creator: 'Creator'
       creator_nested: 'Creator'
       contributor: 'Contributor'
-      date: 'Dates'
+      date: 'Date'
       date_accepted: 'Date accepted'
       date_available: 'Date available'
       date_collected: 'Date collected'
@@ -53,4 +63,15 @@ en:
       tagged_version: 'Version'
       title: 'Title'
       rdss_version: 'Version'
-
+      object_dates: Dates
+      object_person: Person
+      object_person_role: Role
+      presence: 'Your work must have a %{type}.'
+      object_people: People
+      access: Access
+      object_rights_licence: Licence
+      object_organisation_role: Organisation role
+      given_and_family_name_presence: a minimum of given or family name
+      object_identifier: Identifier
+      object_related_identifier: Related identifier
+      object_dates_published: Date published

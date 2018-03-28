@@ -1,5 +1,18 @@
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_group "Actors", "app/actors"
+  add_group "Forms", "app/forms"
+  add_group "Indexers", "app/indexers"
+  add_group "Inputs", "app/inputs"
+  add_group "Presenters", "app/presenters"
+  add_group "Renderers", "app/renderers"
+  add_group "Services", "app/services"
+  add_filter "app/channels" do |source_file| source_file.lines.count < 5 end
+  add_filter "app/jobs" do |source_file| source_file.lines.count < 5 end
+  add_filter "app/mailers" do |source_file| source_file.lines.count < 5 end
+end
 require 'rails_helper'
-require 'active_fedora/noid/rspec'
+require 'wisper/rspec/matchers'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -12,9 +25,5 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  # Excepton for deleting database-backed minter 
-  include ActiveFedora::Noid::RSpec
-
-  config.before(:suite) { disable_production_minter! }
-  config.after(:suite)  { enable_production_minter! }
+  config.include(Wisper::RSpec::BroadcastMatcher)
 end

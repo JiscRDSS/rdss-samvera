@@ -108,7 +108,7 @@ SMTP_PASSWORD=pass
 
 CONTACT_FORM_RECIPIENT_EMAIL=repo-admin@your-institution.ac.uk
 CONTACT_FORM_SENDER_EMAIL=repo-admin@your-institution.ac.uk
-CONTACT_FORM_SUBJECT_PREFIX="Willow Contact form:"
+CONTACT_FORM_SUBJECT_PREFIX=RDSS Samvera Contact form:
 NOTIFICATIONS_EMAIL_DEFAULT_FROM_ADDRESS=notifications@your-institution.ac.uk
 # USER_MANAGEMENT_EMAIL_FROM_ADDRESS is used for things like Forgotten Password.
 # Make sure it's an email + domain you are allowed to send on behalf of, or your user management emails won't work!
@@ -190,13 +190,6 @@ $ docker-compose down --volumes && docker-compose up --build
     - Mac: http://192.168.99.100:3000 (or possibly port 80 depending on your `env` files)
     - Linux: http://localhost:3000
 
-  ![Willow screenshot](docs/images/willow.png "Willow screenshot")
-  
-  - Geoblacklight:
-    - Mac: http://192.168.99.100:3010
-    - Linux: http://localhost:3010
-    
-    
 10. To get a bash prompt within the Willow container (e.g. to run rake tasks), you can run:
 ```bash
 $ docker-compose run --rm willow bash
@@ -212,15 +205,3 @@ $ docker-compose run --rm willow rails console
 $ docker-compose run --rm -e RAILS_ENV=test willow rake spec
 ```
 
-13. JISC RDSS message schemas tests
-  
-  There are some tests defined which require 3rd party Json schemas defined in a private repository: https://github.com/JiscRDSS/rdss-message-api-docs/
-  If you have access to this private repository, do the following steps: 
-
-  - Ensure the path "/willow/spec/fixtures/files/schemas/jisc_rdss/*" is in your `.gitignore` file.
-
-  - Then, copy the following files and folders to the given locations:
-    -  https://github.com/JiscRDSS/rdss-message-api-docs/tree/master/messages  => willow/willow/spec/fixtures/files/schemas/jisc_rdss/messages
-    -  https://github.com/JiscRDSS/rdss-message-api-docs/tree/master/schemas   => willow/willow/spec/fixtures/files/schemas/jisc_rdss/schemas
-
-  - Be sure that the files above are not committed to git!
