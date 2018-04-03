@@ -37,6 +37,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             honorific_prefix: 'Mr.',
             given_name: 'Paul',
             family_name: 'Mak',
+            honorific_suffix: 'BSc. SSc. GSc.',
             mail: 'paul@example.com',
             object_person_roles_attributes: [
               { role_type: 'author' }
@@ -70,12 +71,10 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
                 personIdentifierType: 1,
                 personIdentifierValue: 'not yet implemented'
               ],
-              personEntitlement: [1],
-              personAffiliation: [1],
-              personGivenName: 'Paul',
-              personCn: 'Mr. Paul Mak',
-              personSn: 'Mak',
-              personTelephoneNumber: 'not yet implemented',
+              personHonorificPrefix: 'Mr.',
+              personGivenNames: 'Paul',
+              personFamilyNames: 'Mak',
+              personHonorificSuffix: 'BSc. SSc. GSc.',
               personMail: 'paul@example.com',
               personOrganisationUnit: {
                 organisation: {
@@ -90,54 +89,54 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             role: 21
           }
         ],
-        'objectRights': [
+        objectRights: [
           {
-            'rightsStatement': [
+            rightsStatement: [
               'Rights statement'
             ],
-            'rightsHolder': [
+            rightsHolder: [
               'Rights holder'
             ],
-            'licence': [
+            licence: [
               {
-                'licenceName': 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
-                'licenceIdentifier': 'https://creativecommons.org/publicdomain/zero/1.0/'
+                licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
+                licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
               }
             ],
-            'access': [
+            access: [
               {
-                'accessType': 3,
-                'accessStatement': 'Statement 1'
+                accessType: 3,
+                accessStatement: 'Statement 1'
               }
             ]
           }
         ],
-        'objectResourceType': 1,
-        'objectRelatedIdentifier': [
+        objectResourceType: 1,
+        objectRelatedIdentifier: [
           {
-            'relationType': 1,
-            'identifierType': 17,
-            'identifierValue': 'http://example.com',
+            relationType: 1,
+            identifierType: 17,
+            identifierValue: 'http://example.com',
           }
         ],
-        'objectOrganisationRole': [
+        objectOrganisationRole: [
           {
-            'organisation': {
-              'organisationJiscId': 0,
-              'organisationName': 'RDSS Samvera',
-              'organisationType': 8,
+            organisation: {
+              organisationJiscId: 0,
+              organisationName: 'RDSS Samvera',
+              organisationType: 8,
               'organisationAddress': 'RDSS Samvera'
             },
-            'role': 2
+            role: 2
           },
           {
-            'organisation': {
-              'organisationJiscId': 1,
-              'organisationName': 'string',
-              'organisationType': 4,
-              'organisationAddress': 'string'
+            organisation: {
+              organisationJiscId: 1,
+              organisationName: 'string',
+              organisationType: 4,
+              organisationAddress: 'string'
             },
-            'role': 1
+            role: 1
           }
         ]
       }

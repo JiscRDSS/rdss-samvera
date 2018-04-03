@@ -4,6 +4,7 @@ module Cdm
     property :given_name, predicate: ::RDF::Vocab::FOAF.givenName, multiple: false
     property :family_name, predicate: ::RDF::Vocab::FOAF.familyName, multiple: false
     property :mail, predicate: ::RDF::Vocab::VCARD.email, multiple: false
+    property :honorific_suffix, predicate: 'http://schema.org/honorificSuffix', multiple: false
     has_and_belongs_to_many :object_person_roles,
                             class_name: 'Cdm::ObjectPersonRole',
                             predicate: ::RDF::Vocab::VMD.affiliation,
@@ -28,7 +29,8 @@ module Cdm
       [
         honorific_prefix,
         given_name,
-        family_name
+        family_name,
+        honorific_suffix
       ].join(' ').squish
     end
 

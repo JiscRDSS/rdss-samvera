@@ -7,12 +7,14 @@ RSpec.describe Cdm::ObjectPerson do
     let(:honorific_prefix) { 'Mr.' }
     let(:given_name) { 'Raymond' }
     let(:family_name) { 'Luxury - Ya Ch t' }
+    let(:honorific_suffix) { 'PhD' }
     let(:mail) { 'my@email.com'}
     let(:build_attributes) {
       {
         honorific_prefix: honorific_prefix,
         given_name: given_name,
         family_name: family_name,
+        honorific_suffix: honorific_suffix,
         mail: mail,
         object_person_roles_attributes: roles_attributes
       }
@@ -22,6 +24,11 @@ RSpec.describe Cdm::ObjectPerson do
     it 'has a single honorific prefix' do
       expect(built_object.honorific_prefix).to be_kind_of String
       expect(built_object.honorific_prefix).to eq honorific_prefix
+    end
+
+    it 'has a single honorific suffix' do
+      expect(built_object.honorific_suffix).to be_kind_of String
+      expect(built_object.honorific_suffix).to eq honorific_suffix
     end
 
     it 'has a single given name' do
