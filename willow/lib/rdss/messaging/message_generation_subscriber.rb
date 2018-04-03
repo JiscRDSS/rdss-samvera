@@ -19,6 +19,9 @@ module Rdss
           end.each(&:join)
           yield(object)
         }
+        # If you need to debug, comment out the previous two lines and uncomment the following two. This will let you
+        # see errors hidden if the system throws a masked exception in the Thread.
+        # }.join
         # yield(object)
       end
 
