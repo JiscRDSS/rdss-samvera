@@ -9,6 +9,6 @@ module Cdm
 
     # Define relationship with cdm rights model
     # predicate taken from https://github.com/samvera/hydra/wiki/Lesson---Define-Relationships-Between-Objects
-    belongs_to :rights, predicate: ActiveFedora::RDF::Fcrepo::RelsExt.isPartOf, class_name: 'Cdm::Right'
+    belongs_to :right, predicate: ActiveFedora::RDF::Fcrepo::RelsExt.isPartOf, class_name: 'Cdm::Right'
   end
 end
