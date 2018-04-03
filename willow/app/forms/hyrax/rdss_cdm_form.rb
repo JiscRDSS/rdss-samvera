@@ -15,7 +15,7 @@ module Hyrax
       :object_value,
       :object_people,
       :object_dates,
-      :object_right,
+      :object_rights,
       :object_organisation_roles,
       :object_identifiers,
       :object_related_identifiers,
@@ -28,7 +28,7 @@ module Hyrax
       :object_value,
       :object_people,
       :object_dates,
-      :object_right,
+      :object_rights,
       :object_organisation_roles,
       :object_identifiers,
     ]
