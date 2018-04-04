@@ -3,7 +3,7 @@ module Rdss
     class MessageGenerationSubscriber
       private
       def after_object_upload_complete(object, &block)
-        object.reload
+        object.reload unless object.new_record? #Can't reload an object that hasn't been saved.
         Thread.new(object, object.uploaded_files_count) { |object, count|
           while (object.file_sets.count.to_i < count.to_i) do
             sleep(60)
