@@ -3,7 +3,7 @@ class AccessFormBuilder < RdssFields
     input :access_type, collection: Cdm::Selections::AccessType.call, prompt: :translate, required: required
   end
 
-  def access_statement(required: true)
+  def access_statement(required: false)
     input :access_statement, required: required
   end
 end
