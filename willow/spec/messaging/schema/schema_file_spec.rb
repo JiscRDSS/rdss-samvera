@@ -19,7 +19,7 @@ RSpec.describe Rdss::Messaging::Schema::SchemaFile do
 
   describe 'named parameter block' do
     let(:event) { :update }
-    let(:version) { '2.0.0' }
+    let(:version) { '2.1.0' }
     let(:override_file) { 'response.json' }
 
     it 'called with an event override to return event path' do
