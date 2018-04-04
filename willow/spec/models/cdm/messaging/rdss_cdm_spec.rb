@@ -37,6 +37,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             honorific_prefix: 'Mr.',
             given_name: 'Paul',
             family_name: 'Mak',
+            honorific_suffix: 'BSc. SSc. GSc.',
             mail: 'paul@example.com',
             object_person_roles_attributes: [
               { role_type: 'author' }
@@ -73,12 +74,10 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
                 "personIdentifierType": 1,
                 "personIdentifierValue": 'not yet implemented'
               ],
-              "personEntitlement": [1],
-              "personAffiliation": [1],
-              "personGivenName": "Paul",
-              "personCn": "Mr. Paul Mak",
-              "personSn": "Mak",
-              :personTelephoneNumber=>"not yet implemented",
+              "personHonorificPrefix": "Mr.",
+              "personGivenNames": "Paul",
+              "personFamilyNames": "Mak",
+              "personHonorificSuffix": "BSc. SSc. GSc.",
               :personMail=>"paul@example.com",
               :personOrganisationUnit=>{
                 :organisation=>{
@@ -93,28 +92,26 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             "role": 21
           }
         ],
-        "objectRights": [
-          {
-            "rightsStatement": [
-              "Rights statement"
-            ],
-            "rightsHolder": [
-              "Rights holder"
-            ],
-            "licence": [
-              {
-                "licenceName": "Open Data Commons Public Domain Dedication and Licence (ODC PDDL)",
-                "licenceIdentifier": 'https://creativecommons.org/publicdomain/zero/1.0/'
-              }
-            ],
-            "access": [
-              {
-                "accessType": 3,
-                "accessStatement": "Statement 1"
-              }
-            ]
-          }
-        ],
+        "objectRights": {
+          "rightsStatement": [
+            "Rights statement"
+          ],
+          "rightsHolder": [
+            "Rights holder"
+          ],
+          "licence": [
+            {
+              "licenceName": "Open Data Commons Public Domain Dedication and Licence (ODC PDDL)",
+              "licenceIdentifier": 'https://creativecommons.org/publicdomain/zero/1.0/'
+            }
+          ],
+          "access": [
+            {
+              "accessType": 3,
+              "accessStatement": "Statement 1"
+            }
+          ]
+        },
         "objectResourceType": 1,
         "objectRelatedIdentifier": [
           {
