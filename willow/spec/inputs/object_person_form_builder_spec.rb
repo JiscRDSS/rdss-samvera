@@ -1,7 +1,7 @@
 require_relative 'facets'
 
 class ObjectPersonFormBuilderDummy
-  attr_accessor :honorific_prefix, :given_name, :family_name, :mail
+  attr_accessor :honorific_prefix, :given_name, :family_name, :honorific_suffix, :mail
 end
 
 RSpec.describe ObjectPersonFormBuilder do
