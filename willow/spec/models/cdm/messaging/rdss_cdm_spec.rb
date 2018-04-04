@@ -62,7 +62,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         "objectDate": [{ "dateValue": "2002-10-02T10:00:00-05:00", "dateType": 1 }],
         "objectDescription": "description",
         "objectFile": [],
-        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 18 }],
+        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 17 }],
         "objectKeywords": ["keyword"],
         "objectValue": 1,
         "objectPersonRole": [
@@ -90,7 +90,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
                 :organisationUnitUuid=>"00000000-0000-1000-a000-000000000000",
                 :organisationUnitName=>"not yet implemented"}
             },
-            "role": 20
+            "role": 21
           }
         ],
         "objectRights": [
@@ -119,7 +119,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         "objectRelatedIdentifier": [
           {
             "relationType": 1,
-            "identifierType": 18,
+            "identifierType": 17,
             "identifierValue": "http://example.com",
           }
         ],
