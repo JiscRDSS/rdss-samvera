@@ -6,7 +6,7 @@ module Cdm
         @honorific_prefix=values['honorific_prefix']
         @given_name=values['given_name']
         @family_name=values['family_name']
-        @honorific_suffix=values['honorific_prefix']
+        @honorific_suffix=values['honorific_suffix']
         @mail=values['mail']
         @roles=values['object_person_roles'].map {|x| converter.new(x) }
         super(values)

@@ -32,11 +32,20 @@ RSpec.describe ObjectPersonFormBuilder do
     it_behaves_like 'named',      FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).family_name, :family_name
   end
 
+  context 'honorific_suffix' do
+    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix, 'Honorific suffix', required: false
+    it_behaves_like 'optional',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix
+    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix(required: true), 'Honorific prefix', required: true
+    it_behaves_like 'required',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix(required: true)
+    it_behaves_like 'input',     FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix
+    it_behaves_like 'named',      FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).honorific_suffix, :honorific_prefix
+  end
+
   context 'mail' do
-    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail, 'Email address', required: true
-    it_behaves_like 'required',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail
-    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail(required: false), 'Email address'
-    it_behaves_like 'optional',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail(required: false)
+    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail(required: true), 'Email address', required: true
+    it_behaves_like 'required',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail(required: true)
+    it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail, 'Email address'
+    it_behaves_like 'optional',   FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail
     it_behaves_like 'email',     FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail
     it_behaves_like 'named',      FacetsProxy.(described_class,ObjectPersonFormBuilderDummy).mail, :mail
   end
