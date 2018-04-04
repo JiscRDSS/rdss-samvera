@@ -9,11 +9,11 @@ class ObjectRightsFormBuilder < RdssFields
       required: required
   end
 
-  def rights_holder(required: true)
+  def rights_holder(required: false)
     input :rights_holder, as: :compact_multi_value, required: required
   end
 
-  def rights_statement(required: true)
+  def rights_statement(required: false)
     input :rights_statement, as: :compact_multi_value, required: required
   end
 
