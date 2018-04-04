@@ -1,6 +1,6 @@
 ---
-3.0.0: &latest
-  create_and_update: &create_and_update_3_0_0
+3.0.1: &latest
+  create_and_update: &create_and_update_3_0_1
     objectUuid: 5680e8e0-28a5-4b20-948e-fd0d08781e0b
     objectTitle: string
     objectPersonRole:
@@ -113,15 +113,15 @@
         storagePlatformType: 1
         storagePlatformCost: string
   create:
-    <<: *create_and_update_3_0_0
+    <<: *create_and_update_3_0_1
   read:
     objectUuid:
   update:
-    <<: *create_and_update_3_0_0
+    <<: *create_and_update_3_0_1
   delete:
     objectUuid:
-2.0.0:
-  create_and_update: &create_and_update_2_0_0
+2.1.0:
+  create_and_update: &create_and_update_2_1_0
     # NOTE: This document actually directly controls how the message is generated. Adding a new or removing an item needs
     # to be done in conjunction with the attribute rendering endpoint. So for example, if you were to add a new
     # objectWiggler in here, you would probably need to have a file in app/models/cdm/messaging called object_wibble.rb
@@ -243,11 +243,11 @@
     #  preservationEventType:
     #  preservationEventDetail:
   create:
-    <<: *create_and_update_2_0_0
+    <<: *create_and_update_2_1_0
   read:
     objectUuid:
   update:
-    <<: *create_and_update_2_0_0
+    <<: *create_and_update_2_1_0
   delete:
     objectUuid:
 current:
