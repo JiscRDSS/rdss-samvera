@@ -96,6 +96,7 @@ module Hyrax
         :honorific_prefix,
         :given_name,
         :family_name,
+        :honorific_suffix,
         :mail,
         :_destroy,
         object_person_roles_attributes: permitted_object_person_roles_params

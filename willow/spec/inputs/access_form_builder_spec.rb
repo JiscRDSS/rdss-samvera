@@ -14,9 +14,9 @@ RSpec.describe AccessFormBuilder do
   end
 
   context 'access_statement' do
-    it_behaves_like 'labelled', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement, 'Access statement', required: true
-    it_behaves_like 'required', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement
-    it_behaves_like 'optional', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement(required: false)
+    it_behaves_like 'labelled', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement(required: true), 'Access statement', required: true
+    it_behaves_like 'required', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement(required: true)
+    it_behaves_like 'optional', FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement
     it_behaves_like 'input',    FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement
     it_behaves_like 'named',    FacetsProxy.(described_class, AccessFormBuilderDummy).access_statement, :access_statement
   end
