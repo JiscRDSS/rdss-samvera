@@ -11,7 +11,6 @@ RSpec.describe ::Cdm::Messaging::FileTechnicalAttribute do
 
   let(:expected_value) {
     {
-      fileTechnicalAttributes: ''
     }
   }
 
