@@ -5,7 +5,7 @@
 # by using the Enumerations::Decoder based on their position in the list.
 
 module Cdm
-  module Enumerations
+  module Taxonomies
     ::Cdm::EnumerationsList.().each do |enum_section|
       ::Cdm::Taxonomies::const_set(enum_section.classify, ::Enumerations::DecoderFactory.(enum_section))
     end
