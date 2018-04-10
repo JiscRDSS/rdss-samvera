@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.5.1
 
 # Setup build variables
 ARG RAILS_ENV=production
@@ -25,7 +25,7 @@ RUN echo 'deb http://deb.debian.org/debian jessie-backports main' > /etc/apt/sou
     && apt-get install -y --no-install-recommends \
     libpq-dev libmediainfo-dev \
     libxml2-dev libxslt1-dev \
-    libqt4-webkit libqt4-dev xvfb \
+    libqtwebkit4 libqt4-dev xvfb \
     nodejs \
     imagemagick \
     libreoffice \
