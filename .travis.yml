@@ -10,9 +10,10 @@ before_script:
   - cp config/database.yml.travis config/database.yml
 
 before_install:
-  - bash -c "yes | gem uninstall -i /home/travis/.rvm/gems/ruby-2.5.1@global rake"
-  - gem update --system
   - cd willow
+
+script:
+  - bundle exec rails
 
 env:
   - RAILS_ENV=test 
