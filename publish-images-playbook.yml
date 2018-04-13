@@ -37,7 +37,6 @@
         dockerfile: "./willow/Dockerfile"
         tag: "{{ tag }}"
 
-
   tasks:
 
     - name: "Ensure that the variable registry is defined"
