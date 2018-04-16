@@ -24,9 +24,9 @@ RSpec.describe ::Cdm::Messaging::EmptyMapper do
 
   describe 'decodes messaging sections' do
     it 'should have methods for the elements in the passed section' do
-      expect(described_class.('test', array_map, EmptyMapperDummy.new)[:test]).to eql(array_map)
-      expect(described_class.('test', hash_map, EmptyMapperDummy.new)[:test]).to eql(hash_map)
-      expect(described_class.('test', value_map, EmptyMapperDummy.new)[:test]).to eql(expected_value)
+      expect(described_class.('test', array_map, EmptyMapperDummy.new)[:test]).to eql(nil)
+      expect(described_class.('test', hash_map, EmptyMapperDummy.new)[:test]).to eql(nil)
+      expect(described_class.('test', value_map, EmptyMapperDummy.new)[:test]).to eql(nil)
     end
   end
 end

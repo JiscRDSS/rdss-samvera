@@ -1,8 +1,8 @@
 require 'spec_helper'
-class FileTechnicalAttributesDummy
+class FileTechnicalAttributeDummy
 end
 
-RSpec.describe ::Cdm::Messaging::FileTechnicalAttributes do
+RSpec.describe ::Cdm::Messaging::FileTechnicalAttribute do
   let(:input_map) {
     {
       fileTechnicalAttributes: nil
@@ -17,7 +17,7 @@ RSpec.describe ::Cdm::Messaging::FileTechnicalAttributes do
 
   describe 'decodes messaging sections' do
     it 'should have methods for the elements in the passed section' do
-      expect(described_class.('test', input_map, FileTechnicalAttributesDummy.new)[:test]).to eql(expected_value)
+      expect(described_class.('test', input_map, FileTechnicalAttributeDummy.new)[:test]).to eql(expected_value)
     end
   end
 end
