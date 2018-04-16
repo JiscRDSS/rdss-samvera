@@ -40,6 +40,10 @@ en:
         accesses: Access
         jisc_id: Identifier
         mail: Email address
+        honorific_prefix: Title
+        given_name: First name
+        family_name: Last name
+        object_person_roles: Role or Contribution
     hints:
       rdss_cdm:
         object_resource_type: Pre-defined categories to describe the type of content being uploaded, such as &quot;article&quot; or &quot;dataset.&quot;
