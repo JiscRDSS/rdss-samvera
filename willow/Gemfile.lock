@@ -703,7 +703,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    config_files (0.1.0)
+    config_files (0.1.1)
       activesupport
     connection_pool (2.2.1)
     crack (0.4.3)
