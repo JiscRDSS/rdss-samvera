@@ -40,6 +40,8 @@ en:
       rdss_cdm:
         object_resource_type: Pre-defined categories to describe the type of content being uploaded, such as &quot;article&quot; or &quot;dataset.&quot;
         object_value: Administrator conferred value which dictates storage type e.g. &quot;escrow&quot;
+        object_keywords: Add words that will help make your deposit more findable in search.
+        object_category: Add a relevant subject area for your deposit, e.g. neuroscience
         object_dates: The different dates relevant to the dataset
         object_rights: Rights and access information about the dataset
         object_organisation_role: Role the organisation played in the dataset
@@ -50,9 +52,11 @@ en:
         # rather than simple_form.hints.rdss_cdm.object_rights, as otherwise the translation
         # for simple_form.hints.rdss_cdm.object_rights
         # would return a hash
+        access_statement: Include details about how access can be sought, or give a clear legal or policy statement about the conditions imposed by the access type.
+        jisc_id: Enter an Organisation identifier if applicable, e.g. ISNI, GRID, FUNDREF.
         licence: Licensing and distribution information governing access to the dataset.
         rights_holder: The person or organisation who holds the rights for the work
-        jisc_id: Enter an Organisation identifier if applicable
+        rights_statement: Add text that explains why some or all of the data may not be available (e.g. sensitive data, copyright restrictions)
     prompts:
       rdss_cdm:
         object_resource_type: Select resource type
