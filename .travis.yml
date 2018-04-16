@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.4.2
+  - 2.5.1
 
 services:
   - postgresql
@@ -9,7 +9,10 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 
-before_install: cd willow
+before_install:
+  - gem update --system
+  - gem install bundler
+  - cd willow
 
 env:
   - RAILS_ENV=test 

@@ -15,10 +15,10 @@ else
 fi
 
 ## Run any pending migrations
-bundle exec rake db:migrate
+bundle exec rails db:migrate
 
 # Load workflows
-bundle exec rake hyrax:workflow:load
+bundle exec rails hyrax:workflow:load
 
 # check that Solr is running
 SOLR=$(curl --silent --connect-timeout 45 "http://${SOLR_HOST:-solr}:${SOLR_PORT:-8983}/solr/" | grep "Apache SOLR")
@@ -40,7 +40,7 @@ fi
 
 if [ "$WILLOW_SEED" = "true" ] ; then
     echo "(Re)seeding Willow test data... (this can take a few minutes)"
-    bundle exec rake willow:seed_test_data["$WILLOW_SEED_FILE"]
+    bundle exec rails willow:seed_test_data["$WILLOW_SEED_FILE"]
 fi
 
 echo "--------- Starting Willow in $RAILS_ENV mode ---------"
