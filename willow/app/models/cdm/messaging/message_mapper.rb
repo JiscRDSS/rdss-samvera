@@ -49,7 +49,7 @@ module Cdm
             hash_value(message_map, object)
           when Array
             array_value(message_map, object)
-          when NilClass
+          when NilClass, String, Integer
             value(object, attribute_name)
           else
             value(object, message_map.to_s.underscore.downcase)
