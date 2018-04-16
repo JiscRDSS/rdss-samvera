@@ -16,8 +16,8 @@ module Rdss
               end
             }
           end.each(&:join)
-          yield(object)
         }
+        yield(object)
       end
 
       public

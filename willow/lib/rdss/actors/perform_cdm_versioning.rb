@@ -26,7 +26,7 @@ module Rdss
             relation_type: 'is_new_version_of', 
             identifier_attributes: {
               identifier_value: uuid, 
-              identifier_type: 'source_id'
+              identifier_type: 'handle'
             }
           }
         end

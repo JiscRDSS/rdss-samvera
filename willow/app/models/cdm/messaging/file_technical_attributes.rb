@@ -1,6 +1,6 @@
 module Cdm
   module Messaging
-    class FileTechnicalAttributes < MessageMapper
+    class FileTechnicalAttribute < MessageMapper
       def hash_value(*)
         { fileTechnicalAttributes: '' }
       end
