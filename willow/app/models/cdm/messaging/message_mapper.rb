@@ -56,8 +56,12 @@ module Cdm
         end
       end
 
+      def optional_key(key, value)
+        value.blank? ? {} : { key=>value }
+      end
+
       def call(message_map, object)
-        { name.intern=>decode_message_map(message_map, object) }
+        optional_key(name.intern, decode_message_map(message_map, object))
       end
 
       def hash_value(message_map, object)
