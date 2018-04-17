@@ -6,18 +6,16 @@
       "type": "object",
       "properties": {
         "organisationJiscId": {
-          "type": "integer"
+          "type": "number"
         },
         "organisationName": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "organisationType": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 15
+          "type": "number"
         },
         "organisationAddress": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         }
       },
       "required": [
@@ -25,18 +23,16 @@
         "organisationName",
         "organisationType",
         "organisationAddress"
-      ],
-      "additionalProperties": false
+      ]
     },
     "person": {
       "type": "object",
       "properties": {
         "personUuid": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/uuid"
+          "type": "string"
         },
         "personIdentifier": {
           "type": "array",
-          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/personIdentifier"
           },
@@ -44,95 +40,72 @@
         },
         "personEntitlement": {
           "type": "array",
-          "uniqueItems": true,
           "items": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 22
+            "type": "number"
+          },
+          "minItems": 1
+        },
+        "personOrganisation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/organisation"
           },
           "minItems": 1
         },
         "personAffiliation": {
           "type": "array",
-          "uniqueItems": true,
           "items": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 8
+            "type": "number"
           },
           "minItems": 1
         },
         "personGivenName": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "personCn": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "personSn": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "personTelephoneNumber": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "personMail": {
-          "type": "string",
-          "format": "email"
+          "type": "string"
         },
-        "personOrganisationUnit": {
-          "$ref": "#/definitions/organisationUnit"
+        "personOu": {
+          "type": "string"
         }
       },
       "required": [
         "personUuid",
         "personIdentifier",
         "personEntitlement",
+        "personOrganisation",
         "personAffiliation",
         "personGivenName",
         "personCn",
         "personSn",
         "personTelephoneNumber",
         "personMail",
-        "personOrganisationUnit"
-      ],
-      "additionalProperties": false
-    },
-    "organisationUnit": {
-      "type": "object",
-      "properties": {
-        "organisationUnitUuid": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/uuid"
-        },
-        "organisationUnitName": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
-        },
-        "organisation": {
-          "$ref": "#/definitions/organisation"
-        }
-      },
-      "required": [
-        "organisationUnitUuid",
-        "organisationUnitName",
-        "organisation"
-      ],
-      "additionalProperties": false
+        "personOu"
+      ]
     },
     "personIdentifier": {
       "type": "object",
       "properties": {
         "personIdentifierValue": {
-          "$ref": "https://www.jisc.ac.uk/rdss/schema/types.json/#/definitions/nonEmptyString"
+          "type": "string"
         },
         "personIdentifierType": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
+          "type": "number"
         }
       },
       "required": [
         "personIdentifierValue",
         "personIdentifierType"
-      ],
-      "additionalProperties": false
+      ]
     }
   }
 }
