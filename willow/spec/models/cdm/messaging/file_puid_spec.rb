@@ -11,7 +11,7 @@ RSpec.describe ::Cdm::Messaging::FilePuid do
   }
 
   let(:expected_value) {
-    { filePuid: [] }
+    nil
   }
 
   describe 'decodes messaging sections' do
