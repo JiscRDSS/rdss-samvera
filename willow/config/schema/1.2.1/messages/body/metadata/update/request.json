@@ -1,10 +1,10 @@
 {
-  "objectUuid": "5680e8e0-28a5-4b20-948e-fd0d08781e0b",
+  "objectUuid": "string",
   "objectTitle": "string",
   "objectPersonRole": [
     {
       "person": {
-        "personUuid": "27811a4c-9cb5-4e6d-a069-5c19288fae58",
+        "personUuid": "string",
         "personIdentifier": [
           {
             "personIdentifierValue": "string",
@@ -14,6 +14,14 @@
         "personEntitlement": [
           1
         ],
+        "personOrganisation": [
+          {
+            "organisationJiscId": 1,
+            "organisationName": "string",
+            "organisationType": 1,
+            "organisationAddress": "string"
+          }
+        ],
         "personAffiliation": [
           1
         ],
@@ -21,17 +29,8 @@
         "personCn": "string",
         "personSn": "string",
         "personTelephoneNumber": "string",
-        "personMail": "person@net",
-        "personOrganisationUnit": {
-          "organisationUnitUuid": "28be7f16-0e70-461f-a2db-d9d7c64a8f17",
-          "organisationUnitName": "string",
-          "organisation": {
-            "organisationJiscId": 1,
-            "organisationName": "string",
-            "organisationType": 1,
-            "organisationAddress": "string"
-          }
-        }
+        "personMail": "string",
+        "personOu": "string"
       },
       "role": 1
     }
@@ -61,7 +60,7 @@
   ],
   "objectDate": [
     {
-      "dateValue": "2002-10-02T10:00:00-05:00",
+      "dateValue": "string",
       "dateType": 1
     }
   ],
@@ -107,13 +106,13 @@
   ],
   "objectFile": [
     {
-      "fileUuid": "e150c4ab-0370-4e5a-8722-7fb3369b7017",
+      "fileUuid": "string",
       "fileIdentifier": "string",
       "fileName": "string",
       "fileSize": 1,
       "fileLabel": "string",
       "fileDateCreated": {
-        "dateValue": "2002-10-02T10:00:00-05:00",
+        "dateValue": "string",
         "dateType": 1
       },
       "fileRights": {
@@ -138,7 +137,7 @@
       },
       "fileChecksum": [
         {
-          "checksumUuid": "df23b46b-6b64-4a40-842f-5ad363bb6e11",
+          "checksumUuid": "string",
           "checksumType": 1,
           "checksumValue": "string"
         }
@@ -148,7 +147,7 @@
       "fileHasMimeType": true,
       "fileDateModified": [
         {
-          "dateValue": "2002-10-02T10:00:00-05:00",
+          "dateValue": "string",
           "dateType": 1
         }
       ],
@@ -165,20 +164,15 @@
       ],
       "fileUploadStatus": 1,
       "fileStorageStatus": 1,
-      "fileLastDownloaded": {
-        "dateValue": "2002-10-02T10:00:00-05:00",
+      "fileLastDownload": {
+        "dateValue": "string",
         "dateType": 1
       },
       "fileTechnicalAttributes": [
         "string"
       ],
-      "fileStorageLocation": "https://tools.ietf.org/html/rfc3986",
-      "fileStoragePlatform": {
-        "storagePlatformUuid": "f2939501-2b2d-4e5c-9197-0daa57ccb621",
-        "storagePlatformName": "string",
-        "storagePlatformType": 1,
-        "storagePlatformCost": "string"
-      }
+      "fileStorageLocation": "string",
+      "fileStorageType": 1
     }
   ]
 }
