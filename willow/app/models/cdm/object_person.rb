@@ -14,7 +14,9 @@ module Cdm
     validates :object_person_roles, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.object_person_role').downcase)}
     validate :has_given_name_or_family_name
 
+    has_many :person_identifiers, class_name: 'Cdm::PersonIdentifier'
     accepts_nested_attributes_for :object_person_roles, allow_destroy: true, reject_if: :object_person_roles_blank?
+    accepts_nested_attributes_for :person_identifiers, allow_destroy: true, reject_if: :person_identifiers_blank?
 
     def has_given_name_or_family_name
       attributes.values_at('given_name', 'family_name').all?(&:blank?) && errors.add(:given_name, I18n.t('willow.fields.given_and_family_name_presence'))
@@ -37,6 +39,13 @@ module Cdm
 
     def object_person_roles_blank?(attributes)
       any_blank?(attributes, :role_type)
+    end
+
+    def person_identifiers_blank?(attributes)
+      any_blank?(
+        attributes, :person_identifier_type,
+                    :person_identifier_value
+    )
     end
   end
 end
