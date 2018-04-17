@@ -7,7 +7,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         object_uuid: nil,
         title: ['title'],
         object_category: ['category'],
-        object_dates_attributes: [{ date_value: "2002-10-02T10:00:00-05:00", date_type: 'accepted' }],
+        object_dates_attributes: [{date_value: '2002-10-02T10:00:00-05:00', date_type: 'accepted' }],
         object_description: 'description',
         object_identifiers_attributes: [{ identifier_value: 'http://example.com', identifier_type: 'url' }],
         object_keywords: ['keyword'],
@@ -15,9 +15,9 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
           {
             organisation_attributes: {
               jisc_id: 1,
-              name: "string",
+              name: 'string',
               organisation_type: 'further_education',
-              address: "string"
+              address: 'string'
             },
             role: 'funder'
           }
@@ -56,91 +56,88 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
     }
     let(:final_body) {
       {
-        "objectUuid": nil,
-        "objectTitle": "title",
-        "objectCategory": ["category"],
-        "objectDate": [{ "dateValue": "2002-10-02T10:00:00-05:00", "dateType": 1 }],
-        "objectDescription": "description",
-        "objectFile": [],
-        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 17 }],
-        "objectKeywords": ["keyword"],
-        "objectValue": 1,
-        "objectPersonRole": [
+        objectTitle: 'title',
+        objectCategory: ['category'],
+        objectDate: [{'dateValue': '2002-10-02T10:00:00-05:00', 'dateType': 1 }],
+        objectDescription: 'description',
+        objectIdentifier: [{'identifierValue': 'http://example.com', 'identifierType': 17 }],
+        objectKeywords: ['keyword'],
+        objectValue: 1,
+        objectPersonRole: [
           {
-            "person": {
-              "personUuid": nil,
-              "personIdentifier": [
-                "personIdentifierType": 1,
-                "personIdentifierValue": 'not yet implemented'
+            person: {
+              personIdentifier: [
+                personIdentifierType: 1,
+                personIdentifierValue: 'not yet implemented'
               ],
-              "personEntitlement": [1],
-              "personAffiliation": [1],
-              "personGivenName": "Paul",
-              "personCn": "Mr. Paul Mak",
-              "personSn": "Mak",
-              :personTelephoneNumber=>"not yet implemented",
-              :personMail=>"paul@example.com",
-              :personOrganisationUnit=>{
-                :organisation=>{
-                  :organisationJiscId=>1,
-                  :organisationName=>"not yet implemented",
-                  :organisationType=>1,
-                  :organisationAddress=>"not yet implemented"
+              personEntitlement: [1],
+              personAffiliation: [1],
+              personGivenName: 'Paul',
+              personCn: 'Mr. Paul Mak',
+              personSn: 'Mak',
+              personTelephoneNumber: 'not yet implemented',
+              personMail: 'paul@example.com',
+              personOrganisationUnit: {
+                organisation: {
+                  organisationJiscId: 1,
+                  organisationName: 'not yet implemented',
+                  organisationType: 1,
+                  organisationAddress: 'not yet implemented'
                 },
-                :organisationUnitUuid=>"00000000-0000-1000-a000-000000000000",
-                :organisationUnitName=>"not yet implemented"}
+                organisationUnitUuid: '00000000-0000-1000-a000-000000000000',
+                organisationUnitName: 'not yet implemented'}
             },
-            "role": 21
+            role: 21
           }
         ],
-        "objectRights": [
+        'objectRights': [
           {
-            "rightsStatement": [
-              "Rights statement"
+            'rightsStatement': [
+              'Rights statement'
             ],
-            "rightsHolder": [
-              "Rights holder"
+            'rightsHolder': [
+              'Rights holder'
             ],
-            "licence": [
+            'licence': [
               {
-                "licenceName": "Open Data Commons Public Domain Dedication and Licence (ODC PDDL)",
-                "licenceIdentifier": 'https://creativecommons.org/publicdomain/zero/1.0/'
+                'licenceName': 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
+                'licenceIdentifier': 'https://creativecommons.org/publicdomain/zero/1.0/'
               }
             ],
-            "access": [
+            'access': [
               {
-                "accessType": 3,
-                "accessStatement": "Statement 1"
+                'accessType': 3,
+                'accessStatement': 'Statement 1'
               }
             ]
           }
         ],
-        "objectResourceType": 1,
-        "objectRelatedIdentifier": [
+        'objectResourceType': 1,
+        'objectRelatedIdentifier': [
           {
-            "relationType": 1,
-            "identifierType": 17,
-            "identifierValue": "http://example.com",
+            'relationType': 1,
+            'identifierType': 17,
+            'identifierValue': 'http://example.com',
           }
         ],
-        "objectOrganisationRole": [
+        'objectOrganisationRole': [
           {
-            "organisation": {
-              "organisationJiscId": 0,
-              "organisationName": "RDSS Samvera",
-              "organisationType": 8,
-              "organisationAddress": "RDSS Samvera"
+            'organisation': {
+              'organisationJiscId': 0,
+              'organisationName': 'RDSS Samvera',
+              'organisationType': 8,
+              'organisationAddress': 'RDSS Samvera'
             },
-            "role": 2
+            'role': 2
           },
           {
-            "organisation": {
-              "organisationJiscId": 1,
-              "organisationName": "string",
-              "organisationType": 4,
-              "organisationAddress": "string"
+            'organisation': {
+              'organisationJiscId': 1,
+              'organisationName': 'string',
+              'organisationType': 4,
+              'organisationAddress': 'string'
             },
-            "role": 1
+            'role': 1
           }
         ]
       }

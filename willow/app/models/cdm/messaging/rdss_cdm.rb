@@ -5,13 +5,13 @@ module Cdm
   module Messaging
     class RdssCdm < MessageMapper
       include ConfigFiles
-      config_directories etc: ["#{Rails.root}/config"]
-      static_config_files :metadata_request
 
       class << self
         public
         def call(object, event: :create, version: :current)
-          super(:rdss_cdm, metadata_request[version.to_s][event.to_s], object).values.first
+          config_directories etc: ["#{Rails.root}/config/schema/#{version}/messages/body/metadata/#{event}"]
+          dynamic_config_files :request
+          super(:rdss_cdm, request, object).values.first
         end
       end
     end
