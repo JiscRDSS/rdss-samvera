@@ -23,6 +23,17 @@
     </ul>
     <%= add_another_button :object_person_role %>
   </div>
+  
+  <%= object_person_form.input :person_identifiers, wrapper: :label_and_hint_only %>
+  <div class="multi-nested">
+    <ul class="listing">
+      <%= object_person_form.fields_for :person_identifiers, object_person_form.person_identifiers, builder: PersonIdentifierFormBuilder do |pi| %>
+        <%= render partial: pi, locals: {required: true} %>
+      <%- end %>
+    </ul>
+    <%= add_another_button :person_identifier %>
+  </div>
+
   <%= object_person_form.destroy %>
   <%= remove_button :object_person %>
 </li>
