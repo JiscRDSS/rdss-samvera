@@ -4,15 +4,15 @@ module Cdm
     class FileRights < MessageMapper
       def hash_value(_, object)
         {
-          rightsStatement: [],
-          rightsHolder: [],
+          rightsStatement: [ 'not yet implemented' ],
+          rightsHolder: [ 'not yet implemented' ],
           licence: [
             licenceName: '',
             licenceIdentifier: ''
           ],
           access: [
-            accessType: '',
-            accessStatement: ''
+            accessType: 3,
+            accessStatement: 'not yet implemented'
           ]
         }
       end
