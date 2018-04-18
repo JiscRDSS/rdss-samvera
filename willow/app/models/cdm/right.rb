@@ -1,6 +1,6 @@
 module Cdm
   # Active fedora model representing an object rights object for an rdss_cdm model
-  class Rights < ActiveFedora::Base
+  class Right < ActiveFedora::Base
     property :rights_statement, predicate: ::RDF::Vocab::DC.RightsStatement
     property :rights_holder, predicate: ::RDF::Vocab::DC.rightsHolder
     property :licence, predicate: ::RDF::Vocab::DC.license
