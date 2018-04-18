@@ -73,7 +73,7 @@ RUN cd $APP_PRODUCTION \
 # generate production assets if production environment
 RUN if [ "$RAILS_ENV" = "production" ]; then \
         cd $APP_PRODUCTION \
-        && SECRET_KEY_BASE_PRODUCTION=0 ASSET_PRECOMPILATION_ADAPTER=sqlite3 bundle exec rails -v --trace=stdout assets:clean assets:precompile; \
+        && SECRET_KEY_BASE_PRODUCTION=0 ASSET_PRECOMPILATION_ADAPTER=sqlite3 bundle exec rails --trace=stdout assets:clean assets:precompile; \
     fi
 
 # Generate the version file without caching

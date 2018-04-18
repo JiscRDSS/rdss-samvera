@@ -1,0 +1,305 @@
+{
+  "id": "https://www.jisc.ac.uk/rdss/schema/research_object.json/#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "object": {
+      "type": "object",
+      "properties": {
+        "objectUuid": {
+          "type": "string"
+        },
+        "objectTitle": {
+          "type": "string"
+        },
+        "objectPersonRole": {
+          "type": "array",
+          "items": {
+            "ref": "#/definitions/personRole"
+          },
+          "minItems": 1
+        },
+        "objectDescription": {
+          "type": "string"
+        },
+        "objectRights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rights"
+          },
+          "minItems": 1
+        },
+        "objectDate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/date"
+          },
+          "minItems": 1
+        },
+        "objectKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "objectCategory": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "objectResourceType": {
+          "type": "number"
+        },
+        "objectValue": {
+          "type": "number"
+        },
+        "objectIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          },
+          "minItems": 1
+        },
+        "objectRelatedIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "objectOrganisationRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/organisationRole"
+          }
+        },
+        "objectPreservationEvent": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.jisc.ac.uk/rdss/schema/intellectual_asset.json/#/definitions/preservationEvent"
+          }
+        },
+        "objectFile": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.jisc.ac.uk/rdss/schema/intellectual_asset.json/#/definitions/file"
+          }
+        }
+      },
+      "required": [
+        "objectUuid",
+        "objectTitle",
+        "objectPersonRole",
+        "objectDescription",
+        "objectRights",
+        "objectDate",
+        "objectResourceType",
+        "objectValue",
+        "objectIdentifier"
+      ]
+    },
+    "identifier": {
+      "type": "object",
+      "properties": {
+        "identifierValue": {
+          "type": "string"
+        },
+        "identifierType": {
+          "type": "number"
+        },
+        "relationType": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "identifierValue",
+        "identifierType"
+      ]
+    },
+    "rights": {
+      "type": "object",
+      "properties": {
+        "rightsStatement": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "rightsHolder": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "licence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/licence"
+          },
+          "minItems": 1
+        },
+        "access": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/access"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "rightsStatement",
+        "rightsHolder",
+        "licence",
+        "access"
+      ]
+    },
+    "licence": {
+      "type": "object",
+      "properties": {
+        "licenceName": {
+          "type": "string"
+        },
+        "licenceIdentifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "licenceName",
+        "licenceIdentifier"
+      ]
+    },
+    "access": {
+      "type": "object",
+      "properties": {
+        "accessType": {
+          "type": "number"
+        },
+        "accessStatement": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessType"
+      ]
+    },
+    "collection": {
+      "type": "object",
+      "properties": {
+        "collectionUuid": {
+          "type": "string"
+        },
+        "collectionName": {
+          "type": "string"
+        },
+        "collectionObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/object"
+          }
+        },
+        "collectionKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collectionCategory": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collectionDescription": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "collectionRights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rights"
+          },
+          "minItems": 1
+        },
+        "collectionIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "collectionRelatedIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "collectionPersonRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/personRole"
+          }
+        },
+        "collectionOrganisationRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/organisationRole"
+          }
+        }
+      },
+      "required": [
+        "collectionUuid",
+        "collectionName",
+        "collectionDescription",
+        "collectionRights"
+      ]
+    },
+    "organisationRole": {
+      "type": "object",
+      "properties": {
+        "organisation": {
+          "$ref": "https://www.jisc.ac.uk/rdss/schema/material_asset.json/#/definitions/organisation"
+        },
+        "role": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "organisation",
+        "role"
+      ]
+    },
+    "personRole": {
+      "type": "object",
+      "properties": {
+        "person": {
+          "$ref": "https://www.jisc.ac.uk/rdss/schema/material_asset.json/#/definitions/person"
+        },
+        "role": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "person",
+        "role"
+      ]
+    },
+    "date": {
+      "type": "object",
+      "properties": {
+        "dateValue": {
+          "type": "string"
+        },
+        "dateType": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "dateValue",
+        "dateType"
+      ]
+    }
+  }
+}

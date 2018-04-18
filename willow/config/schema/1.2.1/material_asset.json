@@ -1,0 +1,111 @@
+{
+  "id": "https://www.jisc.ac.uk/rdss/schema/material_asset.json/#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "organisation": {
+      "type": "object",
+      "properties": {
+        "organisationJiscId": {
+          "type": "number"
+        },
+        "organisationName": {
+          "type": "string"
+        },
+        "organisationType": {
+          "type": "number"
+        },
+        "organisationAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "organisationJiscId",
+        "organisationName",
+        "organisationType",
+        "organisationAddress"
+      ]
+    },
+    "person": {
+      "type": "object",
+      "properties": {
+        "personUuid": {
+          "type": "string"
+        },
+        "personIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/personIdentifier"
+          },
+          "minItems": 1
+        },
+        "personEntitlement": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1
+        },
+        "personOrganisation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/organisation"
+          },
+          "minItems": 1
+        },
+        "personAffiliation": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1
+        },
+        "personGivenName": {
+          "type": "string"
+        },
+        "personCn": {
+          "type": "string"
+        },
+        "personSn": {
+          "type": "string"
+        },
+        "personTelephoneNumber": {
+          "type": "string"
+        },
+        "personMail": {
+          "type": "string"
+        },
+        "personOu": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "personUuid",
+        "personIdentifier",
+        "personEntitlement",
+        "personOrganisation",
+        "personAffiliation",
+        "personGivenName",
+        "personCn",
+        "personSn",
+        "personTelephoneNumber",
+        "personMail",
+        "personOu"
+      ]
+    },
+    "personIdentifier": {
+      "type": "object",
+      "properties": {
+        "personIdentifierValue": {
+          "type": "string"
+        },
+        "personIdentifierType": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "personIdentifierValue",
+        "personIdentifierType"
+      ]
+    }
+  }
+}

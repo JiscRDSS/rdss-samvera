@@ -24,8 +24,8 @@ RSpec.describe ::Cdm::Messaging::FileRights do
 
   let(:expected_value) {
     {
-      rightsStatement: [],
-      rightsHolder: [],
+      rightsStatement: ['not yet implemented'],
+      rightsHolder: ['not yet implemented'],
       licence: [
         {
           licenceName: '',
@@ -34,8 +34,8 @@ RSpec.describe ::Cdm::Messaging::FileRights do
       ],
       access: [
         {
-          accessType: '',
-          accessStatement: ''
+          accessType: 3,
+          accessStatement: 'not yet implemented'
         }
       ]
     }
