@@ -71,10 +71,12 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
                 personIdentifierType: 1,
                 personIdentifierValue: 'not yet implemented'
               ],
-              personHonorificPrefix: 'Mr.',
-              personGivenNames: 'Paul',
-              personFamilyNames: 'Mak',
-              personHonorificSuffix: 'BSc. SSc. GSc.',
+              personEntitlement: [1],
+              personAffiliation: [1],
+              personGivenName: 'Paul',
+              personCn: 'Mr. Paul Mak BSc. SSc. GSc.',
+              personSn: 'Mak',
+              personTelephoneNumber: 'not yet implemented',
               personMail: 'paul@example.com',
               personOrganisationUnit: {
                 organisation: {
@@ -90,26 +92,28 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
           }
         ],
         objectRights:
-        {
-          rightsStatement: [
-            'Rights statement'
-          ],
-          rightsHolder: [
-            'Rights holder'
-          ],
-          licence: [
-            {
-              licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
-              licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
-            }
-          ],
-          access: [
-            {
-              accessType: 3,
-              accessStatement: 'Statement 1'
-            }
-          ]
-        },
+        [
+          {
+            rightsStatement: [
+              'Rights statement'
+            ],
+            rightsHolder: [
+              'Rights holder'
+            ],
+            licence: [
+              {
+                licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
+                licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
+              }
+            ],
+            access: [
+              {
+                accessType: 3,
+                accessStatement: 'Statement 1'
+              }
+            ]
+          }
+        ],
         objectResourceType: 1,
         objectRelatedIdentifier: [
           {
