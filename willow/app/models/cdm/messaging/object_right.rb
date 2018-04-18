@@ -2,8 +2,10 @@
 module Cdm
   module Messaging
     class ObjectRight < MessageMapper
-      def hash_value(mapping, object)
-        super(mapping, object.object_rights.first)
+      def array_value(mapping, object)
+        object.object_rights.map do |right|
+          hash_value(mapping.first, right)
+        end
       end
     end
   end
