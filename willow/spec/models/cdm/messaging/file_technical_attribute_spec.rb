@@ -10,8 +10,7 @@ RSpec.describe ::Cdm::Messaging::FileTechnicalAttribute do
   }
 
   let(:expected_value) {
-    {
-    }
+    nil
   }
 
   describe 'decodes messaging sections' do

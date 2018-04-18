@@ -89,28 +89,27 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             role: 21
           }
         ],
-        objectRights: [
-          {
-            rightsStatement: [
-              'Rights statement'
-            ],
-            rightsHolder: [
-              'Rights holder'
-            ],
-            licence: [
-              {
-                licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
-                licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
-              }
-            ],
-            access: [
-              {
-                accessType: 3,
-                accessStatement: 'Statement 1'
-              }
-            ]
-          }
-        ],
+        objectRights:
+        {
+          rightsStatement: [
+            'Rights statement'
+          ],
+          rightsHolder: [
+            'Rights holder'
+          ],
+          licence: [
+            {
+              licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
+              licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
+            }
+          ],
+          access: [
+            {
+              accessType: 3,
+              accessStatement: 'Statement 1'
+            }
+          ]
+        },
         objectResourceType: 1,
         objectRelatedIdentifier: [
           {
