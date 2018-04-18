@@ -58,7 +58,7 @@ class RdssCdm < ActiveFedora::Base
 
   # object_rights nested relationship.
   # This is a has_many in the CDM but for presentation and form purposes it is presented as a has_one
-  has_many :object_rights, class_name: 'Cdm::Rights'
+  has_many :object_rights, class_name: 'Cdm::Right'
 
   has_many :object_organisation_roles, class_name: 'Cdm::ObjectOrganisationRole'
 
