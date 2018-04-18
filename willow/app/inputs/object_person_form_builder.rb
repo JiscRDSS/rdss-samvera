@@ -13,7 +13,11 @@ class ObjectPersonFormBuilder < RdssFields
     input :family_name, required: required
   end
 
-  def mail(required: true)
+  def honorific_suffix(required: false)
+    input :honorific_suffix, required: required
+  end
+
+  def mail(required: false)
     input :mail, as: :email, required: required
   end
 

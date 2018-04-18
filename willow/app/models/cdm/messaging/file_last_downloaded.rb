@@ -6,7 +6,7 @@ module Cdm
           dateType: Enumerations::DateType.issued,
           # Default timestamp until JSON Schema is updated. 
           # dateValue: begin FileDownloadStat.where(file_id: object.original_file.id).first.downloads rescue Time.at(0).rfc3339 end
-          dateValue: object&.date_modified&.rfc3339 || Time.at(0).rfc3339
+          dateValue: value(object, _)
         }
       end
 
@@ -14,6 +14,10 @@ module Cdm
         [
           hash_value(_, object)
         ]
+      end
+
+      def value(object, _)
+        object&.date_modified&.rfc3339 || Time.at(0).rfc3339
       end
     end
   end

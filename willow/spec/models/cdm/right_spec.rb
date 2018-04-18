@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Cdm::Rights do
+RSpec.describe Cdm::Right do
   # since this is a model, we just check it can build the correct fields
 
   describe 'rights statement' do
