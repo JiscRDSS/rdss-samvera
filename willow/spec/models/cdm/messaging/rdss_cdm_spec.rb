@@ -78,15 +78,15 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
               personSn: 'Mak',
               personTelephoneNumber: 'not yet implemented',
               personMail: 'paul@example.com',
-              personOrganisationUnit: {
-                organisation: {
+              personOrganisation: [
+                {
                   organisationJiscId: 1,
                   organisationName: 'not yet implemented',
                   organisationType: 1,
                   organisationAddress: 'not yet implemented'
-                },
-                organisationUnitUuid: '00000000-0000-1000-a000-000000000000',
-                organisationUnitName: 'not yet implemented'}
+                }
+              ],
+              personOu: 'not yet implemented',
             },
             role: 21
           }
