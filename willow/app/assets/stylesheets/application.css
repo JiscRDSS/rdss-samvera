@@ -15,3 +15,22 @@
  *= require_self
  *= require_tree .
  */
+
+.control-label, .help-block {
+    font-size: 1.2em; 
+}
+
+.base-terms { 
+    padding-top: 2em; 
+}
+
+.base-terms > div { 
+    margin-top: 3em; 
+}
+
+.btn.btn-link.add { 
+    border: 1px solid rgba(51, 122, 183, 0.63); 
+    border-radius: 3px; 
+    text-decoration: none; 
+    padding: 0.3em 1em 
+}
