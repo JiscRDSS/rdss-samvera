@@ -24,3 +24,12 @@
 //= require_tree .
 //= require hyrax
 //= require collections-csrf-bugfix
+
+Hyrax.config = {
+  uploader: {
+    limitConcurrentUploads: 1, 
+    maxNumberOfFiles: 100, 
+    maxFileSize: 6442450944, // 6GB 
+    sequentialUploads: true
+  }
+}

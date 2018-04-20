@@ -28,5 +28,9 @@
     border: 1px solid rgba(51, 122, 183, 0.63); 
     border-radius: 3px; 
     text-decoration: none; 
-    padding: 0.3em 1em 
+    padding: 0.3em 1em
+}
+
+.required_tag {
+    color:#d33a35;
 }
