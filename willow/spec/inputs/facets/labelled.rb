@@ -1,6 +1,6 @@
 RSpec.shared_examples 'labelled' do |object, label_name, required: false|
   let(:label_tag) { 'label' }
-  let(:label_required_tag) { %q(required-tag">required) }
+  let(:label_required_tag) { %q(<span style="color:#d33a35">*</span>) }
   let(:label_optional_tag) { %q(optional) }
 
   it 'renders a label' do
