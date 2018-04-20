@@ -78,4 +78,4 @@ en:
       No title
   simple_form:
     required:
-      html: <span style="color:#d33a35">*</span> 
+      html: <span class="required_tag">*</span> 

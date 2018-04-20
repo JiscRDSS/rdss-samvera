@@ -15,3 +15,7 @@
  *= require_self
  *= require_tree .
  */
+
+.required_tag {
+    color:#d33a35;
+}
