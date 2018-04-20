@@ -33,16 +33,14 @@ module Hyrax
       :object_identifiers,
     ]
 
-    mapped_arrays :object_dates,
-                  :object_organisation_roles,
+    mapped_arrays :object_organisation_roles,
                   :object_identifiers,
                   :object_related_identifiers,
                   :object_people,
                   :object_licence
 
-
-    def object_people
-      convert_value_to_array(model.object_people)
+    def object_dates
+      model.object_dates.presence || model.object_dates.build(date_type: :published, date_value: ::DateTime.now().to_date)
     end
 
     # utility methods to allow nested fields to work with the hyrax form
