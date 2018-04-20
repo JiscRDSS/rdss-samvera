@@ -16,6 +16,7 @@ class RdssCdm < ActiveFedora::Base
   # validates :object_organisation_roles, presence: true
   # validates :object_people, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.object_person').downcase)}
 
+  property :metadata_only, predicate: ::RDF::URI.new("http://meta.data.only"), multiple: false
   property :object_uuid, predicate: ::RDF::Vocab::DC11.identifier, multiple: false
   # object_title present as `title` inherited from Hyrax::CoreMetadata
   has_many :object_person_roles, class_name: 'Cdm::ObjectPersonRole'
