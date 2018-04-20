@@ -1,14 +1,14 @@
 en:
   activefedora:
     models:
-      rdss_cdm: Resource
+      rdss_cdm: Dataset
   hyrax:
     icons:
       rdss_cdm:     fa fa-file-text-o
     select_type:
       rdss_cdm:
-        name:               Resource
-        description:        Resource with JISC RDSS metadata schema properties
+        name:               Dataset
+        description:        Dataset with JISC RDSS metadata schema properties
     works:
       form:
         tabs:
