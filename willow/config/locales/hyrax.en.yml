@@ -76,6 +76,3 @@ en:
         header: New Collection
     no_title:
       No title
-  simple_form:
-    required:
-      html: <span style="color:#d33a35">*</span> 
