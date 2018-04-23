@@ -22,10 +22,7 @@ RSpec.describe ObjectOrganisationFormBuilder do
   end
 
   context 'address' do
-    it_behaves_like 'labelled',  FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address, 'Address', required: true
-    it_behaves_like 'required',  FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address
-    it_behaves_like 'optional',  FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address(required: false)
-    it_behaves_like 'text_area', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address
+    it_behaves_like 'hidden',  FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address
     it_behaves_like 'named',     FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).address, :address
   end
 
