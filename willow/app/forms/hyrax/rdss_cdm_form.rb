@@ -7,6 +7,7 @@ module Hyrax
 
     self.terms = [
       :title,
+      :metadata_only,
       :object_description,
       :object_keywords,
       :object_category,
@@ -23,6 +24,7 @@ module Hyrax
 
     self.required_fields = [
       :title,
+      :metadata_only,
       :object_description,
       :object_resource_type,
       :object_value,
