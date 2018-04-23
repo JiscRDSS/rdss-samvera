@@ -25,10 +25,6 @@ RSpec.describe ObjectOrganisationAttributeRenderer do
         expect(header[1].text).to eq('Name')
       end
 
-      it 'has header for Organisation Type' do
-        expect(header[2].text).to eq('Organisation type')
-      end
-
       it 'has header for Address' do
         expect(header[3].text).to eq('Address')
       end
@@ -45,10 +41,6 @@ RSpec.describe ObjectOrganisationAttributeRenderer do
         expect(cells[1].text).to eq('Some Organisation')
       end
 
-      it 'has the correct value for Organisation type' do
-        expect(cells[2].text).to eq('Charity')
-      end
-      
       it 'has the correct value for Address' do
         expect(cells[3].text).to eq('123 Some street, Some town')
       end

@@ -31,10 +31,6 @@ RSpec.describe ObjectOrganisationRolesAttributeRenderer do
       expect(subject.css('.td')[1].text).to eq('Some Organisation')
     end
 
-    it 'displays the organisation type' do
-      expect(subject.css('.td')[2].text).to eq('Billing')
-    end
-
     it 'displays the organisation address' do
       expect(subject.css('.tr')[2].css('.td')[3].text).to eq('Some Address')
     end
