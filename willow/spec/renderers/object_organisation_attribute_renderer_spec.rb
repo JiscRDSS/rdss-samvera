@@ -18,20 +18,13 @@ RSpec.describe ObjectOrganisationAttributeRenderer do
       let(:header) { subject.css('.th') }
 
       it 'has header for Jisc ID' do
-        expect(header[0].text).to eq('Jisc ID')
+        expect(header[0].text).to eq('Organisation identifier')
       end
 
       it 'has header for Name' do
         expect(header[1].text).to eq('Name')
       end
 
-      it 'has header for Organisation Type' do
-        expect(header[2].text).to eq('Organisation type')
-      end
-
-      it 'has header for Address' do
-        expect(header[3].text).to eq('Address')
-      end
     end
 
     describe 'Organisation Detail Row' do
@@ -45,13 +38,6 @@ RSpec.describe ObjectOrganisationAttributeRenderer do
         expect(cells[1].text).to eq('Some Organisation')
       end
 
-      it 'has the correct value for Organisation type' do
-        expect(cells[2].text).to eq('Charity')
-      end
-      
-      it 'has the correct value for Address' do
-        expect(cells[3].text).to eq('123 Some street, Some town')
-      end
     end
   end
 end

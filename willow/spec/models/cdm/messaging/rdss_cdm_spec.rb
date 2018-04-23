@@ -14,7 +14,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         object_organisation_roles_attributes: [
           {
             organisation_attributes: {
-              jisc_id: 1,
+              jisc_id: 'string',
               name: 'string',
               organisation_type: 'further_education',
               address: 'string'
@@ -134,7 +134,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
           },
           {
             organisation: {
-              organisationJiscId: 1,
+              organisationJiscId: 0,
               organisationName: 'string',
               organisationType: 4,
               organisationAddress: 'string'

@@ -11,8 +11,6 @@ RSpec.describe ObjectOrganisationRolesAttributeRenderer do
               id: "d30796da-8828-4005-93ec-660b2baace76",
               jisc_id: "123",
               name: "Some Organisation",
-              address: "Some Address",
-              organisation_type: "billing"
           }
         }].to_json
     end
@@ -31,12 +29,5 @@ RSpec.describe ObjectOrganisationRolesAttributeRenderer do
       expect(subject.css('.td')[1].text).to eq('Some Organisation')
     end
 
-    it 'displays the organisation type' do
-      expect(subject.css('.td')[2].text).to eq('Billing')
-    end
-
-    it 'displays the organisation address' do
-      expect(subject.css('.tr')[2].css('.td')[3].text).to eq('Some Address')
-    end
   end
 end
