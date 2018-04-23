@@ -6,7 +6,7 @@ module Cdm
       attribute_name :jisc_id
 
       def value(object, *)
-        0
+        Willow::Config.institution_jisc_id.to_i
       end
     end
   end

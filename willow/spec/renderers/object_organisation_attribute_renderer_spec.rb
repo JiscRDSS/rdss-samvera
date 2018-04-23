@@ -18,7 +18,7 @@ RSpec.describe ObjectOrganisationAttributeRenderer do
       let(:header) { subject.css('.th') }
 
       it 'has header for Jisc ID' do
-        expect(header[0].text).to eq('Organisation Identifier')
+        expect(header[0].text).to eq('Organisation identifier')
       end
 
       it 'has header for Name' do

@@ -81,7 +81,7 @@ en:
           relation_type: Select relation type
   headers:
     rdss_cdm:
-      jisc_id: Organisation Identifier
+      jisc_id: Organisation identifier
       organisation_name:  Name
       address: Address
       organisation_type: Organisation type
