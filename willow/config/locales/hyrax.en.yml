@@ -76,6 +76,10 @@ en:
         header: New Collection
     no_title:
       No title
+    works:
+      form:
+        tab:
+          relationships: Collections
   simple_form:
     required:
       html: <span class="required_tag">*</span> 
