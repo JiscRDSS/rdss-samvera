@@ -6,7 +6,7 @@ module Cdm
       attribute_name :jisc_id
 
       def value(object, *)
-        object.jisc_id.to_i
+        0
       end
     end
   end

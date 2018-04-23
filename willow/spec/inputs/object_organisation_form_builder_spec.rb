@@ -9,7 +9,6 @@ RSpec.describe ObjectOrganisationFormBuilder do
     it_behaves_like 'labelled', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).jisc_id, 'Identifier'
     it_behaves_like 'optional', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).jisc_id
     it_behaves_like 'required', FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).jisc_id(required: true)
-    it_behaves_like 'numeric',  FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).jisc_id
     it_behaves_like 'named',    FacetsProxy.(described_class,ObjectOrganisationFormBuilderDummy).jisc_id, :jisc_id
   end
 
