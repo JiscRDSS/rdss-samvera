@@ -12,7 +12,6 @@ class ObjectOrganisationAttributeRenderer
         row do
           header { I18n.t('headers.rdss_cdm.jisc_id') } +
           header { I18n.t('headers.rdss_cdm.organisation_name') } +
-          header { I18n.t('headers.rdss_cdm.organisation_type') } +
           header { I18n.t('headers.rdss_cdm.address') }
         end
       end +
@@ -20,7 +19,6 @@ class ObjectOrganisationAttributeRenderer
         row do
           cell { organisation.jisc_id } +
           cell { organisation.name } +
-          cell { type(organisation.organisation_type) } +
           cell { organisation.address }
         end
       end

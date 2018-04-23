@@ -12,9 +12,6 @@ class ObjectOrganisationFormBuilder < RdssFields
   end
 
   def organisation_type(required: true)
-    input :organisation_type,
-          collection: ::Cdm::Selections::OrganisationType.call,
-          prompt: :translate,
-          required: required
+    input :organisation_type, as: :hidden, :input_html => { :value => "higher_education" }
   end
 end
