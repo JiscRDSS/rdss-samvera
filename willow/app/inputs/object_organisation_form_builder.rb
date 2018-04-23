@@ -8,7 +8,7 @@ class ObjectOrganisationFormBuilder < RdssFields
   end
 
   def address(required: true)
-    input :address, as: :text, required: required
+    input :address, as: :hidden, :input_html => { :value => "A default address" }
   end
 
   def organisation_type(required: true)

@@ -11,15 +11,13 @@ class ObjectOrganisationAttributeRenderer
       thead do
         row do
           header { I18n.t('headers.rdss_cdm.jisc_id') } +
-          header { I18n.t('headers.rdss_cdm.organisation_name') } +
-          header { I18n.t('headers.rdss_cdm.address') }
+          header { I18n.t('headers.rdss_cdm.organisation_name') }
         end
       end +
       tbody do
         row do
           cell { organisation.jisc_id } +
-          cell { organisation.name } +
-          cell { organisation.address }
+          cell { organisation.name }
         end
       end
     end
