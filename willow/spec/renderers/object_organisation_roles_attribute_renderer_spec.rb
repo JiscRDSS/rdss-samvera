@@ -32,7 +32,7 @@ RSpec.describe ObjectOrganisationRolesAttributeRenderer do
     end
 
     it 'displays the organisation address' do
-      expect(subject.css('.tr')[2].css('.td')[3].text).to eq('Some Address')
+      expect(subject.css('.tr')[2].css('.td')[2].text).to eq('Some Address')
     end
   end
 end
