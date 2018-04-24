@@ -7,7 +7,7 @@ class SimpleFormTranslator
         default
       ]
 
-      I18n.t(lookups.shift, scope: :"simple_form.#{namespace}", default: default).presence
+      I18n.t(lookups.shift, scope: :"simple_form.#{namespace}", default: lookups).presence
     end
   end
 end
