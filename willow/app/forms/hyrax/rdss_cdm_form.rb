@@ -4,35 +4,8 @@ module Hyrax
   class RdssCdmForm < Hyrax::Forms::WorkForm
     include Concerns::RelationArrayMapper
     self.model_class = ::RdssCdm
-
-    self.terms = [
-      :title,
-      :metadata_only,
-      :object_description,
-      :object_keywords,
-      :object_category,
-      #:object_version,
-      :object_resource_type,
-      :object_value,
-      :object_people,
-      :object_dates,
-      :object_rights,
-      :object_organisation_roles,
-      :object_identifiers,
-      :object_related_identifiers,
-    ]
-
-    self.required_fields = [
-      :title,
-      :object_description,
-      :object_resource_type,
-      :object_value,
-      :object_people,
-      :object_dates,
-      :object_rights,
-      :object_organisation_roles,
-      :object_identifiers,
-    ]
+    self.terms = RdssCdmFormFields.terms
+    self.required_fields = RdssCdmFormFields.required
 
     mapped_arrays :object_organisation_roles,
                   :object_identifiers,
