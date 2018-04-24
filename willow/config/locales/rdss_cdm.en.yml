@@ -66,6 +66,13 @@ en:
         licence: Licensing and distribution information governing access to the dataset.
         rights_holder: The person or organisation who holds the rights for the work
         rights_statement: Add text that explains why some or all of the data may not be available (e.g. sensitive data, copyright restrictions)
+    tooltips:
+      access_type:
+        open: No additional information required for access
+        safeguarded: Contact email must be given on request for access
+        controlled: Request for access form must be completed
+        restricted: Request for access will be reviewed by a Data Access Committee
+        closed: Data is not accessible
     prompts:
       rdss_cdm:
         object_resource_type: Select resource type

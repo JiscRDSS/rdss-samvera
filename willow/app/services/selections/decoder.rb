@@ -51,7 +51,10 @@ module Selections
         Class.new do
           define_singleton_method(:call) do
             ClassificationFactory.(section, options.slice(:namespace)).call.map do |object|
-              [I18n.t("rdss.#{section.underscore.downcase.intern}.#{object.underscore.downcase.intern}"), object.underscore.downcase.intern]
+              [I18n.t("rdss.#{section.underscore.downcase.intern}.#{object.underscore.downcase.intern}"), object.underscore.downcase.intern].tap do |item|
+                tooltip = TooltipAdder.(SimpleFormTranslator.(:tooltips, section.underscore.downcase.intern, object.underscore.downcase.intern))
+                item << tooltip if tooltip
+              end
             end.sort{ |a, b| options[:comparator].(a,b) }
           end
         end
