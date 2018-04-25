@@ -18,3 +18,4 @@ env:
   - RAILS_ENV=test 
     SECRET_KEY_BASE_TEST=secret 
     SAMVERA_INTERNAL_HOST=http://repository.your-institution.ac.uk
+    junctions=cdm_demo
