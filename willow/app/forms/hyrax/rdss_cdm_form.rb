@@ -100,7 +100,7 @@ module Hyrax
         :mail,
         :_destroy,
         object_person_roles_attributes: permitted_object_person_roles_params,
-        person_identifiers_attributes: permitted_object_person_identifier_params
+        person_identifiers_attributes: permitted_person_identifier_params
       ]
     end
 
@@ -159,7 +159,7 @@ module Hyrax
       ]
     end
 
-    def permitted_object_person_identifier_params
+    def self.permitted_person_identifier_params
       [
         :id,
         :_destroy,
