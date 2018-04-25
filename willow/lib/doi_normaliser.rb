@@ -13,13 +13,14 @@ class DoiNormaliser
 
     def parse_doi(doi_value)
       if doi_value.include? 'doi.org'
-         doi_value = URI(doi_value).path.delete_prefix('/')
+        doi_value = URI(doi_value.strip()).path.delete_prefix('/')
       end
       if doi_value.include? 'doi:'
-        doi_value.delete_prefix('doi:')
+        doi_value = doi_value.delete_prefix('doi:')
       end
+      doi_value = doi_value.strip()
       # v. https://www.crossref.org/blog/dois-and-matching-regular-expressions/
-      doi_regex = /^10.\d{4,9}\/[-.;():\d\w]+$/
+      doi_regex = /^10.\d{4,9}\/[-.;():\/\d\w]+$/
       if doi_regex.match(doi_value)
         doi_value
       end
@@ -29,7 +30,7 @@ class DoiNormaliser
       URI::HTTPS.build({
         :host => 'doi.org',
         :path => '/' + doi
-      })
+      }).to_s
     end
 
     def format_doi_display(doi)
