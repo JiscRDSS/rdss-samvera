@@ -18,7 +18,7 @@ class ObjectRelatedIdentifiersAttributeRenderer < Hyrax::Renderers::AttributeRen
           row {
             cell { I18n.t("rdss.relation_type.#{ri.relation_type}", default: ri.relation_type) if ri.relation_type} +
             cell { I18n.t("rdss.identifier_type.#{ri.identifier_type}", default: ri.identifier_type) if ri.identifier_type} +
-            cell { ri.identifier_value }
+            cell { CdmIdentifierRenderer.(ri.identifier_type, ri.identifier_value) }
           }
         end.join
       }
