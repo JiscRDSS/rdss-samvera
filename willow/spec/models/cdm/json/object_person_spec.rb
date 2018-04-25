@@ -7,7 +7,8 @@ RSpec.describe ::Cdm::Json::ObjectPerson do
       given_name: 'Paul',
       family_name: 'Mak',
       mail: 'pmak@example.com',
-      object_person_roles: [{role_type: 'author'}, {role_type: 'editor'}]
+      object_person_roles: [{role_type: 'author'}, {role_type: 'editor'}],
+      person_identifiers: []
     }.to_json
   end
 
