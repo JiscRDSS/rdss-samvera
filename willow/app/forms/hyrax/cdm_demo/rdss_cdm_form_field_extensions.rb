@@ -9,12 +9,12 @@ module Hyrax
           :object_keywords,
           :object_category,
           :object_resource_type,
+          :object_identifiers,
           :object_value,
           :object_people,
           :object_dates,
           :object_rights,
           :object_organisation_roles,
-          :object_identifiers,
           :object_related_identifiers,
         ]
       end
@@ -25,12 +25,12 @@ module Hyrax
           :metadata_only,
           :object_description,
           :object_resource_type,
+          :object_identifiers,
           :object_value,
           :object_people,
           :object_dates,
           :object_rights,
           :object_organisation_roles,
-          :object_identifiers,
         ]
       end
     end
