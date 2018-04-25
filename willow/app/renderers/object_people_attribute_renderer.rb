@@ -6,8 +6,8 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
     converter.new(value)
   end
 
-  def render_identifiers(person)
-    PersonIdentifiersAttributeRenderer.new.attribute_value_to_html(person)
+  def render_identifiers(person, renderer=::Cdm::Json::PersonIdentifiersAttributeRenderer)
+    renderer.new.attribute_value_to_html(person)
   end
 
   def render_roles(person)
@@ -31,7 +31,7 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
             cell { person.name } +
             cell { person.mail } +
             cell { render_roles(person) } +
-            cell { render_identifiers(person)}
+            cell { render_identifiers(person) }
           end
         end.join
       end
