@@ -18,6 +18,6 @@ class ObjectRightsFormBuilder < RdssFields
   end
 
   def accesses
-    object.accesses.build if object.accesses.blank?
+    object.accesses.build({access_type: 'open'}) if object.accesses.blank?
   end
 end

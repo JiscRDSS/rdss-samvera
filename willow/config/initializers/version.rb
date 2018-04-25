@@ -1,1 +1,1 @@
-RDSS_SAMVERA_VERSION="Version not set"
+RDSS_SAMVERA_VERSION="feature/RDSSSAM-307-Form_amendments @ e2637d1"
