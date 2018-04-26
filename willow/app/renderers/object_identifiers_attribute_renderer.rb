@@ -10,7 +10,7 @@ class ObjectIdentifiersAttributeRenderer < Hyrax::Renderers::AttributeRenderer
   def fake_minted_doi
     row {
       cell { I18n.t("rdss.identifier_type.doi") } +
-      cell { CdmIdentifierRenderer.render_url('#','doi:10.1000/2342343') }
+      cell { CdmIdentifierRenderer.render_url('#','doi: 10.1000/2342343') }
     }
   end
 
