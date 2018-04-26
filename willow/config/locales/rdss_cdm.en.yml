@@ -65,7 +65,7 @@ en:
         access_statement: Include details about how access can be sought, or give a clear legal or policy statement about the conditions imposed by the access type.
         jisc_id: Enter an Organisation identifier if applicable, e.g. ISNI, GRID, FUNDREF.
         licence: Licensing and distribution information governing access to the dataset.
-        rights_holder: The person or organisation who holds the rights for the work
+        rights_holder: The person or organisation who holds the rights for the resource
         rights_statement: Add text that explains why some or all of the data may not be available (e.g. sensitive data, copyright restrictions)
     tooltips:
       access_type:
