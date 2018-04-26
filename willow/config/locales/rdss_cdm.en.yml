@@ -3,9 +3,30 @@ en:
     models:
       rdss_cdm: Resource
   hyrax:
+    admin:
+      sidebar:
+        works: Resources
     base:
       form_progress:
-        required_description: Describe your resource
+        required_descriptions: Describe your resource
+    batch_uploads:
+      progress:
+        header: Save Resources
+    collections:
+      show:
+        works_in_collection: Resources
+    dashboard:
+      admin_sets:
+        works: Resources
+      collections:
+        show:
+          item_count: Resources
+      my:
+        works: Resources
+    homepage:
+      featured_works:
+        tab_label: Featured Resources
+        title: Featured Resources
     icons:
       rdss_cdm:     fa fa-file-text-o
     select_type:
@@ -13,6 +34,8 @@ en:
         name:               Resource
         description:        Resource with JISC RDSS metadata schema properties
     works:
+      create:
+        breadcrumb: Add New Resource
       form:
         tabs:
           relationships:  Collection
