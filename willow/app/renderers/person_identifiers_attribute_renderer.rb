@@ -7,9 +7,6 @@ class PersonIdentifiersAttributeRenderer
 
   def attribute_value_to_html(value)
     table {
-      thead {
-        row { header { "Type" } + header { "Value" } }
-      } +
       tbody {
         identifiers(value).map do |identifier|
           row {
