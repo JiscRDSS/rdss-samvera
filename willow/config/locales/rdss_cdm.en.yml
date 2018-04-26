@@ -16,6 +16,8 @@ en:
       form:
         tabs:
           relationships:  Collection
+      progress:
+        header: Final Checks
   simple_form:
     labels:
       rdss_cdm:
