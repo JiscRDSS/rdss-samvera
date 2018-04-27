@@ -8,7 +8,7 @@ en:
         works: Resources
     base:
       form_progress:
-        required_descriptions: Describe your resource
+        required_descriptions: Describe your resource. Labelled fields tagged with a red * are mandatory
     batch_uploads:
       progress:
         header: Save Resources
