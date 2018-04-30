@@ -41,6 +41,12 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             mail: 'paul@example.com',
             object_person_roles_attributes: [
               { role_type: 'author' }
+            ],
+            person_identifiers_attributes: [
+              {
+                person_identifier_type: 'orcid',
+                person_identifier_value: '0000000000'
+              }
             ]
           }
         ],
@@ -69,7 +75,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
             person: {
               personIdentifier: [
                 personIdentifierType: 1,
-                personIdentifierValue: 'not yet implemented'
+                personIdentifierValue: '0000000000'
               ],
               personEntitlement: [1],
               personAffiliation: [1],

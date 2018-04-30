@@ -24,4 +24,8 @@ class ObjectPersonFormBuilder < RdssFields
   def object_person_roles
     build_if_blank(object.object_person_roles).to_a
   end
+
+  def person_identifiers
+    build_if_blank(object.person_identifiers).to_a
+  end
 end

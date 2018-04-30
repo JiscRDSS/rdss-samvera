@@ -1,0 +1,14 @@
+<li class="field-wrapper">
+  <div class="row">
+    <div class="col-md-3">
+      <%= person_identifier_form.person_identifier_type(required: required) %>
+    </div>
+    <div class="col-md-6">
+      <%= person_identifier_form.person_identifier_value(required: required) %>
+    </div>
+    <div class='col-md-3'>
+      <%= person_identifier_form.destroy %>
+      <%= remove_button :date %>
+    </div>
+  </div>
+</li>

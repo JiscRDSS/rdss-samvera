@@ -2,18 +2,8 @@
 module Cdm
   module Messaging
     class PersonIdentifier < MessageMapper
-      def hash_value(*)
-        {
-          personIdentifierType: 1,
-          personIdentifierValue: 'not yet implemented'
-        }
-      end
-
-      def array_value(message_mapper, object)
-        [
-          hash_value(message_mapper, object)
-        ]
-      end
+      include AttributeMapper
+      attribute_name :person_identifiers
     end
   end
 end

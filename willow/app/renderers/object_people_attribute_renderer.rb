@@ -6,6 +6,10 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
     converter.new(value)
   end
 
+  def render_identifiers(person, renderer=::PersonIdentifiersAttributeRenderer)
+    renderer.new.attribute_value_to_html(person)
+  end
+
   def render_roles(person)
     person.roles.map(&:name).join(', ')
   end
@@ -17,7 +21,8 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
         row do
           header { I18n.t('headers.rdss_cdm.person_name') } +
           header { I18n.t('headers.rdss_cdm.person_email') } +
-          header { I18n.t('headers.rdss_cdm.person_roles') }
+          header { I18n.t('headers.rdss_cdm.person_roles') } +
+          header { I18n.t('headers.rdss_cdm.person_identifiers') }
         end
       end +
       tbody do
@@ -25,7 +30,8 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
           row do
             cell { person.name } +
             cell { person.mail } +
-            cell { render_roles(person) }
+            cell { render_roles(person) } +
+            cell { render_identifiers(person) }
           end
         end.join
       end
