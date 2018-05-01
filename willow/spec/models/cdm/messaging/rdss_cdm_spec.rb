@@ -74,15 +74,13 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
           {
             person: {
               personIdentifier: [
-                personIdentifierType: 1,
-                personIdentifierValue: '0000000000'
+                personIdentifierValue: '0000000000',
+                personIdentifierType: 1
               ],
-              personEntitlement: [1],
-              personAffiliation: [1],
-              personGivenName: 'Paul',
-              personCn: 'Mr. Paul Mak BSc. SSc. GSc.',
-              personSn: 'Mak',
-              personTelephoneNumber: 'not yet implemented',
+              personHonorificPrefix: 'Mr.',
+              personGivenNames: 'Paul',
+              personFamilyNames: 'Mak',
+              personHonorificSuffix: 'BSc. SSc. GSc.',
               personMail: 'paul@example.com',
               personOrganisationUnit: {
                 organisation: {
@@ -98,28 +96,26 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
           }
         ],
         objectRights:
-        [
-          {
-            rightsStatement: [
-              'Rights statement'
-            ],
-            rightsHolder: [
-              'Rights holder'
-            ],
-            licence: [
-              {
-                licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
-                licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
-              }
-            ],
-            access: [
-              {
-                accessType: 3,
-                accessStatement: 'Statement 1'
-              }
-            ]
-          }
-        ],
+        {
+          rightsStatement: [
+            'Rights statement'
+          ],
+          rightsHolder: [
+            'Rights holder'
+          ],
+          licence: [
+            {
+              licenceName: 'Open Data Commons Public Domain Dedication and Licence (ODC PDDL)',
+              licenceIdentifier: 'https://creativecommons.org/publicdomain/zero/1.0/'
+            }
+          ],
+          access: [
+            {
+              accessType: 3,
+              accessStatement: 'Statement 1'
+            }
+          ]
+        },
         objectResourceType: 1,
         objectRelatedIdentifier: [
           {
@@ -152,7 +148,7 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
     }
     let(:cdm_object) { ::RdssCdm.new(attributes) }
 
-    xit 'should generate a message body hash as the payload' do
+    it 'should generate a message body hash as the payload' do
       VCR.use_cassette('rdss_cdm_messaging', match_requests_on: [:method, :host]) do
         expect(described_class.(cdm_object)).to eq(final_body)
       end
