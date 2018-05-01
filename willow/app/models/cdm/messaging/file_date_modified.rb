@@ -11,7 +11,7 @@ module Cdm
 
       def array_value(_, object)
         [
-          hash_value(_, object)
+          value(object, _)
         ]
       end
 

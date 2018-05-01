@@ -75,7 +75,7 @@ module Cdm
           object.send(attribute_name).map do |item|
             decoder.nil? ? value(object, nil) : decode_message_map(decoder, item)
           end
-        end.flatten
+        end.flatten.select(&:presence)
       end
 
       def value(object, override_name=nil)
