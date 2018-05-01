@@ -23,22 +23,7 @@ RSpec.describe ::Cdm::Messaging::FileRight do
   }
 
   let(:expected_value) {
-    {
-      rightsStatement: ['not yet implemented'],
-      rightsHolder: ['not yet implemented'],
-      licence: [
-        {
-          licenceName: '',
-          licenceIdentifier: ''
-        }
-      ],
-      access: [
-        {
-          accessType: 3,
-          accessStatement: 'not yet implemented'
-        }
-      ]
-    }
+    nil
   }
 
   describe 'decodes messaging sections' do
