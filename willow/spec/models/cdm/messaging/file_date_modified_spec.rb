@@ -9,21 +9,11 @@ end
 
 RSpec.describe ::Cdm::Messaging::FileDateModified do
   let(:input_map) {
-    [
-      {
-        dateType: nil,
-        dateValue: nil
-      }
-    ]
+    nil
   }
 
   let(:expected_value) {
-    [
-      {
-        dateType: 8,
-        dateValue: '1970-01-01T00:01:40+00:00'
-      }
-    ]
+    '1970-01-01T00:01:40+00:00'
   }
 
   describe 'decodes messaging sections' do
