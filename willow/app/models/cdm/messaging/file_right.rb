@@ -3,18 +3,7 @@ module Cdm
   module Messaging
     class FileRight < MessageMapper
       def hash_value(_, object)
-        {
-          rightsStatement: [ 'not yet implemented' ],
-          rightsHolder: [ 'not yet implemented' ],
-          licence: [
-            licenceName: '',
-            licenceIdentifier: ''
-          ],
-          access: [
-            accessType: 3,
-            accessStatement: 'not yet implemented'
-          ]
-        }
+        nil
       end
     end
   end
