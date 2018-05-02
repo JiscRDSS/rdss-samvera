@@ -120,8 +120,10 @@ RSpec.describe ::Cdm::Messaging::RdssCdm do
         objectRelatedIdentifier: [
           {
             relationType: 1,
-            identifierType: 17,
-            identifierValue: 'http://example.com',
+            identifier: {
+              identifierType: 17,
+              identifierValue: 'http://example.com'
+            },
           }
         ],
         objectOrganisationRole: [
