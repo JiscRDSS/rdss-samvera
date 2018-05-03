@@ -15,7 +15,6 @@ module Cdm
     validate :has_given_name_or_family_name
 
     has_many :person_identifiers, class_name: 'Cdm::PersonIdentifier', inverse_of: :object_person, autosave: true
-    validates :person_identifiers, presence: { message: I18n.t('willow.fields.presence', type: I18n.t('willow.fields.person_identifier').downcase)}
     
     accepts_nested_attributes_for :object_person_roles, allow_destroy: true, reject_if: :object_person_roles_blank?
     accepts_nested_attributes_for :person_identifiers, allow_destroy: true, reject_if: :person_identifiers_blank?
