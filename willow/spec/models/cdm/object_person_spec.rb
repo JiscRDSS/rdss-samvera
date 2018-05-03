@@ -9,6 +9,14 @@ RSpec.describe Cdm::ObjectPerson do
     let(:family_name) { 'Luxury - Ya Ch t' }
     let(:honorific_suffix) { 'PhD' }
     let(:mail) { 'my@email.com'}
+    let(:person_identifier_attributes) { 
+      [
+        {
+          person_identifier_type: 'orcid',
+          person_identifier_value: '0000000000'
+        }
+      ] 
+    }
     let(:build_attributes) {
       {
         honorific_prefix: honorific_prefix,
@@ -16,7 +24,8 @@ RSpec.describe Cdm::ObjectPerson do
         family_name: family_name,
         honorific_suffix: honorific_suffix,
         mail: mail,
-        object_person_roles_attributes: roles_attributes
+        object_person_roles_attributes: roles_attributes,
+        person_identifiers_attributes: person_identifier_attributes
       }
     }
     let(:built_object) { build(:cdm_object_person, build_attributes) }
