@@ -14,11 +14,11 @@ RSpec.describe ObjectIdentifiersAttributeRenderer do
       end
 
       it 'looks up and displays the label' do
-        expect(render_identifier(value).css('.td')[0].text).to eq('DOI')
+        expect(render_identifier(value).css('.td')[2].text).to eq('DOI')
       end
 
       it 'displays the identifier value' do
-        expect(render_identifier(value).css('.td')[1].text).to eq('12345')
+        expect(render_identifier(value).css('.td')[3].text).to eq('12345')
       end
     end
 
@@ -28,11 +28,11 @@ RSpec.describe ObjectIdentifiersAttributeRenderer do
       end
 
       it 'it displays the type as directly entered' do
-        expect(render_identifier(value).css('.td')[0].text).to eq('notInEnum')
+        expect(render_identifier(value).css('.td')[2].text).to eq('notInEnum')
       end
 
       it 'displays the identifier value' do
-        expect(render_identifier(value).css('.td')[1].text).to eq('67890')
+        expect(render_identifier(value).css('.td')[3].text).to eq('67890')
       end
     end
   end
