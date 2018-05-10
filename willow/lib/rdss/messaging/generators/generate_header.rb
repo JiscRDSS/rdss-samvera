@@ -4,6 +4,7 @@ module Rdss
   module Messaging
     module Generators
       class GenerateHeader
+        include Core::VersionMapper
         class << self
           def call(event: :create, version: :current, errors: [])
             new(event: event, version: version).call(errors: errors)
@@ -18,13 +19,8 @@ module Rdss
           @version=version
         end
 
-        def default_version
-          version_map[:current]
-        end
-
         def version_map
           {
-            'current': '1.2.1',
             '1.2.1': '1.2.1',
             '2.1.0': '2.1.0',
             '3.0.0': '3.0.0'
