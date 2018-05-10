@@ -42,7 +42,7 @@ module Messaging210
             person_identifiers_attributes: [
               {
                 person_identifier_type: 'orcid',
-                person_identifier_value: '0000000000'
+                person_identifier_value: '000000000'
               }
             ]
           }
@@ -61,22 +61,19 @@ module Messaging210
 
     def result_attributes
       {
-        "objectUuid": nil,
         "objectTitle": "title",
         "objectCategory": ["category"],
         "objectDate": [{ "dateValue": "2002-10-02T10:00:00-05:00", "dateType": 1 }],
         "objectDescription": "description",
-        "objectFile": [],
-        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 18 }],
+        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 17 }],
         "objectKeywords": ["keyword"],
         "objectValue": 1,
         "objectPersonRole": [
           {
             "person": {
-              "personUuid": nil,
               "personIdentifier": [
-                "personIdentifierType": 1,
-                "personIdentifierValue": '00000000'
+                "personIdentifierValue": '000000000',
+                "personIdentifierType": 1
               ],
               "personEntitlement": [1],
               "personAffiliation": [1],

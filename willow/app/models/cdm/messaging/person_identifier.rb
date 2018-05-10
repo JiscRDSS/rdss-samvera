@@ -2,11 +2,8 @@
 module Cdm
   module Messaging
     class PersonIdentifier < MessageMapper
-      def array_value(message_mapper, object)
-        [
-          hash_value(message_mapper, object)
-        ]
-      end
+      include AttributeMapper
+      attribute_name :person_identifiers
     end
   end
 end
