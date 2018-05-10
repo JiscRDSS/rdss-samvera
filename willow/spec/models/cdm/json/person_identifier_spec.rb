@@ -11,7 +11,6 @@ RSpec.describe ::Cdm::Json::PersonIdentifier do
   subject { described_class.new(JSON.parse(values)) }
 
   it 'has the correct type' do
-    # binding.pry
     expect(subject.type).to eq('twitter')
   end
 
