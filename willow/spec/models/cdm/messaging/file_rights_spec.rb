@@ -28,8 +28,8 @@ RSpec.describe ::Cdm::Messaging::FileRight do
       rightsHolder: ['not yet implemented'],
       licence: [
         {
-          licenceName: '',
-          licenceIdentifier: ''
+          licenceName: 'not yet implemented',
+          licenceIdentifier: 'not yet implemented'
         }
       ],
       access: [
