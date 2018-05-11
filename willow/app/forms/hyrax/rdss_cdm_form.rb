@@ -71,7 +71,8 @@ module Hyrax
         :honorific_suffix,
         :mail,
         :_destroy,
-        object_person_roles_attributes: permitted_object_person_roles_params
+        object_person_roles_attributes: permitted_object_person_roles_params,
+        person_identifiers_attributes: permitted_person_identifier_params
       ]
     end
 
@@ -128,6 +129,15 @@ module Hyrax
         :identifier_value,
         :identifier_type
       ]
+    end
+
+    def self.permitted_person_identifier_params
+      [
+        :id,
+        :_destroy,
+        :person_identifier_value,
+        :person_identifier_type
+    ]
     end
 
     def self.permitted_object_related_identifier_params

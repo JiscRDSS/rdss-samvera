@@ -53,6 +53,7 @@ en:
       project: 'Project'
       proxy_depositor: 'Depositor'
       publisher: 'Publisher'
+      person_identifier: 'Person Identifier'
       rating: 'Rating'
       relation: 'Related work'
       resource_type: 'Resource type'

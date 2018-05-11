@@ -1,0 +1,10 @@
+<div class="form-group multi-nested rdss_csm_person_identifier">
+  <%# only output the label and the hint text. wrapper defined in config/initializers/simple_form_rdss.rb %>
+  <%= f.input :person_identifiers, wrapper: :label_and_hint_only, required: f.object.required?(:person_identifiers) %>
+  <ul class="listing"><%# normally added by https://github.com/samvera/hydra-editor/blob/master/app/inputs/multi_value_input.rb %>
+    <%= f.fields_for :person_identifiers, @form.person_identifiers, builder: ::ObjectPersonIdentifierFormBuilder do |form| %>
+      <%= render partial: form, locals: {required: f.object.required?(:person_identifiers)} %>
+    <% end %>
+  </ul>
+  <%= add_another_button :person_identifiers %>
+</div>
