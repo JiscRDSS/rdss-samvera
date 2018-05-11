@@ -7,8 +7,8 @@ module Cdm
           rightsStatement: [ 'not yet implemented' ],
           rightsHolder: [ 'not yet implemented' ],
           licence: [
-            licenceName: '',
-            licenceIdentifier: ''
+            licenceName: 'not yet implemented',
+            licenceIdentifier: 'not yet implemented'
           ],
           access: [
             accessType: 3,
