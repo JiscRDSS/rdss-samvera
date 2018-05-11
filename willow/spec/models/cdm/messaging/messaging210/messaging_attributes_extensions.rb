@@ -13,7 +13,7 @@ module Messaging210
           {
             organisation_attributes: {
               jisc_id: 1,
-              name: "string",
+              name: 'string',
               organisation_type: 'further_education',
               address: 'string'
             },
@@ -61,36 +61,36 @@ module Messaging210
 
     def result_attributes
       {
-        "objectTitle": "title",
-        "objectCategory": ["category"],
-        "objectDate": [{ "dateValue": "2002-10-02T10:00:00-05:00", "dateType": 1 }],
-        "objectDescription": "description",
-        "objectIdentifier": [{ "identifierValue": "http://example.com", "identifierType": 17 }],
-        "objectKeywords": ["keyword"],
-        "objectValue": 1,
-        "objectPersonRole": [
+        objectTitle: 'title',
+        objectCategory: ['category'],
+        objectDate: [{'dateValue': '2002-10-02T10:00:00-05:00', 'dateType': 1 }],
+        objectDescription: 'description',
+        objectIdentifier: [{'identifierValue': 'http://example.com', 'identifierType': 17 }],
+        objectKeywords: ['keyword'],
+        objectValue: 1,
+        objectPersonRole: [
           {
-            "person": {
-              "personIdentifier": [
-                "personIdentifierValue": '000000000',
-                "personIdentifierType": 1
+            person: {
+              personIdentifier: [
+                personIdentifierValue: '000000000',
+                personIdentifierType: 1
               ],
-              "personEntitlement": [1],
-              "personAffiliation": [1],
-              "personGivenName": "Paul",
-              "personCn": "Mr. Paul Mak",
-              "personSn": "Mak",
-              :personTelephoneNumber=>"not yet implemented",
-              :personMail=>"paul@example.com",
-              :personOrganisationUnit=>{
-                :organisation=>{
-                  :organisationJiscId=>1,
-                  :organisationName=>"not yet implemented",
-                  :organisationType=>1,
-                  :organisationAddress=>"not yet implemented"
+              personEntitlement: [1],
+              personAffiliation: [1],
+              personGivenName: 'Paul',
+              personCn: 'Mr. Paul Mak',
+              personSn: 'Mak',
+              personTelephoneNumber: 'not yet implemented',
+              personMail: 'paul@example.com',
+              personOrganisationUnit: {
+                organisation: {
+                  organisationJiscId: 1,
+                  organisationName: 'not yet implemented',
+                  organisationType: 1,
+                  organisationAddress: 'not yet implemented'
                 },
-                :organisationUnitUuid=>"00000000-0000-1000-a000-000000000000",
-                :organisationUnitName=>"not yet implemented"}
+                organisationUnitUuid: '00000000-0000-1000-a000-000000000000',
+                organisationUnitName: 'not yet implemented'}
             },
             role: 21
           }
@@ -132,7 +132,7 @@ module Messaging210
               organisationJiscId: 0,
               organisationName: 'RDSS Samvera',
               organisationType: 8,
-              'organisationAddress': 'RDSS Samvera'
+              organisationAddress: 'RDSS Samvera'
             },
             role: 2
           },
