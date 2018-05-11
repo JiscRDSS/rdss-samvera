@@ -6,7 +6,7 @@ class ObjectPeopleAttributeRenderer < Hyrax::Renderers::AttributeRenderer
     converter.new(value)
   end
 
-  def render_identifiers(person, renderer=PersonIdentifiersAttributeRenderer)
+  def render_identifiers(person, renderer=::Cdm::Json::PersonIdentifiersAttributeRenderer)
     renderer.new.attribute_value_to_html(person)
   end
 
