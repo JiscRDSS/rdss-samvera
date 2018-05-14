@@ -17,7 +17,7 @@ terms:
     - id: https://creativecommons.org/licenses/by-nd/4.0/
       term: Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
       active: true
-    - id: https://opensource.org/licences/MIT/
+    - id: https://opensource.org/licenses/MIT/
       term: The MIT License (MIT)
       active: true
     - id: http://opendatacommons.org/licenses/odbl/1.0/
