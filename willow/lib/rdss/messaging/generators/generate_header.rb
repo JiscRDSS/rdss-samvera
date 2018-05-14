@@ -4,7 +4,7 @@ module Rdss
   module Messaging
     module Generators
       class GenerateHeader
-        include Core::VersionMapper
+        include ::Rdss::Messaging::Generators::Core::VersionMapper
         class << self
           def call(event: :create, version: :current, errors: [])
             new(event: event, version: version).call(errors: errors)
