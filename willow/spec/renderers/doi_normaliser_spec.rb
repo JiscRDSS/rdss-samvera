@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DoiNormaliser do
+describe Cdm::DoiNormaliser do
   let(:valid_dois) {
     [
     '10.1007/s10067-013-2203-9',

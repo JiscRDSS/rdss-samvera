@@ -17,7 +17,7 @@ class ObjectRightsAccessesAttributeRenderer < Hyrax::Renderers::AttributeRendere
         accesses(value).map do |access|
           row {
             cell { I18n.t("rdss.access_type.#{access.type}", default: access.type)} +
-            cell { access.statement }
+            cell { Cdm::StringRenderer.(access.statement) }
           }
         end.join
       }

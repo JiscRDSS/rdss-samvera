@@ -16,8 +16,8 @@ class ObjectOrganisationAttributeRenderer
       end +
       tbody do
         row do
-          cell { organisation.jisc_id } +
-          cell { organisation.name }
+          cell { Cdm::AutoRenderer.(organisation.jisc_id) } +
+          cell { Cdm::StringRenderer.(organisation.name) }
         end
       end
     end
