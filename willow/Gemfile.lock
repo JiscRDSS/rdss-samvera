@@ -856,12 +856,12 @@ GEM
       deprecation
       mime-types (> 2.0, < 4.0)
       mini_magick (>= 3.2, < 5)
-    hydra-editor (3.4.0)
+    hydra-editor (4.0.1)
       active-fedora (>= 9.0.0)
       almond-rails (~> 0.1)
       cancancan (~> 1.8)
       rails (>= 4.2.0, < 6)
-      simple_form (~> 3.2, <= 3.5.0)
+      simple_form (~> 3.2)
       sprockets-es6
     hydra-file_characterization (0.3.3)
       activesupport (>= 3.0.0)
@@ -881,7 +881,7 @@ GEM
       hydra-file_characterization (~> 0.3, >= 0.3.3)
       hydra-pcdm (>= 0.9)
       om (~> 3.1)
-    hyrax (2.1.0.beta2)
+    hyrax (2.1.0.rc2)
       active-fedora (~> 11.5, >= 11.5.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -898,7 +898,7 @@ GEM
       flot-rails (~> 0.0.6)
       font-awesome-rails (~> 4.2)
       hydra-derivatives (~> 3.3)
-      hydra-editor (~> 3.3)
+      hydra-editor (>= 3.3, < 5.0)
       hydra-head (>= 10.5.0)
       hydra-works (~> 0.16)
       iiif_manifest (>= 0.3, < 0.5)
@@ -923,7 +923,7 @@ GEM
       redis-namespace (~> 1.5)
       redlock (>= 0.1.2)
       retriable (>= 2.9, < 4.0)
-      samvera-nesting_indexer (~> 1.0, >= 1.0.1)
+      samvera-nesting_indexer (~> 2.0)
       select2-rails (~> 3.5)
       signet
       simple_form (~> 3.2, <= 3.5.0)
@@ -1248,7 +1248,7 @@ GEM
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
-    samvera-nesting_indexer (1.0.1)
+    samvera-nesting_indexer (2.0.0)
       dry-equalizer
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -1392,11 +1392,11 @@ DEPENDENCIES
   flog
   fudge
   hydra-role-management
-  hyrax (= 2.1.0.beta2)
+  hyrax (= 2.1.0.rc2)
   jbuilder (~> 2.5)
   jquery-rails
   json-schema (~> 2.8.0)
-  junctions (~> 0.0.4)
+  junctions (~> 0.0.6)
   listen (>= 3.0.5, < 3.2)
   noid-rails
   pg (~> 0.19.0)
