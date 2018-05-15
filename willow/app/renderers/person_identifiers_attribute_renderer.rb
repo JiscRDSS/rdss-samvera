@@ -11,7 +11,7 @@ class PersonIdentifiersAttributeRenderer
         identifiers(value).map do |identifier|
           row {
             cell { I18n.t("rdss.person_identifier_type.#{identifier.type}") } +
-            cell { identifier.value }
+            cell { Cdm::AutoRenderer.(identifier.value) }
           }
         end.join
       }

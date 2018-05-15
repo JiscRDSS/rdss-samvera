@@ -5,30 +5,41 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'aws-sdk', '>= 2.9.15'
+gem 'blacklight', '~> 6.14'
+gem 'blacklight_advanced_search', '~> 6.0'
+gem 'bootstrap-datepicker-rails'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+gem 'config_files'
+gem 'devise'
+gem 'devise-guests', '~> 0.6'
+gem 'hydra-role-management'
+gem 'hyrax', '2.1.0.rc2'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'json-schema', '~> 2.8.0'
+gem 'junctions', '~> 0.0.4'
+gem 'noid-rails'
 gem 'pg', '~> 0.19.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-gem 'junctions', '~> 0.0.4'
-gem 'hyrax', '2.1.0.beta2'
-gem 'blacklight', '~> 6.14'
-gem 'blacklight_advanced_search', '~> 6.0'
-gem 'config_files'
-gem 'json-schema', '~> 2.8.0'
-
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.1.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+gem 'riiif', '~> 1.1'
+gem 'rsolr', '>= 1.0'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+gem 'tinymce-rails-imageupload', '4.0.17.beta.2' # we need this specific version to fix an asset compilation problem
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+gem 'wisper', '2.0.0'
+
 
 group :development do
   gem 'better_errors'
@@ -69,16 +80,3 @@ end
 group :production do
   gem 'sqlite3'
 end
-
-gem 'rsolr', '>= 1.0'
-gem 'jquery-rails'
-gem 'devise'
-gem 'devise-guests', '~> 0.6'
-gem 'hydra-role-management'
-gem 'bootstrap-datepicker-rails'
-gem 'aws-sdk', '>= 2.9.15'
-gem 'tinymce-rails-imageupload', '4.0.17.beta.2' # we need this specific version to fix an asset compilation problem
-gem 'wisper', '2.0.0'
-
-gem 'riiif', '~> 1.1'
-gem 'noid-rails'

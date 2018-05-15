@@ -21,7 +21,6 @@ RSpec.describe ObjectRelatedIdentifiersAttributeRenderer do
         expect(render_identifier(value).css('.td')[1].text).to eq('DOI')
       end
 
-
       it 'displays the identifier value' do
         expect(render_identifier(value).css('.td')[2].text).to eq('12345')
       end
