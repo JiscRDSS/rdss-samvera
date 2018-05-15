@@ -6,7 +6,7 @@ module Cdm
       end
 
       def default_type
-        AutoRenderer
+        Cdm::AutoRenderer
       end
 
       def map_type(type, mappings)
