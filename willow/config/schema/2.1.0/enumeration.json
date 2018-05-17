@@ -137,10 +137,7 @@
     "personIdentifierType": {
       "enum": [
         "ORCID",
-        "FOAF",
-        "Twitter",
-        "eduPersonTargetedID",
-        "eduPersonPrincipleName"
+        "Twitter"
       ]
     },
     "personRole": {
