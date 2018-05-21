@@ -3,8 +3,9 @@ module Rdss
     class MessageGenerationSubscriber
       private
       def after_object_upload_complete(object, &block)
-        object.reload unless object.new_record? #Can't reload an object that hasn't been saved.
-        Thread.new(object, object.uploaded_files_count) { |object, count|
+        object.reload unless object.new_record? || object.changed? #Can't reload an object that hasn't been saved and don't want to reload one that's changed until its been saved.
+        Thread.new(object) { |object|
+          count=object.uploaded_files_count
           while (object.file_sets.count.to_i < count.to_i) do
             sleep(60)
             object.reload
@@ -17,12 +18,12 @@ module Rdss
               end
             }
           end.each(&:join)
-          yield(object)
-        }
+        #   yield(object)
+        # }
         # If you need to debug, comment out the previous two lines and uncomment the following two. This will let you
         # see errors hidden if the system throws a masked exception in the Thread.
-        # }.join
-        # yield(object)
+        }.join
+        yield(object)
       end
 
       private
