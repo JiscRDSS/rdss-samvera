@@ -2,8 +2,12 @@
 module Cdm
   module Messaging
     class PersonMail < MessageMapper
-      include AttributeMapper
-      attribute_name :mail
+      # include AttributeMapper
+      # attribute_name :mail
+      #
+      def value(object, message_mapper)
+        object.mail.presence || 'forced@for.message.completeness'
+      end
     end
   end
 end

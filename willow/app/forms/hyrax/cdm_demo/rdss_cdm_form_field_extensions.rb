@@ -22,6 +22,7 @@ module Hyrax
       def required
         [
           :title,
+          :metadata_only,
           :object_description,
           :object_resource_type,
           :object_value,

@@ -27,8 +27,8 @@
   <%= object_person_form.input :person_identifiers, wrapper: :label_and_hint_only, required: true %>
   <div class="multi-nested">
     <ul class="listing">
-      <%= object_person_form.fields_for :person_identifiers, object_person_form.person_identifiers, builder: PersonIdentifierFormBuilder do |pidf| %>
-        <%= render partial: pidf, locals: {required: true} %>
+      <%= object_person_form.fields_for :person_identifiers, object_person_form.person_identifiers, builder: ::PersonIdentifierFormBuilder do |pi| %>
+        <%= render partial: pi, locals: { required: true } %>
       <%- end %>
     </ul>
     <%= add_another_button :person_identifier %>
