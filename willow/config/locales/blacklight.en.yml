@@ -1,3 +1,7 @@
 en:
   blacklight:
     application_name: 'RDSS Samvera'
+    search:
+      fields:
+        facet:
+          object_keywords_sim: Keywords
