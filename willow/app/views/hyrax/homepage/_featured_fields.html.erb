@@ -7,6 +7,7 @@
     <span class="featured-label"><%= t('hyrax.homepage.featured_works.document.depositor_label') %>:</span> <%= link_to_profile featured.depositor(t('hyrax.homepage.featured_works.document.depositor_missing')) %>
   </div>
   <div class="featured-item-keywords">
-    <span class="featured-label"><%= t('hyrax.homepage.featured_works.document.keyword_label') %>:</span> <%= link_to_facet_list(featured.object_keywords, 'keyword', t('hyrax.homepage.featured_works.document.keyword_missing')) %>
+    <span class="featured-label"><%= t('hyrax.homepage.featured_works.document.keyword_label') %>:</span>
+    <%= link_to_facet_list(featured.object_keywords, 'object_keywords', t('hyrax.homepage.featured_works.document.keyword_missing')) %>
   </div>
 </div>
